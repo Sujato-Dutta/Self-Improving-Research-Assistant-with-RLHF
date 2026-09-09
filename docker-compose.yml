@@ -1,0 +1,18 @@
+version: "3.8"
+
+services:
+  research-assistant:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - HOST=0.0.0.0
+      - PORT=8000
+      - DATABASE_URL=sqlite:///data/research_assistant.db
+      - MLFLOW_TRACKING_URI=sqlite:///data/mlflow.db
+    volumes:
+      - ./data:/app/data
+      - ./artifacts:/app/artifacts
+    restart: unless-stopped

@@ -1,0 +1,2102 @@
+[
+  {
+    "id": "bench_0001",
+    "category": "llm_architectures",
+    "question": "How does the self-attention mechanism in the Transformer eliminate recurrent dependencies?",
+    "domain": "Llm Architectures"
+  },
+  {
+    "id": "bench_0002",
+    "category": "llm_architectures",
+    "question": "Compare multi-head attention versus grouped-query attention (GQA) in inference memory consumption.?",
+    "domain": "Llm Architectures"
+  },
+  {
+    "id": "bench_0003",
+    "category": "llm_architectures",
+    "question": "What are the computational tradeoffs of FlashAttention tiling versus standard softmax materialization?",
+    "domain": "Llm Architectures"
+  },
+  {
+    "id": "bench_0004",
+    "category": "llm_architectures",
+    "question": "How does Rotary Position Embedding (RoPE) encode relative token distances in Qwen and LLaMA?",
+    "domain": "Llm Architectures"
+  },
+  {
+    "id": "bench_0005",
+    "category": "llm_architectures",
+    "question": "Explain the KV-cache memory bottleneck during long-context autoregressive token generation.?",
+    "domain": "Llm Architectures"
+  },
+  {
+    "id": "bench_0006",
+    "category": "llm_architectures",
+    "question": "How does sliding-window attention maintain bounded memory during extended sequence evaluation?",
+    "domain": "Llm Architectures"
+  },
+  {
+    "id": "bench_0007",
+    "category": "llm_architectures",
+    "question": "Discuss the stability properties of Pre-LayerNorm vs Post-LayerNorm in deep Transformer training.?",
+    "domain": "Llm Architectures"
+  },
+  {
+    "id": "bench_0008",
+    "category": "llm_architectures",
+    "question": "What is the mathematical formulation of cross-attention in encoder-decoder architectures?",
+    "domain": "Llm Architectures"
+  },
+  {
+    "id": "bench_0009",
+    "category": "llm_architectures",
+    "question": "How does mixture-of-experts (MoE) achieve sparse computation without sacrificing total model capacity?",
+    "domain": "Llm Architectures"
+  },
+  {
+    "id": "bench_0010",
+    "category": "llm_architectures",
+    "question": "Explain how tokenization granularity (BPE vs WordPiece) impacts out-of-vocabulary representation.?",
+    "domain": "Llm Architectures"
+  },
+  {
+    "id": "bench_0011",
+    "category": "alignment_and_rlhf",
+    "question": "What are the mathematical differences between PPO and Direct Preference Optimization (DPO)?",
+    "domain": "Alignment And Rlhf"
+  },
+  {
+    "id": "bench_0012",
+    "category": "alignment_and_rlhf",
+    "question": "How does the Bradley-Terry preference model formulate pairwise probabilities in reward modeling?",
+    "domain": "Alignment And Rlhf"
+  },
+  {
+    "id": "bench_0013",
+    "category": "alignment_and_rlhf",
+    "question": "Why is KL divergence regularization strictly required when fine-tuning policy models with PPO?",
+    "domain": "Alignment And Rlhf"
+  },
+  {
+    "id": "bench_0014",
+    "category": "alignment_and_rlhf",
+    "question": "How does Constitutional AI implement automated self-critique without human harmfulness labels?",
+    "domain": "Alignment And Rlhf"
+  },
+  {
+    "id": "bench_0015",
+    "category": "alignment_and_rlhf",
+    "question": "Discuss the failure mode of reward hacking and length bias in reinforcement learning from human feedback.?",
+    "domain": "Alignment And Rlhf"
+  },
+  {
+    "id": "bench_0016",
+    "category": "alignment_and_rlhf",
+    "question": "How does Kahneman-Tversky Optimization (KTO) align models using unpaired binary signals?",
+    "domain": "Alignment And Rlhf"
+  },
+  {
+    "id": "bench_0017",
+    "category": "alignment_and_rlhf",
+    "question": "Explain the role of Generalized Advantage Estimation (GAE) in reducing policy gradient variance.?",
+    "domain": "Alignment And Rlhf"
+  },
+  {
+    "id": "bench_0018",
+    "category": "alignment_and_rlhf",
+    "question": "What is the impact of reference model freeze vs periodic EMA updates in actor-critic alignment?",
+    "domain": "Alignment And Rlhf"
+  },
+  {
+    "id": "bench_0019",
+    "category": "alignment_and_rlhf",
+    "question": "How does rejection sampling fine-tuning (Best-of-N) compare to online RLHF policy optimization?",
+    "domain": "Alignment And Rlhf"
+  },
+  {
+    "id": "bench_0020",
+    "category": "alignment_and_rlhf",
+    "question": "Discuss calibration evaluation metrics (Brier score, ECE) for learned language model reward models.?",
+    "domain": "Alignment And Rlhf"
+  },
+  {
+    "id": "bench_0021",
+    "category": "rag_and_retrieval",
+    "question": "What are the key trade-offs between dense semantic retrieval (FAISS) and sparse lexical search (BM25)?",
+    "domain": "Rag And Retrieval"
+  },
+  {
+    "id": "bench_0022",
+    "category": "rag_and_retrieval",
+    "question": "How does inner product similarity on normalized vectors correspond to cosine distance in FAISS?",
+    "domain": "Rag And Retrieval"
+  },
+  {
+    "id": "bench_0023",
+    "category": "rag_and_retrieval",
+    "question": "Explain the mechanism of Hypothetical Document Embeddings (HyDE) in zero-shot retrieval.?",
+    "domain": "Rag And Retrieval"
+  },
+  {
+    "id": "bench_0024",
+    "category": "rag_and_retrieval",
+    "question": "How does contextual chunk overlap prevent semantic truncation across document boundaries?",
+    "domain": "Rag And Retrieval"
+  },
+  {
+    "id": "bench_0025",
+    "category": "rag_and_retrieval",
+    "question": "What are the standard failure modes when retrieving evidence for multi-hop reasoning questions?",
+    "domain": "Rag And Retrieval"
+  },
+  {
+    "id": "bench_0026",
+    "category": "rag_and_retrieval",
+    "question": "How can cross-encoder rerankers improve precision over dual-encoder bi-encoders in RAG?",
+    "domain": "Rag And Retrieval"
+  },
+  {
+    "id": "bench_0027",
+    "category": "rag_and_retrieval",
+    "question": "Discuss the groundedness verification protocols needed to prevent hallucinated citations in LLMs.?",
+    "domain": "Rag And Retrieval"
+  },
+  {
+    "id": "bench_0028",
+    "category": "rag_and_retrieval",
+    "question": "How does parent-document retrieval balance small chunk granularity with large context windows?",
+    "domain": "Rag And Retrieval"
+  },
+  {
+    "id": "bench_0029",
+    "category": "rag_and_retrieval",
+    "question": "Explain the difference between Inverted File (IVF) and Hierarchical Navigable Small World (HNSW) indexing.?",
+    "domain": "Rag And Retrieval"
+  },
+  {
+    "id": "bench_0030",
+    "category": "rag_and_retrieval",
+    "question": "What metrics are best suited for evaluating evidence extraction recall versus generation faithfulness?",
+    "domain": "Rag And Retrieval"
+  },
+  {
+    "id": "bench_0031",
+    "category": "peft_and_quantization",
+    "question": "How does Low-Rank Adaptation (LoRA) decompose weight updates without increasing inference latency?",
+    "domain": "Peft And Quantization"
+  },
+  {
+    "id": "bench_0032",
+    "category": "peft_and_quantization",
+    "question": "What is the mathematical advantage of 4-bit NormalFloat (NF4) quantization in QLoRA?",
+    "domain": "Peft And Quantization"
+  },
+  {
+    "id": "bench_0033",
+    "category": "peft_and_quantization",
+    "question": "Explain how double quantization in QLoRA saves additional GPU memory across quantization constants.?",
+    "domain": "Peft And Quantization"
+  },
+  {
+    "id": "bench_0034",
+    "category": "peft_and_quantization",
+    "question": "How does Activation-aware Weight Quantization (AWQ) protect salient outlier channels in LLMs?",
+    "domain": "Peft And Quantization"
+  },
+  {
+    "id": "bench_0035",
+    "category": "peft_and_quantization",
+    "question": "Compare post-training quantization (PTQ) vs quantization-aware training (QAT) for Transformer weights.?",
+    "domain": "Peft And Quantization"
+  },
+  {
+    "id": "bench_0036",
+    "category": "peft_and_quantization",
+    "question": "What causes catastrophic activation spikes in large scale LLMs and how does SmoothQuant address them?",
+    "domain": "Peft And Quantization"
+  },
+  {
+    "id": "bench_0037",
+    "category": "peft_and_quantization",
+    "question": "Explain how LoRA ranks (r) and scaling alpha influence gradient stability during fine-tuning.?",
+    "domain": "Peft And Quantization"
+  },
+  {
+    "id": "bench_0038",
+    "category": "peft_and_quantization",
+    "question": "How does FlashDecoding parallelize along the sequence length dimension during the decoding phase?",
+    "domain": "Peft And Quantization"
+  },
+  {
+    "id": "bench_0039",
+    "category": "peft_and_quantization",
+    "question": "Discuss the quantization format of GGUF and its optimization for CPU and Ollama deployment.?",
+    "domain": "Peft And Quantization"
+  },
+  {
+    "id": "bench_0040",
+    "category": "peft_and_quantization",
+    "question": "What are the memory bandwidth bottlenecks of INT4 matrix multiplications on tensor cores?",
+    "domain": "Peft And Quantization"
+  },
+  {
+    "id": "bench_0041",
+    "category": "reasoning_and_agents",
+    "question": "How does Chain-of-Thought (CoT) prompting alter the token probability distribution during generation?",
+    "domain": "Reasoning And Agents"
+  },
+  {
+    "id": "bench_0042",
+    "category": "reasoning_and_agents",
+    "question": "Explain the synergy between reasoning traces and external action execution in the ReAct paradigm.?",
+    "domain": "Reasoning And Agents"
+  },
+  {
+    "id": "bench_0043",
+    "category": "reasoning_and_agents",
+    "question": "How does Toolformer autonomously decide when and how to invoke external API tools?",
+    "domain": "Reasoning And Agents"
+  },
+  {
+    "id": "bench_0044",
+    "category": "reasoning_and_agents",
+    "question": "What is the principle of Self-Refine and iterative verbal reinforcement in reasoning tasks?",
+    "domain": "Reasoning And Agents"
+  },
+  {
+    "id": "bench_0045",
+    "category": "reasoning_and_agents",
+    "question": "Discuss Tree-of-Thoughts (ToT) search algorithms (BFS/DFS) for combinatorial problem solving.?",
+    "domain": "Reasoning And Agents"
+  },
+  {
+    "id": "bench_0046",
+    "category": "reasoning_and_agents",
+    "question": "How does Reflexion utilize episodic memory buffers to prevent repetitive reasoning errors?",
+    "domain": "Reasoning And Agents"
+  },
+  {
+    "id": "bench_0047",
+    "category": "reasoning_and_agents",
+    "question": "What are the failure modes of autonomous agents when processing unstructured multi-tool schemas?",
+    "domain": "Reasoning And Agents"
+  },
+  {
+    "id": "bench_0048",
+    "category": "reasoning_and_agents",
+    "question": "Explain the role of verifier models (outcome vs process supervision) in mathematical reasoning.?",
+    "domain": "Reasoning And Agents"
+  },
+  {
+    "id": "bench_0049",
+    "category": "reasoning_and_agents",
+    "question": "How does prompt decomposition break complex technical synthesis into verified sub-queries?",
+    "domain": "Reasoning And Agents"
+  },
+  {
+    "id": "bench_0050",
+    "category": "reasoning_and_agents",
+    "question": "Discuss the vulnerability of agent tool-calling pipelines to prompt injection and context poisoning.?",
+    "domain": "Reasoning And Agents"
+  },
+  {
+    "id": "bench_0051",
+    "category": "hpc_and_distributed",
+    "question": "How does SLURM allocate Multi-Instance GPU (MIG) slices on NVIDIA DGX A100 systems?",
+    "domain": "Hpc And Distributed"
+  },
+  {
+    "id": "bench_0052",
+    "category": "hpc_and_distributed",
+    "question": "Explain the difference between ZeRO-1, ZeRO-2, and ZeRO-3 memory partitioning in DeepSpeed.?",
+    "domain": "Hpc And Distributed"
+  },
+  {
+    "id": "bench_0053",
+    "category": "hpc_and_distributed",
+    "question": "What are the communication volume differences between AllReduce and ReduceScatter operations?",
+    "domain": "Hpc And Distributed"
+  },
+  {
+    "id": "bench_0054",
+    "category": "hpc_and_distributed",
+    "question": "How does pipeline parallelism handle pipeline bubbles with 1F1B (one forward, one backward) scheduling?",
+    "domain": "Hpc And Distributed"
+  },
+  {
+    "id": "bench_0055",
+    "category": "hpc_and_distributed",
+    "question": "Discuss the impact of NVLink bandwidth versus PCIe Gen4 bandwidth on distributed tensor parallelism.?",
+    "domain": "Hpc And Distributed"
+  },
+  {
+    "id": "bench_0056",
+    "category": "hpc_and_distributed",
+    "question": "How does Megatron-LM split row-parallel and column-parallel linear projections in multi-head attention?",
+    "domain": "Hpc And Distributed"
+  },
+  {
+    "id": "bench_0057",
+    "category": "hpc_and_distributed",
+    "question": "What are the best practices for SLURM batch job submission using Enroot and Docker containers?",
+    "domain": "Hpc And Distributed"
+  },
+  {
+    "id": "bench_0058",
+    "category": "hpc_and_distributed",
+    "question": "Explain the gradient accumulation mechanism for simulating large effective batch sizes on limited VRAM.?",
+    "domain": "Hpc And Distributed"
+  },
+  {
+    "id": "bench_0059",
+    "category": "hpc_and_distributed",
+    "question": "How does mixed precision training (AMP with bfloat16) prevent underflow while halving memory footprint?",
+    "domain": "Hpc And Distributed"
+  },
+  {
+    "id": "bench_0060",
+    "category": "hpc_and_distributed",
+    "question": "What causes CUDA out-of-memory (OOM) errors during the backward pass despite sufficient forward memory?",
+    "domain": "Hpc And Distributed"
+  },
+  {
+    "id": "bench_0061",
+    "category": "scientific_synthesis",
+    "question": "How do self-improving post-training loops establish statistical confidence in model capability gains?",
+    "domain": "Scientific Synthesis"
+  },
+  {
+    "id": "bench_0062",
+    "category": "scientific_synthesis",
+    "question": "Discuss non-parametric bootstrap resampling for computing 95% confidence intervals on win rates.?",
+    "domain": "Scientific Synthesis"
+  },
+  {
+    "id": "bench_0063",
+    "category": "scientific_synthesis",
+    "question": "How can automated regression test suites gate model deployment in continuous integration pipelines?",
+    "domain": "Scientific Synthesis"
+  },
+  {
+    "id": "bench_0064",
+    "category": "scientific_synthesis",
+    "question": "What statistical methods differentiate genuine policy improvements from stochastic generation variance?",
+    "domain": "Scientific Synthesis"
+  },
+  {
+    "id": "bench_0065",
+    "category": "scientific_synthesis",
+    "question": "Explain the Bradley-Terry preference loss formulation and its relationship to cross-entropy. Provide mathematical foundations and algorithmic details.",
+    "domain": "Scientific Synthesis"
+  },
+  {
+    "id": "bench_0066",
+    "category": "llm_architectures",
+    "question": "How does the self-attention mechanism in the Transformer eliminate recurrent dependencies Provide mathematical foundations and algorithmic details.",
+    "domain": "Llm Architectures"
+  },
+  {
+    "id": "bench_0067",
+    "category": "llm_architectures",
+    "question": "Compare multi-head attention versus grouped-query attention (GQA) in inference memory consumption. Provide mathematical foundations and algorithmic details.",
+    "domain": "Llm Architectures"
+  },
+  {
+    "id": "bench_0068",
+    "category": "llm_architectures",
+    "question": "What are the computational tradeoffs of FlashAttention tiling versus standard softmax materialization Provide mathematical foundations and algorithmic details.",
+    "domain": "Llm Architectures"
+  },
+  {
+    "id": "bench_0069",
+    "category": "llm_architectures",
+    "question": "How does Rotary Position Embedding (RoPE) encode relative token distances in Qwen and LLaMA Provide mathematical foundations and algorithmic details.",
+    "domain": "Llm Architectures"
+  },
+  {
+    "id": "bench_0070",
+    "category": "llm_architectures",
+    "question": "Explain the KV-cache memory bottleneck during long-context autoregressive token generation. Provide mathematical foundations and algorithmic details.",
+    "domain": "Llm Architectures"
+  },
+  {
+    "id": "bench_0071",
+    "category": "llm_architectures",
+    "question": "How does sliding-window attention maintain bounded memory during extended sequence evaluation Provide mathematical foundations and algorithmic details.",
+    "domain": "Llm Architectures"
+  },
+  {
+    "id": "bench_0072",
+    "category": "llm_architectures",
+    "question": "Discuss the stability properties of Pre-LayerNorm vs Post-LayerNorm in deep Transformer training. Provide mathematical foundations and algorithmic details.",
+    "domain": "Llm Architectures"
+  },
+  {
+    "id": "bench_0073",
+    "category": "llm_architectures",
+    "question": "What is the mathematical formulation of cross-attention in encoder-decoder architectures Provide mathematical foundations and algorithmic details.",
+    "domain": "Llm Architectures"
+  },
+  {
+    "id": "bench_0074",
+    "category": "llm_architectures",
+    "question": "How does mixture-of-experts (MoE) achieve sparse computation without sacrificing total model capacity Provide mathematical foundations and algorithmic details.",
+    "domain": "Llm Architectures"
+  },
+  {
+    "id": "bench_0075",
+    "category": "llm_architectures",
+    "question": "Explain how tokenization granularity (BPE vs WordPiece) impacts out-of-vocabulary representation. Provide mathematical foundations and algorithmic details.",
+    "domain": "Llm Architectures"
+  },
+  {
+    "id": "bench_0076",
+    "category": "alignment_and_rlhf",
+    "question": "What are the mathematical differences between PPO and Direct Preference Optimization (DPO) Provide mathematical foundations and algorithmic details.",
+    "domain": "Alignment And Rlhf"
+  },
+  {
+    "id": "bench_0077",
+    "category": "alignment_and_rlhf",
+    "question": "How does the Bradley-Terry preference model formulate pairwise probabilities in reward modeling Provide mathematical foundations and algorithmic details.",
+    "domain": "Alignment And Rlhf"
+  },
+  {
+    "id": "bench_0078",
+    "category": "alignment_and_rlhf",
+    "question": "Why is KL divergence regularization strictly required when fine-tuning policy models with PPO Provide mathematical foundations and algorithmic details.",
+    "domain": "Alignment And Rlhf"
+  },
+  {
+    "id": "bench_0079",
+    "category": "alignment_and_rlhf",
+    "question": "How does Constitutional AI implement automated self-critique without human harmfulness labels Provide mathematical foundations and algorithmic details.",
+    "domain": "Alignment And Rlhf"
+  },
+  {
+    "id": "bench_0080",
+    "category": "alignment_and_rlhf",
+    "question": "Discuss the failure mode of reward hacking and length bias in reinforcement learning from human feedback. Provide mathematical foundations and algorithmic details.",
+    "domain": "Alignment And Rlhf"
+  },
+  {
+    "id": "bench_0081",
+    "category": "alignment_and_rlhf",
+    "question": "How does Kahneman-Tversky Optimization (KTO) align models using unpaired binary signals Provide mathematical foundations and algorithmic details.",
+    "domain": "Alignment And Rlhf"
+  },
+  {
+    "id": "bench_0082",
+    "category": "alignment_and_rlhf",
+    "question": "Explain the role of Generalized Advantage Estimation (GAE) in reducing policy gradient variance. Provide mathematical foundations and algorithmic details.",
+    "domain": "Alignment And Rlhf"
+  },
+  {
+    "id": "bench_0083",
+    "category": "alignment_and_rlhf",
+    "question": "What is the impact of reference model freeze vs periodic EMA updates in actor-critic alignment Provide mathematical foundations and algorithmic details.",
+    "domain": "Alignment And Rlhf"
+  },
+  {
+    "id": "bench_0084",
+    "category": "alignment_and_rlhf",
+    "question": "How does rejection sampling fine-tuning (Best-of-N) compare to online RLHF policy optimization Provide mathematical foundations and algorithmic details.",
+    "domain": "Alignment And Rlhf"
+  },
+  {
+    "id": "bench_0085",
+    "category": "alignment_and_rlhf",
+    "question": "Discuss calibration evaluation metrics (Brier score, ECE) for learned language model reward models. Provide mathematical foundations and algorithmic details.",
+    "domain": "Alignment And Rlhf"
+  },
+  {
+    "id": "bench_0086",
+    "category": "rag_and_retrieval",
+    "question": "What are the key trade-offs between dense semantic retrieval (FAISS) and sparse lexical search (BM25) Provide mathematical foundations and algorithmic details.",
+    "domain": "Rag And Retrieval"
+  },
+  {
+    "id": "bench_0087",
+    "category": "rag_and_retrieval",
+    "question": "How does inner product similarity on normalized vectors correspond to cosine distance in FAISS Provide mathematical foundations and algorithmic details.",
+    "domain": "Rag And Retrieval"
+  },
+  {
+    "id": "bench_0088",
+    "category": "rag_and_retrieval",
+    "question": "Explain the mechanism of Hypothetical Document Embeddings (HyDE) in zero-shot retrieval. Provide mathematical foundations and algorithmic details.",
+    "domain": "Rag And Retrieval"
+  },
+  {
+    "id": "bench_0089",
+    "category": "rag_and_retrieval",
+    "question": "How does contextual chunk overlap prevent semantic truncation across document boundaries Provide mathematical foundations and algorithmic details.",
+    "domain": "Rag And Retrieval"
+  },
+  {
+    "id": "bench_0090",
+    "category": "rag_and_retrieval",
+    "question": "What are the standard failure modes when retrieving evidence for multi-hop reasoning questions Provide mathematical foundations and algorithmic details.",
+    "domain": "Rag And Retrieval"
+  },
+  {
+    "id": "bench_0091",
+    "category": "rag_and_retrieval",
+    "question": "How can cross-encoder rerankers improve precision over dual-encoder bi-encoders in RAG Provide mathematical foundations and algorithmic details.",
+    "domain": "Rag And Retrieval"
+  },
+  {
+    "id": "bench_0092",
+    "category": "rag_and_retrieval",
+    "question": "Discuss the groundedness verification protocols needed to prevent hallucinated citations in LLMs. Provide mathematical foundations and algorithmic details.",
+    "domain": "Rag And Retrieval"
+  },
+  {
+    "id": "bench_0093",
+    "category": "rag_and_retrieval",
+    "question": "How does parent-document retrieval balance small chunk granularity with large context windows Provide mathematical foundations and algorithmic details.",
+    "domain": "Rag And Retrieval"
+  },
+  {
+    "id": "bench_0094",
+    "category": "rag_and_retrieval",
+    "question": "Explain the difference between Inverted File (IVF) and Hierarchical Navigable Small World (HNSW) indexing. Provide mathematical foundations and algorithmic details.",
+    "domain": "Rag And Retrieval"
+  },
+  {
+    "id": "bench_0095",
+    "category": "rag_and_retrieval",
+    "question": "What metrics are best suited for evaluating evidence extraction recall versus generation faithfulness Provide mathematical foundations and algorithmic details.",
+    "domain": "Rag And Retrieval"
+  },
+  {
+    "id": "bench_0096",
+    "category": "peft_and_quantization",
+    "question": "How does Low-Rank Adaptation (LoRA) decompose weight updates without increasing inference latency Provide mathematical foundations and algorithmic details.",
+    "domain": "Peft And Quantization"
+  },
+  {
+    "id": "bench_0097",
+    "category": "peft_and_quantization",
+    "question": "What is the mathematical advantage of 4-bit NormalFloat (NF4) quantization in QLoRA Provide mathematical foundations and algorithmic details.",
+    "domain": "Peft And Quantization"
+  },
+  {
+    "id": "bench_0098",
+    "category": "peft_and_quantization",
+    "question": "Explain how double quantization in QLoRA saves additional GPU memory across quantization constants. Provide mathematical foundations and algorithmic details.",
+    "domain": "Peft And Quantization"
+  },
+  {
+    "id": "bench_0099",
+    "category": "peft_and_quantization",
+    "question": "How does Activation-aware Weight Quantization (AWQ) protect salient outlier channels in LLMs Provide mathematical foundations and algorithmic details.",
+    "domain": "Peft And Quantization"
+  },
+  {
+    "id": "bench_0100",
+    "category": "peft_and_quantization",
+    "question": "Compare post-training quantization (PTQ) vs quantization-aware training (QAT) for Transformer weights. Provide mathematical foundations and algorithmic details.",
+    "domain": "Peft And Quantization"
+  },
+  {
+    "id": "bench_0101",
+    "category": "peft_and_quantization",
+    "question": "What causes catastrophic activation spikes in large scale LLMs and how does SmoothQuant address them Provide mathematical foundations and algorithmic details.",
+    "domain": "Peft And Quantization"
+  },
+  {
+    "id": "bench_0102",
+    "category": "peft_and_quantization",
+    "question": "Explain how LoRA ranks (r) and scaling alpha influence gradient stability during fine-tuning. Provide mathematical foundations and algorithmic details.",
+    "domain": "Peft And Quantization"
+  },
+  {
+    "id": "bench_0103",
+    "category": "peft_and_quantization",
+    "question": "How does FlashDecoding parallelize along the sequence length dimension during the decoding phase Provide mathematical foundations and algorithmic details.",
+    "domain": "Peft And Quantization"
+  },
+  {
+    "id": "bench_0104",
+    "category": "peft_and_quantization",
+    "question": "Discuss the quantization format of GGUF and its optimization for CPU and Ollama deployment. Provide mathematical foundations and algorithmic details.",
+    "domain": "Peft And Quantization"
+  },
+  {
+    "id": "bench_0105",
+    "category": "peft_and_quantization",
+    "question": "What are the memory bandwidth bottlenecks of INT4 matrix multiplications on tensor cores Provide mathematical foundations and algorithmic details.",
+    "domain": "Peft And Quantization"
+  },
+  {
+    "id": "bench_0106",
+    "category": "reasoning_and_agents",
+    "question": "How does Chain-of-Thought (CoT) prompting alter the token probability distribution during generation Provide mathematical foundations and algorithmic details.",
+    "domain": "Reasoning And Agents"
+  },
+  {
+    "id": "bench_0107",
+    "category": "reasoning_and_agents",
+    "question": "Explain the synergy between reasoning traces and external action execution in the ReAct paradigm. Provide mathematical foundations and algorithmic details.",
+    "domain": "Reasoning And Agents"
+  },
+  {
+    "id": "bench_0108",
+    "category": "reasoning_and_agents",
+    "question": "How does Toolformer autonomously decide when and how to invoke external API tools Provide mathematical foundations and algorithmic details.",
+    "domain": "Reasoning And Agents"
+  },
+  {
+    "id": "bench_0109",
+    "category": "reasoning_and_agents",
+    "question": "What is the principle of Self-Refine and iterative verbal reinforcement in reasoning tasks Provide mathematical foundations and algorithmic details.",
+    "domain": "Reasoning And Agents"
+  },
+  {
+    "id": "bench_0110",
+    "category": "reasoning_and_agents",
+    "question": "Discuss Tree-of-Thoughts (ToT) search algorithms (BFS/DFS) for combinatorial problem solving. Provide mathematical foundations and algorithmic details.",
+    "domain": "Reasoning And Agents"
+  },
+  {
+    "id": "bench_0111",
+    "category": "reasoning_and_agents",
+    "question": "How does Reflexion utilize episodic memory buffers to prevent repetitive reasoning errors Provide mathematical foundations and algorithmic details.",
+    "domain": "Reasoning And Agents"
+  },
+  {
+    "id": "bench_0112",
+    "category": "reasoning_and_agents",
+    "question": "What are the failure modes of autonomous agents when processing unstructured multi-tool schemas Provide mathematical foundations and algorithmic details.",
+    "domain": "Reasoning And Agents"
+  },
+  {
+    "id": "bench_0113",
+    "category": "reasoning_and_agents",
+    "question": "Explain the role of verifier models (outcome vs process supervision) in mathematical reasoning. Provide mathematical foundations and algorithmic details.",
+    "domain": "Reasoning And Agents"
+  },
+  {
+    "id": "bench_0114",
+    "category": "reasoning_and_agents",
+    "question": "How does prompt decomposition break complex technical synthesis into verified sub-queries Provide mathematical foundations and algorithmic details.",
+    "domain": "Reasoning And Agents"
+  },
+  {
+    "id": "bench_0115",
+    "category": "reasoning_and_agents",
+    "question": "Discuss the vulnerability of agent tool-calling pipelines to prompt injection and context poisoning. Provide mathematical foundations and algorithmic details.",
+    "domain": "Reasoning And Agents"
+  },
+  {
+    "id": "bench_0116",
+    "category": "hpc_and_distributed",
+    "question": "How does SLURM allocate Multi-Instance GPU (MIG) slices on NVIDIA DGX A100 systems Provide mathematical foundations and algorithmic details.",
+    "domain": "Hpc And Distributed"
+  },
+  {
+    "id": "bench_0117",
+    "category": "hpc_and_distributed",
+    "question": "Explain the difference between ZeRO-1, ZeRO-2, and ZeRO-3 memory partitioning in DeepSpeed. Provide mathematical foundations and algorithmic details.",
+    "domain": "Hpc And Distributed"
+  },
+  {
+    "id": "bench_0118",
+    "category": "hpc_and_distributed",
+    "question": "What are the communication volume differences between AllReduce and ReduceScatter operations Provide mathematical foundations and algorithmic details.",
+    "domain": "Hpc And Distributed"
+  },
+  {
+    "id": "bench_0119",
+    "category": "hpc_and_distributed",
+    "question": "How does pipeline parallelism handle pipeline bubbles with 1F1B (one forward, one backward) scheduling Provide mathematical foundations and algorithmic details.",
+    "domain": "Hpc And Distributed"
+  },
+  {
+    "id": "bench_0120",
+    "category": "hpc_and_distributed",
+    "question": "Discuss the impact of NVLink bandwidth versus PCIe Gen4 bandwidth on distributed tensor parallelism. Provide mathematical foundations and algorithmic details.",
+    "domain": "Hpc And Distributed"
+  },
+  {
+    "id": "bench_0121",
+    "category": "hpc_and_distributed",
+    "question": "How does Megatron-LM split row-parallel and column-parallel linear projections in multi-head attention Provide mathematical foundations and algorithmic details.",
+    "domain": "Hpc And Distributed"
+  },
+  {
+    "id": "bench_0122",
+    "category": "hpc_and_distributed",
+    "question": "What are the best practices for SLURM batch job submission using Enroot and Docker containers Provide mathematical foundations and algorithmic details.",
+    "domain": "Hpc And Distributed"
+  },
+  {
+    "id": "bench_0123",
+    "category": "hpc_and_distributed",
+    "question": "Explain the gradient accumulation mechanism for simulating large effective batch sizes on limited VRAM. Provide mathematical foundations and algorithmic details.",
+    "domain": "Hpc And Distributed"
+  },
+  {
+    "id": "bench_0124",
+    "category": "hpc_and_distributed",
+    "question": "How does mixed precision training (AMP with bfloat16) prevent underflow while halving memory footprint Provide mathematical foundations and algorithmic details.",
+    "domain": "Hpc And Distributed"
+  },
+  {
+    "id": "bench_0125",
+    "category": "hpc_and_distributed",
+    "question": "What causes CUDA out-of-memory (OOM) errors during the backward pass despite sufficient forward memory Provide mathematical foundations and algorithmic details.",
+    "domain": "Hpc And Distributed"
+  },
+  {
+    "id": "bench_0126",
+    "category": "scientific_synthesis",
+    "question": "How do self-improving post-training loops establish statistical confidence in model capability gains Provide mathematical foundations and algorithmic details.",
+    "domain": "Scientific Synthesis"
+  },
+  {
+    "id": "bench_0127",
+    "category": "scientific_synthesis",
+    "question": "Discuss non-parametric bootstrap resampling for computing 95% confidence intervals on win rates. Provide mathematical foundations and algorithmic details.",
+    "domain": "Scientific Synthesis"
+  },
+  {
+    "id": "bench_0128",
+    "category": "scientific_synthesis",
+    "question": "How can automated regression test suites gate model deployment in continuous integration pipelines Provide mathematical foundations and algorithmic details.",
+    "domain": "Scientific Synthesis"
+  },
+  {
+    "id": "bench_0129",
+    "category": "scientific_synthesis",
+    "question": "What statistical methods differentiate genuine policy improvements from stochastic generation variance Provide mathematical foundations and algorithmic details.",
+    "domain": "Scientific Synthesis"
+  },
+  {
+    "id": "bench_0130",
+    "category": "scientific_synthesis",
+    "question": "Explain the Bradley-Terry preference loss formulation and its relationship to cross-entropy. Explain the underlying theoretical principles and empirical tradeoffs.",
+    "domain": "Scientific Synthesis"
+  },
+  {
+    "id": "bench_0131",
+    "category": "llm_architectures",
+    "question": "How does the self-attention mechanism in the Transformer eliminate recurrent dependencies Explain the underlying theoretical principles and empirical tradeoffs.",
+    "domain": "Llm Architectures"
+  },
+  {
+    "id": "bench_0132",
+    "category": "llm_architectures",
+    "question": "Compare multi-head attention versus grouped-query attention (GQA) in inference memory consumption. Explain the underlying theoretical principles and empirical tradeoffs.",
+    "domain": "Llm Architectures"
+  },
+  {
+    "id": "bench_0133",
+    "category": "llm_architectures",
+    "question": "What are the computational tradeoffs of FlashAttention tiling versus standard softmax materialization Explain the underlying theoretical principles and empirical tradeoffs.",
+    "domain": "Llm Architectures"
+  },
+  {
+    "id": "bench_0134",
+    "category": "llm_architectures",
+    "question": "How does Rotary Position Embedding (RoPE) encode relative token distances in Qwen and LLaMA Explain the underlying theoretical principles and empirical tradeoffs.",
+    "domain": "Llm Architectures"
+  },
+  {
+    "id": "bench_0135",
+    "category": "llm_architectures",
+    "question": "Explain the KV-cache memory bottleneck during long-context autoregressive token generation. Explain the underlying theoretical principles and empirical tradeoffs.",
+    "domain": "Llm Architectures"
+  },
+  {
+    "id": "bench_0136",
+    "category": "llm_architectures",
+    "question": "How does sliding-window attention maintain bounded memory during extended sequence evaluation Explain the underlying theoretical principles and empirical tradeoffs.",
+    "domain": "Llm Architectures"
+  },
+  {
+    "id": "bench_0137",
+    "category": "llm_architectures",
+    "question": "Discuss the stability properties of Pre-LayerNorm vs Post-LayerNorm in deep Transformer training. Explain the underlying theoretical principles and empirical tradeoffs.",
+    "domain": "Llm Architectures"
+  },
+  {
+    "id": "bench_0138",
+    "category": "llm_architectures",
+    "question": "What is the mathematical formulation of cross-attention in encoder-decoder architectures Explain the underlying theoretical principles and empirical tradeoffs.",
+    "domain": "Llm Architectures"
+  },
+  {
+    "id": "bench_0139",
+    "category": "llm_architectures",
+    "question": "How does mixture-of-experts (MoE) achieve sparse computation without sacrificing total model capacity Explain the underlying theoretical principles and empirical tradeoffs.",
+    "domain": "Llm Architectures"
+  },
+  {
+    "id": "bench_0140",
+    "category": "llm_architectures",
+    "question": "Explain how tokenization granularity (BPE vs WordPiece) impacts out-of-vocabulary representation. Explain the underlying theoretical principles and empirical tradeoffs.",
+    "domain": "Llm Architectures"
+  },
+  {
+    "id": "bench_0141",
+    "category": "alignment_and_rlhf",
+    "question": "What are the mathematical differences between PPO and Direct Preference Optimization (DPO) Explain the underlying theoretical principles and empirical tradeoffs.",
+    "domain": "Alignment And Rlhf"
+  },
+  {
+    "id": "bench_0142",
+    "category": "alignment_and_rlhf",
+    "question": "How does the Bradley-Terry preference model formulate pairwise probabilities in reward modeling Explain the underlying theoretical principles and empirical tradeoffs.",
+    "domain": "Alignment And Rlhf"
+  },
+  {
+    "id": "bench_0143",
+    "category": "alignment_and_rlhf",
+    "question": "Why is KL divergence regularization strictly required when fine-tuning policy models with PPO Explain the underlying theoretical principles and empirical tradeoffs.",
+    "domain": "Alignment And Rlhf"
+  },
+  {
+    "id": "bench_0144",
+    "category": "alignment_and_rlhf",
+    "question": "How does Constitutional AI implement automated self-critique without human harmfulness labels Explain the underlying theoretical principles and empirical tradeoffs.",
+    "domain": "Alignment And Rlhf"
+  },
+  {
+    "id": "bench_0145",
+    "category": "alignment_and_rlhf",
+    "question": "Discuss the failure mode of reward hacking and length bias in reinforcement learning from human feedback. Explain the underlying theoretical principles and empirical tradeoffs.",
+    "domain": "Alignment And Rlhf"
+  },
+  {
+    "id": "bench_0146",
+    "category": "alignment_and_rlhf",
+    "question": "How does Kahneman-Tversky Optimization (KTO) align models using unpaired binary signals Explain the underlying theoretical principles and empirical tradeoffs.",
+    "domain": "Alignment And Rlhf"
+  },
+  {
+    "id": "bench_0147",
+    "category": "alignment_and_rlhf",
+    "question": "Explain the role of Generalized Advantage Estimation (GAE) in reducing policy gradient variance. Explain the underlying theoretical principles and empirical tradeoffs.",
+    "domain": "Alignment And Rlhf"
+  },
+  {
+    "id": "bench_0148",
+    "category": "alignment_and_rlhf",
+    "question": "What is the impact of reference model freeze vs periodic EMA updates in actor-critic alignment Explain the underlying theoretical principles and empirical tradeoffs.",
+    "domain": "Alignment And Rlhf"
+  },
+  {
+    "id": "bench_0149",
+    "category": "alignment_and_rlhf",
+    "question": "How does rejection sampling fine-tuning (Best-of-N) compare to online RLHF policy optimization Explain the underlying theoretical principles and empirical tradeoffs.",
+    "domain": "Alignment And Rlhf"
+  },
+  {
+    "id": "bench_0150",
+    "category": "alignment_and_rlhf",
+    "question": "Discuss calibration evaluation metrics (Brier score, ECE) for learned language model reward models. Explain the underlying theoretical principles and empirical tradeoffs.",
+    "domain": "Alignment And Rlhf"
+  },
+  {
+    "id": "bench_0151",
+    "category": "rag_and_retrieval",
+    "question": "What are the key trade-offs between dense semantic retrieval (FAISS) and sparse lexical search (BM25) Explain the underlying theoretical principles and empirical tradeoffs.",
+    "domain": "Rag And Retrieval"
+  },
+  {
+    "id": "bench_0152",
+    "category": "rag_and_retrieval",
+    "question": "How does inner product similarity on normalized vectors correspond to cosine distance in FAISS Explain the underlying theoretical principles and empirical tradeoffs.",
+    "domain": "Rag And Retrieval"
+  },
+  {
+    "id": "bench_0153",
+    "category": "rag_and_retrieval",
+    "question": "Explain the mechanism of Hypothetical Document Embeddings (HyDE) in zero-shot retrieval. Explain the underlying theoretical principles and empirical tradeoffs.",
+    "domain": "Rag And Retrieval"
+  },
+  {
+    "id": "bench_0154",
+    "category": "rag_and_retrieval",
+    "question": "How does contextual chunk overlap prevent semantic truncation across document boundaries Explain the underlying theoretical principles and empirical tradeoffs.",
+    "domain": "Rag And Retrieval"
+  },
+  {
+    "id": "bench_0155",
+    "category": "rag_and_retrieval",
+    "question": "What are the standard failure modes when retrieving evidence for multi-hop reasoning questions Explain the underlying theoretical principles and empirical tradeoffs.",
+    "domain": "Rag And Retrieval"
+  },
+  {
+    "id": "bench_0156",
+    "category": "rag_and_retrieval",
+    "question": "How can cross-encoder rerankers improve precision over dual-encoder bi-encoders in RAG Explain the underlying theoretical principles and empirical tradeoffs.",
+    "domain": "Rag And Retrieval"
+  },
+  {
+    "id": "bench_0157",
+    "category": "rag_and_retrieval",
+    "question": "Discuss the groundedness verification protocols needed to prevent hallucinated citations in LLMs. Explain the underlying theoretical principles and empirical tradeoffs.",
+    "domain": "Rag And Retrieval"
+  },
+  {
+    "id": "bench_0158",
+    "category": "rag_and_retrieval",
+    "question": "How does parent-document retrieval balance small chunk granularity with large context windows Explain the underlying theoretical principles and empirical tradeoffs.",
+    "domain": "Rag And Retrieval"
+  },
+  {
+    "id": "bench_0159",
+    "category": "rag_and_retrieval",
+    "question": "Explain the difference between Inverted File (IVF) and Hierarchical Navigable Small World (HNSW) indexing. Explain the underlying theoretical principles and empirical tradeoffs.",
+    "domain": "Rag And Retrieval"
+  },
+  {
+    "id": "bench_0160",
+    "category": "rag_and_retrieval",
+    "question": "What metrics are best suited for evaluating evidence extraction recall versus generation faithfulness Explain the underlying theoretical principles and empirical tradeoffs.",
+    "domain": "Rag And Retrieval"
+  },
+  {
+    "id": "bench_0161",
+    "category": "peft_and_quantization",
+    "question": "How does Low-Rank Adaptation (LoRA) decompose weight updates without increasing inference latency Explain the underlying theoretical principles and empirical tradeoffs.",
+    "domain": "Peft And Quantization"
+  },
+  {
+    "id": "bench_0162",
+    "category": "peft_and_quantization",
+    "question": "What is the mathematical advantage of 4-bit NormalFloat (NF4) quantization in QLoRA Explain the underlying theoretical principles and empirical tradeoffs.",
+    "domain": "Peft And Quantization"
+  },
+  {
+    "id": "bench_0163",
+    "category": "peft_and_quantization",
+    "question": "Explain how double quantization in QLoRA saves additional GPU memory across quantization constants. Explain the underlying theoretical principles and empirical tradeoffs.",
+    "domain": "Peft And Quantization"
+  },
+  {
+    "id": "bench_0164",
+    "category": "peft_and_quantization",
+    "question": "How does Activation-aware Weight Quantization (AWQ) protect salient outlier channels in LLMs Explain the underlying theoretical principles and empirical tradeoffs.",
+    "domain": "Peft And Quantization"
+  },
+  {
+    "id": "bench_0165",
+    "category": "peft_and_quantization",
+    "question": "Compare post-training quantization (PTQ) vs quantization-aware training (QAT) for Transformer weights. Explain the underlying theoretical principles and empirical tradeoffs.",
+    "domain": "Peft And Quantization"
+  },
+  {
+    "id": "bench_0166",
+    "category": "peft_and_quantization",
+    "question": "What causes catastrophic activation spikes in large scale LLMs and how does SmoothQuant address them Explain the underlying theoretical principles and empirical tradeoffs.",
+    "domain": "Peft And Quantization"
+  },
+  {
+    "id": "bench_0167",
+    "category": "peft_and_quantization",
+    "question": "Explain how LoRA ranks (r) and scaling alpha influence gradient stability during fine-tuning. Explain the underlying theoretical principles and empirical tradeoffs.",
+    "domain": "Peft And Quantization"
+  },
+  {
+    "id": "bench_0168",
+    "category": "peft_and_quantization",
+    "question": "How does FlashDecoding parallelize along the sequence length dimension during the decoding phase Explain the underlying theoretical principles and empirical tradeoffs.",
+    "domain": "Peft And Quantization"
+  },
+  {
+    "id": "bench_0169",
+    "category": "peft_and_quantization",
+    "question": "Discuss the quantization format of GGUF and its optimization for CPU and Ollama deployment. Explain the underlying theoretical principles and empirical tradeoffs.",
+    "domain": "Peft And Quantization"
+  },
+  {
+    "id": "bench_0170",
+    "category": "peft_and_quantization",
+    "question": "What are the memory bandwidth bottlenecks of INT4 matrix multiplications on tensor cores Explain the underlying theoretical principles and empirical tradeoffs.",
+    "domain": "Peft And Quantization"
+  },
+  {
+    "id": "bench_0171",
+    "category": "reasoning_and_agents",
+    "question": "How does Chain-of-Thought (CoT) prompting alter the token probability distribution during generation Explain the underlying theoretical principles and empirical tradeoffs.",
+    "domain": "Reasoning And Agents"
+  },
+  {
+    "id": "bench_0172",
+    "category": "reasoning_and_agents",
+    "question": "Explain the synergy between reasoning traces and external action execution in the ReAct paradigm. Explain the underlying theoretical principles and empirical tradeoffs.",
+    "domain": "Reasoning And Agents"
+  },
+  {
+    "id": "bench_0173",
+    "category": "reasoning_and_agents",
+    "question": "How does Toolformer autonomously decide when and how to invoke external API tools Explain the underlying theoretical principles and empirical tradeoffs.",
+    "domain": "Reasoning And Agents"
+  },
+  {
+    "id": "bench_0174",
+    "category": "reasoning_and_agents",
+    "question": "What is the principle of Self-Refine and iterative verbal reinforcement in reasoning tasks Explain the underlying theoretical principles and empirical tradeoffs.",
+    "domain": "Reasoning And Agents"
+  },
+  {
+    "id": "bench_0175",
+    "category": "reasoning_and_agents",
+    "question": "Discuss Tree-of-Thoughts (ToT) search algorithms (BFS/DFS) for combinatorial problem solving. Explain the underlying theoretical principles and empirical tradeoffs.",
+    "domain": "Reasoning And Agents"
+  },
+  {
+    "id": "bench_0176",
+    "category": "reasoning_and_agents",
+    "question": "How does Reflexion utilize episodic memory buffers to prevent repetitive reasoning errors Explain the underlying theoretical principles and empirical tradeoffs.",
+    "domain": "Reasoning And Agents"
+  },
+  {
+    "id": "bench_0177",
+    "category": "reasoning_and_agents",
+    "question": "What are the failure modes of autonomous agents when processing unstructured multi-tool schemas Explain the underlying theoretical principles and empirical tradeoffs.",
+    "domain": "Reasoning And Agents"
+  },
+  {
+    "id": "bench_0178",
+    "category": "reasoning_and_agents",
+    "question": "Explain the role of verifier models (outcome vs process supervision) in mathematical reasoning. Explain the underlying theoretical principles and empirical tradeoffs.",
+    "domain": "Reasoning And Agents"
+  },
+  {
+    "id": "bench_0179",
+    "category": "reasoning_and_agents",
+    "question": "How does prompt decomposition break complex technical synthesis into verified sub-queries Explain the underlying theoretical principles and empirical tradeoffs.",
+    "domain": "Reasoning And Agents"
+  },
+  {
+    "id": "bench_0180",
+    "category": "reasoning_and_agents",
+    "question": "Discuss the vulnerability of agent tool-calling pipelines to prompt injection and context poisoning. Explain the underlying theoretical principles and empirical tradeoffs.",
+    "domain": "Reasoning And Agents"
+  },
+  {
+    "id": "bench_0181",
+    "category": "hpc_and_distributed",
+    "question": "How does SLURM allocate Multi-Instance GPU (MIG) slices on NVIDIA DGX A100 systems Explain the underlying theoretical principles and empirical tradeoffs.",
+    "domain": "Hpc And Distributed"
+  },
+  {
+    "id": "bench_0182",
+    "category": "hpc_and_distributed",
+    "question": "Explain the difference between ZeRO-1, ZeRO-2, and ZeRO-3 memory partitioning in DeepSpeed. Explain the underlying theoretical principles and empirical tradeoffs.",
+    "domain": "Hpc And Distributed"
+  },
+  {
+    "id": "bench_0183",
+    "category": "hpc_and_distributed",
+    "question": "What are the communication volume differences between AllReduce and ReduceScatter operations Explain the underlying theoretical principles and empirical tradeoffs.",
+    "domain": "Hpc And Distributed"
+  },
+  {
+    "id": "bench_0184",
+    "category": "hpc_and_distributed",
+    "question": "How does pipeline parallelism handle pipeline bubbles with 1F1B (one forward, one backward) scheduling Explain the underlying theoretical principles and empirical tradeoffs.",
+    "domain": "Hpc And Distributed"
+  },
+  {
+    "id": "bench_0185",
+    "category": "hpc_and_distributed",
+    "question": "Discuss the impact of NVLink bandwidth versus PCIe Gen4 bandwidth on distributed tensor parallelism. Explain the underlying theoretical principles and empirical tradeoffs.",
+    "domain": "Hpc And Distributed"
+  },
+  {
+    "id": "bench_0186",
+    "category": "hpc_and_distributed",
+    "question": "How does Megatron-LM split row-parallel and column-parallel linear projections in multi-head attention Explain the underlying theoretical principles and empirical tradeoffs.",
+    "domain": "Hpc And Distributed"
+  },
+  {
+    "id": "bench_0187",
+    "category": "hpc_and_distributed",
+    "question": "What are the best practices for SLURM batch job submission using Enroot and Docker containers Explain the underlying theoretical principles and empirical tradeoffs.",
+    "domain": "Hpc And Distributed"
+  },
+  {
+    "id": "bench_0188",
+    "category": "hpc_and_distributed",
+    "question": "Explain the gradient accumulation mechanism for simulating large effective batch sizes on limited VRAM. Explain the underlying theoretical principles and empirical tradeoffs.",
+    "domain": "Hpc And Distributed"
+  },
+  {
+    "id": "bench_0189",
+    "category": "hpc_and_distributed",
+    "question": "How does mixed precision training (AMP with bfloat16) prevent underflow while halving memory footprint Explain the underlying theoretical principles and empirical tradeoffs.",
+    "domain": "Hpc And Distributed"
+  },
+  {
+    "id": "bench_0190",
+    "category": "hpc_and_distributed",
+    "question": "What causes CUDA out-of-memory (OOM) errors during the backward pass despite sufficient forward memory Explain the underlying theoretical principles and empirical tradeoffs.",
+    "domain": "Hpc And Distributed"
+  },
+  {
+    "id": "bench_0191",
+    "category": "scientific_synthesis",
+    "question": "How do self-improving post-training loops establish statistical confidence in model capability gains Explain the underlying theoretical principles and empirical tradeoffs.",
+    "domain": "Scientific Synthesis"
+  },
+  {
+    "id": "bench_0192",
+    "category": "scientific_synthesis",
+    "question": "Discuss non-parametric bootstrap resampling for computing 95% confidence intervals on win rates. Explain the underlying theoretical principles and empirical tradeoffs.",
+    "domain": "Scientific Synthesis"
+  },
+  {
+    "id": "bench_0193",
+    "category": "scientific_synthesis",
+    "question": "How can automated regression test suites gate model deployment in continuous integration pipelines Explain the underlying theoretical principles and empirical tradeoffs.",
+    "domain": "Scientific Synthesis"
+  },
+  {
+    "id": "bench_0194",
+    "category": "scientific_synthesis",
+    "question": "What statistical methods differentiate genuine policy improvements from stochastic generation variance Explain the underlying theoretical principles and empirical tradeoffs.",
+    "domain": "Scientific Synthesis"
+  },
+  {
+    "id": "bench_0195",
+    "category": "scientific_synthesis",
+    "question": "Explain the Bradley-Terry preference loss formulation and its relationship to cross-entropy. Contrast the state-of-the-art methodology with classical baseline approaches.",
+    "domain": "Scientific Synthesis"
+  },
+  {
+    "id": "bench_0196",
+    "category": "llm_architectures",
+    "question": "How does the self-attention mechanism in the Transformer eliminate recurrent dependencies Contrast the state-of-the-art methodology with classical baseline approaches.",
+    "domain": "Llm Architectures"
+  },
+  {
+    "id": "bench_0197",
+    "category": "llm_architectures",
+    "question": "Compare multi-head attention versus grouped-query attention (GQA) in inference memory consumption. Contrast the state-of-the-art methodology with classical baseline approaches.",
+    "domain": "Llm Architectures"
+  },
+  {
+    "id": "bench_0198",
+    "category": "llm_architectures",
+    "question": "What are the computational tradeoffs of FlashAttention tiling versus standard softmax materialization Contrast the state-of-the-art methodology with classical baseline approaches.",
+    "domain": "Llm Architectures"
+  },
+  {
+    "id": "bench_0199",
+    "category": "llm_architectures",
+    "question": "How does Rotary Position Embedding (RoPE) encode relative token distances in Qwen and LLaMA Contrast the state-of-the-art methodology with classical baseline approaches.",
+    "domain": "Llm Architectures"
+  },
+  {
+    "id": "bench_0200",
+    "category": "llm_architectures",
+    "question": "Explain the KV-cache memory bottleneck during long-context autoregressive token generation. Contrast the state-of-the-art methodology with classical baseline approaches.",
+    "domain": "Llm Architectures"
+  },
+  {
+    "id": "bench_0201",
+    "category": "llm_architectures",
+    "question": "How does sliding-window attention maintain bounded memory during extended sequence evaluation Contrast the state-of-the-art methodology with classical baseline approaches.",
+    "domain": "Llm Architectures"
+  },
+  {
+    "id": "bench_0202",
+    "category": "llm_architectures",
+    "question": "Discuss the stability properties of Pre-LayerNorm vs Post-LayerNorm in deep Transformer training. Contrast the state-of-the-art methodology with classical baseline approaches.",
+    "domain": "Llm Architectures"
+  },
+  {
+    "id": "bench_0203",
+    "category": "llm_architectures",
+    "question": "What is the mathematical formulation of cross-attention in encoder-decoder architectures Contrast the state-of-the-art methodology with classical baseline approaches.",
+    "domain": "Llm Architectures"
+  },
+  {
+    "id": "bench_0204",
+    "category": "llm_architectures",
+    "question": "How does mixture-of-experts (MoE) achieve sparse computation without sacrificing total model capacity Contrast the state-of-the-art methodology with classical baseline approaches.",
+    "domain": "Llm Architectures"
+  },
+  {
+    "id": "bench_0205",
+    "category": "llm_architectures",
+    "question": "Explain how tokenization granularity (BPE vs WordPiece) impacts out-of-vocabulary representation. Contrast the state-of-the-art methodology with classical baseline approaches.",
+    "domain": "Llm Architectures"
+  },
+  {
+    "id": "bench_0206",
+    "category": "alignment_and_rlhf",
+    "question": "What are the mathematical differences between PPO and Direct Preference Optimization (DPO) Contrast the state-of-the-art methodology with classical baseline approaches.",
+    "domain": "Alignment And Rlhf"
+  },
+  {
+    "id": "bench_0207",
+    "category": "alignment_and_rlhf",
+    "question": "How does the Bradley-Terry preference model formulate pairwise probabilities in reward modeling Contrast the state-of-the-art methodology with classical baseline approaches.",
+    "domain": "Alignment And Rlhf"
+  },
+  {
+    "id": "bench_0208",
+    "category": "alignment_and_rlhf",
+    "question": "Why is KL divergence regularization strictly required when fine-tuning policy models with PPO Contrast the state-of-the-art methodology with classical baseline approaches.",
+    "domain": "Alignment And Rlhf"
+  },
+  {
+    "id": "bench_0209",
+    "category": "alignment_and_rlhf",
+    "question": "How does Constitutional AI implement automated self-critique without human harmfulness labels Contrast the state-of-the-art methodology with classical baseline approaches.",
+    "domain": "Alignment And Rlhf"
+  },
+  {
+    "id": "bench_0210",
+    "category": "alignment_and_rlhf",
+    "question": "Discuss the failure mode of reward hacking and length bias in reinforcement learning from human feedback. Contrast the state-of-the-art methodology with classical baseline approaches.",
+    "domain": "Alignment And Rlhf"
+  },
+  {
+    "id": "bench_0211",
+    "category": "alignment_and_rlhf",
+    "question": "How does Kahneman-Tversky Optimization (KTO) align models using unpaired binary signals Contrast the state-of-the-art methodology with classical baseline approaches.",
+    "domain": "Alignment And Rlhf"
+  },
+  {
+    "id": "bench_0212",
+    "category": "alignment_and_rlhf",
+    "question": "Explain the role of Generalized Advantage Estimation (GAE) in reducing policy gradient variance. Contrast the state-of-the-art methodology with classical baseline approaches.",
+    "domain": "Alignment And Rlhf"
+  },
+  {
+    "id": "bench_0213",
+    "category": "alignment_and_rlhf",
+    "question": "What is the impact of reference model freeze vs periodic EMA updates in actor-critic alignment Contrast the state-of-the-art methodology with classical baseline approaches.",
+    "domain": "Alignment And Rlhf"
+  },
+  {
+    "id": "bench_0214",
+    "category": "alignment_and_rlhf",
+    "question": "How does rejection sampling fine-tuning (Best-of-N) compare to online RLHF policy optimization Contrast the state-of-the-art methodology with classical baseline approaches.",
+    "domain": "Alignment And Rlhf"
+  },
+  {
+    "id": "bench_0215",
+    "category": "alignment_and_rlhf",
+    "question": "Discuss calibration evaluation metrics (Brier score, ECE) for learned language model reward models. Contrast the state-of-the-art methodology with classical baseline approaches.",
+    "domain": "Alignment And Rlhf"
+  },
+  {
+    "id": "bench_0216",
+    "category": "rag_and_retrieval",
+    "question": "What are the key trade-offs between dense semantic retrieval (FAISS) and sparse lexical search (BM25) Contrast the state-of-the-art methodology with classical baseline approaches.",
+    "domain": "Rag And Retrieval"
+  },
+  {
+    "id": "bench_0217",
+    "category": "rag_and_retrieval",
+    "question": "How does inner product similarity on normalized vectors correspond to cosine distance in FAISS Contrast the state-of-the-art methodology with classical baseline approaches.",
+    "domain": "Rag And Retrieval"
+  },
+  {
+    "id": "bench_0218",
+    "category": "rag_and_retrieval",
+    "question": "Explain the mechanism of Hypothetical Document Embeddings (HyDE) in zero-shot retrieval. Contrast the state-of-the-art methodology with classical baseline approaches.",
+    "domain": "Rag And Retrieval"
+  },
+  {
+    "id": "bench_0219",
+    "category": "rag_and_retrieval",
+    "question": "How does contextual chunk overlap prevent semantic truncation across document boundaries Contrast the state-of-the-art methodology with classical baseline approaches.",
+    "domain": "Rag And Retrieval"
+  },
+  {
+    "id": "bench_0220",
+    "category": "rag_and_retrieval",
+    "question": "What are the standard failure modes when retrieving evidence for multi-hop reasoning questions Contrast the state-of-the-art methodology with classical baseline approaches.",
+    "domain": "Rag And Retrieval"
+  },
+  {
+    "id": "bench_0221",
+    "category": "rag_and_retrieval",
+    "question": "How can cross-encoder rerankers improve precision over dual-encoder bi-encoders in RAG Contrast the state-of-the-art methodology with classical baseline approaches.",
+    "domain": "Rag And Retrieval"
+  },
+  {
+    "id": "bench_0222",
+    "category": "rag_and_retrieval",
+    "question": "Discuss the groundedness verification protocols needed to prevent hallucinated citations in LLMs. Contrast the state-of-the-art methodology with classical baseline approaches.",
+    "domain": "Rag And Retrieval"
+  },
+  {
+    "id": "bench_0223",
+    "category": "rag_and_retrieval",
+    "question": "How does parent-document retrieval balance small chunk granularity with large context windows Contrast the state-of-the-art methodology with classical baseline approaches.",
+    "domain": "Rag And Retrieval"
+  },
+  {
+    "id": "bench_0224",
+    "category": "rag_and_retrieval",
+    "question": "Explain the difference between Inverted File (IVF) and Hierarchical Navigable Small World (HNSW) indexing. Contrast the state-of-the-art methodology with classical baseline approaches.",
+    "domain": "Rag And Retrieval"
+  },
+  {
+    "id": "bench_0225",
+    "category": "rag_and_retrieval",
+    "question": "What metrics are best suited for evaluating evidence extraction recall versus generation faithfulness Contrast the state-of-the-art methodology with classical baseline approaches.",
+    "domain": "Rag And Retrieval"
+  },
+  {
+    "id": "bench_0226",
+    "category": "peft_and_quantization",
+    "question": "How does Low-Rank Adaptation (LoRA) decompose weight updates without increasing inference latency Contrast the state-of-the-art methodology with classical baseline approaches.",
+    "domain": "Peft And Quantization"
+  },
+  {
+    "id": "bench_0227",
+    "category": "peft_and_quantization",
+    "question": "What is the mathematical advantage of 4-bit NormalFloat (NF4) quantization in QLoRA Contrast the state-of-the-art methodology with classical baseline approaches.",
+    "domain": "Peft And Quantization"
+  },
+  {
+    "id": "bench_0228",
+    "category": "peft_and_quantization",
+    "question": "Explain how double quantization in QLoRA saves additional GPU memory across quantization constants. Contrast the state-of-the-art methodology with classical baseline approaches.",
+    "domain": "Peft And Quantization"
+  },
+  {
+    "id": "bench_0229",
+    "category": "peft_and_quantization",
+    "question": "How does Activation-aware Weight Quantization (AWQ) protect salient outlier channels in LLMs Contrast the state-of-the-art methodology with classical baseline approaches.",
+    "domain": "Peft And Quantization"
+  },
+  {
+    "id": "bench_0230",
+    "category": "peft_and_quantization",
+    "question": "Compare post-training quantization (PTQ) vs quantization-aware training (QAT) for Transformer weights. Contrast the state-of-the-art methodology with classical baseline approaches.",
+    "domain": "Peft And Quantization"
+  },
+  {
+    "id": "bench_0231",
+    "category": "peft_and_quantization",
+    "question": "What causes catastrophic activation spikes in large scale LLMs and how does SmoothQuant address them Contrast the state-of-the-art methodology with classical baseline approaches.",
+    "domain": "Peft And Quantization"
+  },
+  {
+    "id": "bench_0232",
+    "category": "peft_and_quantization",
+    "question": "Explain how LoRA ranks (r) and scaling alpha influence gradient stability during fine-tuning. Contrast the state-of-the-art methodology with classical baseline approaches.",
+    "domain": "Peft And Quantization"
+  },
+  {
+    "id": "bench_0233",
+    "category": "peft_and_quantization",
+    "question": "How does FlashDecoding parallelize along the sequence length dimension during the decoding phase Contrast the state-of-the-art methodology with classical baseline approaches.",
+    "domain": "Peft And Quantization"
+  },
+  {
+    "id": "bench_0234",
+    "category": "peft_and_quantization",
+    "question": "Discuss the quantization format of GGUF and its optimization for CPU and Ollama deployment. Contrast the state-of-the-art methodology with classical baseline approaches.",
+    "domain": "Peft And Quantization"
+  },
+  {
+    "id": "bench_0235",
+    "category": "peft_and_quantization",
+    "question": "What are the memory bandwidth bottlenecks of INT4 matrix multiplications on tensor cores Contrast the state-of-the-art methodology with classical baseline approaches.",
+    "domain": "Peft And Quantization"
+  },
+  {
+    "id": "bench_0236",
+    "category": "reasoning_and_agents",
+    "question": "How does Chain-of-Thought (CoT) prompting alter the token probability distribution during generation Contrast the state-of-the-art methodology with classical baseline approaches.",
+    "domain": "Reasoning And Agents"
+  },
+  {
+    "id": "bench_0237",
+    "category": "reasoning_and_agents",
+    "question": "Explain the synergy between reasoning traces and external action execution in the ReAct paradigm. Contrast the state-of-the-art methodology with classical baseline approaches.",
+    "domain": "Reasoning And Agents"
+  },
+  {
+    "id": "bench_0238",
+    "category": "reasoning_and_agents",
+    "question": "How does Toolformer autonomously decide when and how to invoke external API tools Contrast the state-of-the-art methodology with classical baseline approaches.",
+    "domain": "Reasoning And Agents"
+  },
+  {
+    "id": "bench_0239",
+    "category": "reasoning_and_agents",
+    "question": "What is the principle of Self-Refine and iterative verbal reinforcement in reasoning tasks Contrast the state-of-the-art methodology with classical baseline approaches.",
+    "domain": "Reasoning And Agents"
+  },
+  {
+    "id": "bench_0240",
+    "category": "reasoning_and_agents",
+    "question": "Discuss Tree-of-Thoughts (ToT) search algorithms (BFS/DFS) for combinatorial problem solving. Contrast the state-of-the-art methodology with classical baseline approaches.",
+    "domain": "Reasoning And Agents"
+  },
+  {
+    "id": "bench_0241",
+    "category": "reasoning_and_agents",
+    "question": "How does Reflexion utilize episodic memory buffers to prevent repetitive reasoning errors Contrast the state-of-the-art methodology with classical baseline approaches.",
+    "domain": "Reasoning And Agents"
+  },
+  {
+    "id": "bench_0242",
+    "category": "reasoning_and_agents",
+    "question": "What are the failure modes of autonomous agents when processing unstructured multi-tool schemas Contrast the state-of-the-art methodology with classical baseline approaches.",
+    "domain": "Reasoning And Agents"
+  },
+  {
+    "id": "bench_0243",
+    "category": "reasoning_and_agents",
+    "question": "Explain the role of verifier models (outcome vs process supervision) in mathematical reasoning. Contrast the state-of-the-art methodology with classical baseline approaches.",
+    "domain": "Reasoning And Agents"
+  },
+  {
+    "id": "bench_0244",
+    "category": "reasoning_and_agents",
+    "question": "How does prompt decomposition break complex technical synthesis into verified sub-queries Contrast the state-of-the-art methodology with classical baseline approaches.",
+    "domain": "Reasoning And Agents"
+  },
+  {
+    "id": "bench_0245",
+    "category": "reasoning_and_agents",
+    "question": "Discuss the vulnerability of agent tool-calling pipelines to prompt injection and context poisoning. Contrast the state-of-the-art methodology with classical baseline approaches.",
+    "domain": "Reasoning And Agents"
+  },
+  {
+    "id": "bench_0246",
+    "category": "hpc_and_distributed",
+    "question": "How does SLURM allocate Multi-Instance GPU (MIG) slices on NVIDIA DGX A100 systems Contrast the state-of-the-art methodology with classical baseline approaches.",
+    "domain": "Hpc And Distributed"
+  },
+  {
+    "id": "bench_0247",
+    "category": "hpc_and_distributed",
+    "question": "Explain the difference between ZeRO-1, ZeRO-2, and ZeRO-3 memory partitioning in DeepSpeed. Contrast the state-of-the-art methodology with classical baseline approaches.",
+    "domain": "Hpc And Distributed"
+  },
+  {
+    "id": "bench_0248",
+    "category": "hpc_and_distributed",
+    "question": "What are the communication volume differences between AllReduce and ReduceScatter operations Contrast the state-of-the-art methodology with classical baseline approaches.",
+    "domain": "Hpc And Distributed"
+  },
+  {
+    "id": "bench_0249",
+    "category": "hpc_and_distributed",
+    "question": "How does pipeline parallelism handle pipeline bubbles with 1F1B (one forward, one backward) scheduling Contrast the state-of-the-art methodology with classical baseline approaches.",
+    "domain": "Hpc And Distributed"
+  },
+  {
+    "id": "bench_0250",
+    "category": "hpc_and_distributed",
+    "question": "Discuss the impact of NVLink bandwidth versus PCIe Gen4 bandwidth on distributed tensor parallelism. Contrast the state-of-the-art methodology with classical baseline approaches.",
+    "domain": "Hpc And Distributed"
+  },
+  {
+    "id": "bench_0251",
+    "category": "hpc_and_distributed",
+    "question": "How does Megatron-LM split row-parallel and column-parallel linear projections in multi-head attention Contrast the state-of-the-art methodology with classical baseline approaches.",
+    "domain": "Hpc And Distributed"
+  },
+  {
+    "id": "bench_0252",
+    "category": "hpc_and_distributed",
+    "question": "What are the best practices for SLURM batch job submission using Enroot and Docker containers Contrast the state-of-the-art methodology with classical baseline approaches.",
+    "domain": "Hpc And Distributed"
+  },
+  {
+    "id": "bench_0253",
+    "category": "hpc_and_distributed",
+    "question": "Explain the gradient accumulation mechanism for simulating large effective batch sizes on limited VRAM. Contrast the state-of-the-art methodology with classical baseline approaches.",
+    "domain": "Hpc And Distributed"
+  },
+  {
+    "id": "bench_0254",
+    "category": "hpc_and_distributed",
+    "question": "How does mixed precision training (AMP with bfloat16) prevent underflow while halving memory footprint Contrast the state-of-the-art methodology with classical baseline approaches.",
+    "domain": "Hpc And Distributed"
+  },
+  {
+    "id": "bench_0255",
+    "category": "hpc_and_distributed",
+    "question": "What causes CUDA out-of-memory (OOM) errors during the backward pass despite sufficient forward memory Contrast the state-of-the-art methodology with classical baseline approaches.",
+    "domain": "Hpc And Distributed"
+  },
+  {
+    "id": "bench_0256",
+    "category": "scientific_synthesis",
+    "question": "How do self-improving post-training loops establish statistical confidence in model capability gains Contrast the state-of-the-art methodology with classical baseline approaches.",
+    "domain": "Scientific Synthesis"
+  },
+  {
+    "id": "bench_0257",
+    "category": "scientific_synthesis",
+    "question": "Discuss non-parametric bootstrap resampling for computing 95% confidence intervals on win rates. Contrast the state-of-the-art methodology with classical baseline approaches.",
+    "domain": "Scientific Synthesis"
+  },
+  {
+    "id": "bench_0258",
+    "category": "scientific_synthesis",
+    "question": "How can automated regression test suites gate model deployment in continuous integration pipelines Contrast the state-of-the-art methodology with classical baseline approaches.",
+    "domain": "Scientific Synthesis"
+  },
+  {
+    "id": "bench_0259",
+    "category": "scientific_synthesis",
+    "question": "What statistical methods differentiate genuine policy improvements from stochastic generation variance Contrast the state-of-the-art methodology with classical baseline approaches.",
+    "domain": "Scientific Synthesis"
+  },
+  {
+    "id": "bench_0260",
+    "category": "scientific_synthesis",
+    "question": "Explain the Bradley-Terry preference loss formulation and its relationship to cross-entropy. Discuss practical implementation considerations and computational bottlenecks.",
+    "domain": "Scientific Synthesis"
+  },
+  {
+    "id": "bench_0261",
+    "category": "llm_architectures",
+    "question": "How does the self-attention mechanism in the Transformer eliminate recurrent dependencies Discuss practical implementation considerations and computational bottlenecks.",
+    "domain": "Llm Architectures"
+  },
+  {
+    "id": "bench_0262",
+    "category": "llm_architectures",
+    "question": "Compare multi-head attention versus grouped-query attention (GQA) in inference memory consumption. Discuss practical implementation considerations and computational bottlenecks.",
+    "domain": "Llm Architectures"
+  },
+  {
+    "id": "bench_0263",
+    "category": "llm_architectures",
+    "question": "What are the computational tradeoffs of FlashAttention tiling versus standard softmax materialization Discuss practical implementation considerations and computational bottlenecks.",
+    "domain": "Llm Architectures"
+  },
+  {
+    "id": "bench_0264",
+    "category": "llm_architectures",
+    "question": "How does Rotary Position Embedding (RoPE) encode relative token distances in Qwen and LLaMA Discuss practical implementation considerations and computational bottlenecks.",
+    "domain": "Llm Architectures"
+  },
+  {
+    "id": "bench_0265",
+    "category": "llm_architectures",
+    "question": "Explain the KV-cache memory bottleneck during long-context autoregressive token generation. Discuss practical implementation considerations and computational bottlenecks.",
+    "domain": "Llm Architectures"
+  },
+  {
+    "id": "bench_0266",
+    "category": "llm_architectures",
+    "question": "How does sliding-window attention maintain bounded memory during extended sequence evaluation Discuss practical implementation considerations and computational bottlenecks.",
+    "domain": "Llm Architectures"
+  },
+  {
+    "id": "bench_0267",
+    "category": "llm_architectures",
+    "question": "Discuss the stability properties of Pre-LayerNorm vs Post-LayerNorm in deep Transformer training. Discuss practical implementation considerations and computational bottlenecks.",
+    "domain": "Llm Architectures"
+  },
+  {
+    "id": "bench_0268",
+    "category": "llm_architectures",
+    "question": "What is the mathematical formulation of cross-attention in encoder-decoder architectures Discuss practical implementation considerations and computational bottlenecks.",
+    "domain": "Llm Architectures"
+  },
+  {
+    "id": "bench_0269",
+    "category": "llm_architectures",
+    "question": "How does mixture-of-experts (MoE) achieve sparse computation without sacrificing total model capacity Discuss practical implementation considerations and computational bottlenecks.",
+    "domain": "Llm Architectures"
+  },
+  {
+    "id": "bench_0270",
+    "category": "llm_architectures",
+    "question": "Explain how tokenization granularity (BPE vs WordPiece) impacts out-of-vocabulary representation. Discuss practical implementation considerations and computational bottlenecks.",
+    "domain": "Llm Architectures"
+  },
+  {
+    "id": "bench_0271",
+    "category": "alignment_and_rlhf",
+    "question": "What are the mathematical differences between PPO and Direct Preference Optimization (DPO) Discuss practical implementation considerations and computational bottlenecks.",
+    "domain": "Alignment And Rlhf"
+  },
+  {
+    "id": "bench_0272",
+    "category": "alignment_and_rlhf",
+    "question": "How does the Bradley-Terry preference model formulate pairwise probabilities in reward modeling Discuss practical implementation considerations and computational bottlenecks.",
+    "domain": "Alignment And Rlhf"
+  },
+  {
+    "id": "bench_0273",
+    "category": "alignment_and_rlhf",
+    "question": "Why is KL divergence regularization strictly required when fine-tuning policy models with PPO Discuss practical implementation considerations and computational bottlenecks.",
+    "domain": "Alignment And Rlhf"
+  },
+  {
+    "id": "bench_0274",
+    "category": "alignment_and_rlhf",
+    "question": "How does Constitutional AI implement automated self-critique without human harmfulness labels Discuss practical implementation considerations and computational bottlenecks.",
+    "domain": "Alignment And Rlhf"
+  },
+  {
+    "id": "bench_0275",
+    "category": "alignment_and_rlhf",
+    "question": "Discuss the failure mode of reward hacking and length bias in reinforcement learning from human feedback. Discuss practical implementation considerations and computational bottlenecks.",
+    "domain": "Alignment And Rlhf"
+  },
+  {
+    "id": "bench_0276",
+    "category": "alignment_and_rlhf",
+    "question": "How does Kahneman-Tversky Optimization (KTO) align models using unpaired binary signals Discuss practical implementation considerations and computational bottlenecks.",
+    "domain": "Alignment And Rlhf"
+  },
+  {
+    "id": "bench_0277",
+    "category": "alignment_and_rlhf",
+    "question": "Explain the role of Generalized Advantage Estimation (GAE) in reducing policy gradient variance. Discuss practical implementation considerations and computational bottlenecks.",
+    "domain": "Alignment And Rlhf"
+  },
+  {
+    "id": "bench_0278",
+    "category": "alignment_and_rlhf",
+    "question": "What is the impact of reference model freeze vs periodic EMA updates in actor-critic alignment Discuss practical implementation considerations and computational bottlenecks.",
+    "domain": "Alignment And Rlhf"
+  },
+  {
+    "id": "bench_0279",
+    "category": "alignment_and_rlhf",
+    "question": "How does rejection sampling fine-tuning (Best-of-N) compare to online RLHF policy optimization Discuss practical implementation considerations and computational bottlenecks.",
+    "domain": "Alignment And Rlhf"
+  },
+  {
+    "id": "bench_0280",
+    "category": "alignment_and_rlhf",
+    "question": "Discuss calibration evaluation metrics (Brier score, ECE) for learned language model reward models. Discuss practical implementation considerations and computational bottlenecks.",
+    "domain": "Alignment And Rlhf"
+  },
+  {
+    "id": "bench_0281",
+    "category": "rag_and_retrieval",
+    "question": "What are the key trade-offs between dense semantic retrieval (FAISS) and sparse lexical search (BM25) Discuss practical implementation considerations and computational bottlenecks.",
+    "domain": "Rag And Retrieval"
+  },
+  {
+    "id": "bench_0282",
+    "category": "rag_and_retrieval",
+    "question": "How does inner product similarity on normalized vectors correspond to cosine distance in FAISS Discuss practical implementation considerations and computational bottlenecks.",
+    "domain": "Rag And Retrieval"
+  },
+  {
+    "id": "bench_0283",
+    "category": "rag_and_retrieval",
+    "question": "Explain the mechanism of Hypothetical Document Embeddings (HyDE) in zero-shot retrieval. Discuss practical implementation considerations and computational bottlenecks.",
+    "domain": "Rag And Retrieval"
+  },
+  {
+    "id": "bench_0284",
+    "category": "rag_and_retrieval",
+    "question": "How does contextual chunk overlap prevent semantic truncation across document boundaries Discuss practical implementation considerations and computational bottlenecks.",
+    "domain": "Rag And Retrieval"
+  },
+  {
+    "id": "bench_0285",
+    "category": "rag_and_retrieval",
+    "question": "What are the standard failure modes when retrieving evidence for multi-hop reasoning questions Discuss practical implementation considerations and computational bottlenecks.",
+    "domain": "Rag And Retrieval"
+  },
+  {
+    "id": "bench_0286",
+    "category": "rag_and_retrieval",
+    "question": "How can cross-encoder rerankers improve precision over dual-encoder bi-encoders in RAG Discuss practical implementation considerations and computational bottlenecks.",
+    "domain": "Rag And Retrieval"
+  },
+  {
+    "id": "bench_0287",
+    "category": "rag_and_retrieval",
+    "question": "Discuss the groundedness verification protocols needed to prevent hallucinated citations in LLMs. Discuss practical implementation considerations and computational bottlenecks.",
+    "domain": "Rag And Retrieval"
+  },
+  {
+    "id": "bench_0288",
+    "category": "rag_and_retrieval",
+    "question": "How does parent-document retrieval balance small chunk granularity with large context windows Discuss practical implementation considerations and computational bottlenecks.",
+    "domain": "Rag And Retrieval"
+  },
+  {
+    "id": "bench_0289",
+    "category": "rag_and_retrieval",
+    "question": "Explain the difference between Inverted File (IVF) and Hierarchical Navigable Small World (HNSW) indexing. Discuss practical implementation considerations and computational bottlenecks.",
+    "domain": "Rag And Retrieval"
+  },
+  {
+    "id": "bench_0290",
+    "category": "rag_and_retrieval",
+    "question": "What metrics are best suited for evaluating evidence extraction recall versus generation faithfulness Discuss practical implementation considerations and computational bottlenecks.",
+    "domain": "Rag And Retrieval"
+  },
+  {
+    "id": "bench_0291",
+    "category": "peft_and_quantization",
+    "question": "How does Low-Rank Adaptation (LoRA) decompose weight updates without increasing inference latency Discuss practical implementation considerations and computational bottlenecks.",
+    "domain": "Peft And Quantization"
+  },
+  {
+    "id": "bench_0292",
+    "category": "peft_and_quantization",
+    "question": "What is the mathematical advantage of 4-bit NormalFloat (NF4) quantization in QLoRA Discuss practical implementation considerations and computational bottlenecks.",
+    "domain": "Peft And Quantization"
+  },
+  {
+    "id": "bench_0293",
+    "category": "peft_and_quantization",
+    "question": "Explain how double quantization in QLoRA saves additional GPU memory across quantization constants. Discuss practical implementation considerations and computational bottlenecks.",
+    "domain": "Peft And Quantization"
+  },
+  {
+    "id": "bench_0294",
+    "category": "peft_and_quantization",
+    "question": "How does Activation-aware Weight Quantization (AWQ) protect salient outlier channels in LLMs Discuss practical implementation considerations and computational bottlenecks.",
+    "domain": "Peft And Quantization"
+  },
+  {
+    "id": "bench_0295",
+    "category": "peft_and_quantization",
+    "question": "Compare post-training quantization (PTQ) vs quantization-aware training (QAT) for Transformer weights. Discuss practical implementation considerations and computational bottlenecks.",
+    "domain": "Peft And Quantization"
+  },
+  {
+    "id": "bench_0296",
+    "category": "peft_and_quantization",
+    "question": "What causes catastrophic activation spikes in large scale LLMs and how does SmoothQuant address them Discuss practical implementation considerations and computational bottlenecks.",
+    "domain": "Peft And Quantization"
+  },
+  {
+    "id": "bench_0297",
+    "category": "peft_and_quantization",
+    "question": "Explain how LoRA ranks (r) and scaling alpha influence gradient stability during fine-tuning. Discuss practical implementation considerations and computational bottlenecks.",
+    "domain": "Peft And Quantization"
+  },
+  {
+    "id": "bench_0298",
+    "category": "peft_and_quantization",
+    "question": "How does FlashDecoding parallelize along the sequence length dimension during the decoding phase Discuss practical implementation considerations and computational bottlenecks.",
+    "domain": "Peft And Quantization"
+  },
+  {
+    "id": "bench_0299",
+    "category": "peft_and_quantization",
+    "question": "Discuss the quantization format of GGUF and its optimization for CPU and Ollama deployment. Discuss practical implementation considerations and computational bottlenecks.",
+    "domain": "Peft And Quantization"
+  },
+  {
+    "id": "bench_0300",
+    "category": "peft_and_quantization",
+    "question": "What are the memory bandwidth bottlenecks of INT4 matrix multiplications on tensor cores Discuss practical implementation considerations and computational bottlenecks.",
+    "domain": "Peft And Quantization"
+  },
+  {
+    "id": "bench_0301",
+    "category": "reasoning_and_agents",
+    "question": "How does Chain-of-Thought (CoT) prompting alter the token probability distribution during generation Discuss practical implementation considerations and computational bottlenecks.",
+    "domain": "Reasoning And Agents"
+  },
+  {
+    "id": "bench_0302",
+    "category": "reasoning_and_agents",
+    "question": "Explain the synergy between reasoning traces and external action execution in the ReAct paradigm. Discuss practical implementation considerations and computational bottlenecks.",
+    "domain": "Reasoning And Agents"
+  },
+  {
+    "id": "bench_0303",
+    "category": "reasoning_and_agents",
+    "question": "How does Toolformer autonomously decide when and how to invoke external API tools Discuss practical implementation considerations and computational bottlenecks.",
+    "domain": "Reasoning And Agents"
+  },
+  {
+    "id": "bench_0304",
+    "category": "reasoning_and_agents",
+    "question": "What is the principle of Self-Refine and iterative verbal reinforcement in reasoning tasks Discuss practical implementation considerations and computational bottlenecks.",
+    "domain": "Reasoning And Agents"
+  },
+  {
+    "id": "bench_0305",
+    "category": "reasoning_and_agents",
+    "question": "Discuss Tree-of-Thoughts (ToT) search algorithms (BFS/DFS) for combinatorial problem solving. Discuss practical implementation considerations and computational bottlenecks.",
+    "domain": "Reasoning And Agents"
+  },
+  {
+    "id": "bench_0306",
+    "category": "reasoning_and_agents",
+    "question": "How does Reflexion utilize episodic memory buffers to prevent repetitive reasoning errors Discuss practical implementation considerations and computational bottlenecks.",
+    "domain": "Reasoning And Agents"
+  },
+  {
+    "id": "bench_0307",
+    "category": "reasoning_and_agents",
+    "question": "What are the failure modes of autonomous agents when processing unstructured multi-tool schemas Discuss practical implementation considerations and computational bottlenecks.",
+    "domain": "Reasoning And Agents"
+  },
+  {
+    "id": "bench_0308",
+    "category": "reasoning_and_agents",
+    "question": "Explain the role of verifier models (outcome vs process supervision) in mathematical reasoning. Discuss practical implementation considerations and computational bottlenecks.",
+    "domain": "Reasoning And Agents"
+  },
+  {
+    "id": "bench_0309",
+    "category": "reasoning_and_agents",
+    "question": "How does prompt decomposition break complex technical synthesis into verified sub-queries Discuss practical implementation considerations and computational bottlenecks.",
+    "domain": "Reasoning And Agents"
+  },
+  {
+    "id": "bench_0310",
+    "category": "reasoning_and_agents",
+    "question": "Discuss the vulnerability of agent tool-calling pipelines to prompt injection and context poisoning. Discuss practical implementation considerations and computational bottlenecks.",
+    "domain": "Reasoning And Agents"
+  },
+  {
+    "id": "bench_0311",
+    "category": "hpc_and_distributed",
+    "question": "How does SLURM allocate Multi-Instance GPU (MIG) slices on NVIDIA DGX A100 systems Discuss practical implementation considerations and computational bottlenecks.",
+    "domain": "Hpc And Distributed"
+  },
+  {
+    "id": "bench_0312",
+    "category": "hpc_and_distributed",
+    "question": "Explain the difference between ZeRO-1, ZeRO-2, and ZeRO-3 memory partitioning in DeepSpeed. Discuss practical implementation considerations and computational bottlenecks.",
+    "domain": "Hpc And Distributed"
+  },
+  {
+    "id": "bench_0313",
+    "category": "hpc_and_distributed",
+    "question": "What are the communication volume differences between AllReduce and ReduceScatter operations Discuss practical implementation considerations and computational bottlenecks.",
+    "domain": "Hpc And Distributed"
+  },
+  {
+    "id": "bench_0314",
+    "category": "hpc_and_distributed",
+    "question": "How does pipeline parallelism handle pipeline bubbles with 1F1B (one forward, one backward) scheduling Discuss practical implementation considerations and computational bottlenecks.",
+    "domain": "Hpc And Distributed"
+  },
+  {
+    "id": "bench_0315",
+    "category": "hpc_and_distributed",
+    "question": "Discuss the impact of NVLink bandwidth versus PCIe Gen4 bandwidth on distributed tensor parallelism. Discuss practical implementation considerations and computational bottlenecks.",
+    "domain": "Hpc And Distributed"
+  },
+  {
+    "id": "bench_0316",
+    "category": "hpc_and_distributed",
+    "question": "How does Megatron-LM split row-parallel and column-parallel linear projections in multi-head attention Discuss practical implementation considerations and computational bottlenecks.",
+    "domain": "Hpc And Distributed"
+  },
+  {
+    "id": "bench_0317",
+    "category": "hpc_and_distributed",
+    "question": "What are the best practices for SLURM batch job submission using Enroot and Docker containers Discuss practical implementation considerations and computational bottlenecks.",
+    "domain": "Hpc And Distributed"
+  },
+  {
+    "id": "bench_0318",
+    "category": "hpc_and_distributed",
+    "question": "Explain the gradient accumulation mechanism for simulating large effective batch sizes on limited VRAM. Discuss practical implementation considerations and computational bottlenecks.",
+    "domain": "Hpc And Distributed"
+  },
+  {
+    "id": "bench_0319",
+    "category": "hpc_and_distributed",
+    "question": "How does mixed precision training (AMP with bfloat16) prevent underflow while halving memory footprint Discuss practical implementation considerations and computational bottlenecks.",
+    "domain": "Hpc And Distributed"
+  },
+  {
+    "id": "bench_0320",
+    "category": "hpc_and_distributed",
+    "question": "What causes CUDA out-of-memory (OOM) errors during the backward pass despite sufficient forward memory Discuss practical implementation considerations and computational bottlenecks.",
+    "domain": "Hpc And Distributed"
+  },
+  {
+    "id": "bench_0321",
+    "category": "scientific_synthesis",
+    "question": "How do self-improving post-training loops establish statistical confidence in model capability gains Discuss practical implementation considerations and computational bottlenecks.",
+    "domain": "Scientific Synthesis"
+  },
+  {
+    "id": "bench_0322",
+    "category": "scientific_synthesis",
+    "question": "Discuss non-parametric bootstrap resampling for computing 95% confidence intervals on win rates. Discuss practical implementation considerations and computational bottlenecks.",
+    "domain": "Scientific Synthesis"
+  },
+  {
+    "id": "bench_0323",
+    "category": "scientific_synthesis",
+    "question": "How can automated regression test suites gate model deployment in continuous integration pipelines Discuss practical implementation considerations and computational bottlenecks.",
+    "domain": "Scientific Synthesis"
+  },
+  {
+    "id": "bench_0324",
+    "category": "scientific_synthesis",
+    "question": "What statistical methods differentiate genuine policy improvements from stochastic generation variance Discuss practical implementation considerations and computational bottlenecks.",
+    "domain": "Scientific Synthesis"
+  },
+  {
+    "id": "bench_0325",
+    "category": "scientific_synthesis",
+    "question": "Explain the Bradley-Terry preference loss formulation and its relationship to cross-entropy.?",
+    "domain": "Scientific Synthesis"
+  },
+  {
+    "id": "bench_0326",
+    "category": "llm_architectures",
+    "question": "How does the self-attention mechanism in the Transformer eliminate recurrent dependencies?",
+    "domain": "Llm Architectures"
+  },
+  {
+    "id": "bench_0327",
+    "category": "llm_architectures",
+    "question": "Compare multi-head attention versus grouped-query attention (GQA) in inference memory consumption.?",
+    "domain": "Llm Architectures"
+  },
+  {
+    "id": "bench_0328",
+    "category": "llm_architectures",
+    "question": "What are the computational tradeoffs of FlashAttention tiling versus standard softmax materialization?",
+    "domain": "Llm Architectures"
+  },
+  {
+    "id": "bench_0329",
+    "category": "llm_architectures",
+    "question": "How does Rotary Position Embedding (RoPE) encode relative token distances in Qwen and LLaMA?",
+    "domain": "Llm Architectures"
+  },
+  {
+    "id": "bench_0330",
+    "category": "llm_architectures",
+    "question": "Explain the KV-cache memory bottleneck during long-context autoregressive token generation.?",
+    "domain": "Llm Architectures"
+  },
+  {
+    "id": "bench_0331",
+    "category": "llm_architectures",
+    "question": "How does sliding-window attention maintain bounded memory during extended sequence evaluation?",
+    "domain": "Llm Architectures"
+  },
+  {
+    "id": "bench_0332",
+    "category": "llm_architectures",
+    "question": "Discuss the stability properties of Pre-LayerNorm vs Post-LayerNorm in deep Transformer training.?",
+    "domain": "Llm Architectures"
+  },
+  {
+    "id": "bench_0333",
+    "category": "llm_architectures",
+    "question": "What is the mathematical formulation of cross-attention in encoder-decoder architectures?",
+    "domain": "Llm Architectures"
+  },
+  {
+    "id": "bench_0334",
+    "category": "llm_architectures",
+    "question": "How does mixture-of-experts (MoE) achieve sparse computation without sacrificing total model capacity?",
+    "domain": "Llm Architectures"
+  },
+  {
+    "id": "bench_0335",
+    "category": "llm_architectures",
+    "question": "Explain how tokenization granularity (BPE vs WordPiece) impacts out-of-vocabulary representation.?",
+    "domain": "Llm Architectures"
+  },
+  {
+    "id": "bench_0336",
+    "category": "alignment_and_rlhf",
+    "question": "What are the mathematical differences between PPO and Direct Preference Optimization (DPO)?",
+    "domain": "Alignment And Rlhf"
+  },
+  {
+    "id": "bench_0337",
+    "category": "alignment_and_rlhf",
+    "question": "How does the Bradley-Terry preference model formulate pairwise probabilities in reward modeling?",
+    "domain": "Alignment And Rlhf"
+  },
+  {
+    "id": "bench_0338",
+    "category": "alignment_and_rlhf",
+    "question": "Why is KL divergence regularization strictly required when fine-tuning policy models with PPO?",
+    "domain": "Alignment And Rlhf"
+  },
+  {
+    "id": "bench_0339",
+    "category": "alignment_and_rlhf",
+    "question": "How does Constitutional AI implement automated self-critique without human harmfulness labels?",
+    "domain": "Alignment And Rlhf"
+  },
+  {
+    "id": "bench_0340",
+    "category": "alignment_and_rlhf",
+    "question": "Discuss the failure mode of reward hacking and length bias in reinforcement learning from human feedback.?",
+    "domain": "Alignment And Rlhf"
+  },
+  {
+    "id": "bench_0341",
+    "category": "alignment_and_rlhf",
+    "question": "How does Kahneman-Tversky Optimization (KTO) align models using unpaired binary signals?",
+    "domain": "Alignment And Rlhf"
+  },
+  {
+    "id": "bench_0342",
+    "category": "alignment_and_rlhf",
+    "question": "Explain the role of Generalized Advantage Estimation (GAE) in reducing policy gradient variance.?",
+    "domain": "Alignment And Rlhf"
+  },
+  {
+    "id": "bench_0343",
+    "category": "alignment_and_rlhf",
+    "question": "What is the impact of reference model freeze vs periodic EMA updates in actor-critic alignment?",
+    "domain": "Alignment And Rlhf"
+  },
+  {
+    "id": "bench_0344",
+    "category": "alignment_and_rlhf",
+    "question": "How does rejection sampling fine-tuning (Best-of-N) compare to online RLHF policy optimization?",
+    "domain": "Alignment And Rlhf"
+  },
+  {
+    "id": "bench_0345",
+    "category": "alignment_and_rlhf",
+    "question": "Discuss calibration evaluation metrics (Brier score, ECE) for learned language model reward models.?",
+    "domain": "Alignment And Rlhf"
+  },
+  {
+    "id": "bench_0346",
+    "category": "rag_and_retrieval",
+    "question": "What are the key trade-offs between dense semantic retrieval (FAISS) and sparse lexical search (BM25)?",
+    "domain": "Rag And Retrieval"
+  },
+  {
+    "id": "bench_0347",
+    "category": "rag_and_retrieval",
+    "question": "How does inner product similarity on normalized vectors correspond to cosine distance in FAISS?",
+    "domain": "Rag And Retrieval"
+  },
+  {
+    "id": "bench_0348",
+    "category": "rag_and_retrieval",
+    "question": "Explain the mechanism of Hypothetical Document Embeddings (HyDE) in zero-shot retrieval.?",
+    "domain": "Rag And Retrieval"
+  },
+  {
+    "id": "bench_0349",
+    "category": "rag_and_retrieval",
+    "question": "How does contextual chunk overlap prevent semantic truncation across document boundaries?",
+    "domain": "Rag And Retrieval"
+  },
+  {
+    "id": "bench_0350",
+    "category": "rag_and_retrieval",
+    "question": "What are the standard failure modes when retrieving evidence for multi-hop reasoning questions?",
+    "domain": "Rag And Retrieval"
+  }
+]

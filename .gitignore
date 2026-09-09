@@ -1,0 +1,122 @@
+# ==============================================================================
+# Git Ignore for Self-Improving Research Assistant with RLHF
+# ==============================================================================
+
+# Virtual Environments
+venv/
+.venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# Python Bytecode, Compilations & Caches
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Testing, Linting & Coverage
+.pytest_cache/
+.coverage
+.coverage.*
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+htmlcov/
+.tox/
+.nox/
+.mypy_cache/
+.ruff_cache/
+
+# Large Model Weights, Checkpoints & Embeddings
+*.pt
+*.pth
+*.bin
+*.safetensors
+*.gguf
+*.onnx
+artifacts/models/
+# Keep checkpoint registry and benchmark definitions/results
+!artifacts/checkpoints/*.json
+!data/benchmark/*.json
+!data/papers_cache.json
+
+# Local Databases, Vector Indexes & MLflow Artifacts
+*.db
+*.sqlite
+*.sqlite3
+*.db-journal
+*.db-wal
+*.db-shm
+data/faiss_index/
+data/mlflow.db
+data/research_assistant.db
+mlruns/
+.mlflow/
+
+# HPC & SLURM Batch Execution Logs
+*.out
+*.err
+slurm-*.out
+reward_model_*.out
+reward_model_*.err
+rlhf_pipeline_*.out
+rlhf_pipeline_*.err
+setup_env_*.out
+setup_env_*.err
+benchmark_eval_*.out
+benchmark_eval_*.err
+test_check_*.out
+test_check_*.err
+
+# Transfer Packages, Temporary Files & Scratch
+*.tar
+*.tar.gz
+*.zip
+*.gz
+project_transfer.tar.gz
+scratch/
+.tempmediaStorage/
+*.log
+
+# Environment Variables, Secrets & Private Keys
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+id_ed25519*
+id_rsa*
+secrets.json
+
+# IDEs & System Files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Execution Documents
+docs/

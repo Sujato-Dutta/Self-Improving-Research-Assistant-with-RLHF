@@ -1,0 +1,90 @@
+[
+  {
+    "round": "Base",
+    "win_rate": 0.5,
+    "win_rate_ci": [
+      0.5,
+      0.5
+    ],
+    "avg_reward": 1.0879,
+    "avg_reward_ci": [
+      1.0806,
+      1.095
+    ],
+    "citation_accuracy": 1.0,
+    "citation_accuracy_ci": [
+      1.0,
+      1.0
+    ],
+    "groundedness": 1.0,
+    "hallucination_rate": 0.0,
+    "recall_at_3": 0.8771,
+    "latency_ms": 0.03
+  },
+  {
+    "round": "RLHF Round 1",
+    "win_rate": 1.0,
+    "win_rate_ci": [
+      1.0,
+      1.0
+    ],
+    "avg_reward": 1.1176,
+    "avg_reward_ci": [
+      1.1103,
+      1.125
+    ],
+    "citation_accuracy": 1.0,
+    "citation_accuracy_ci": [
+      1.0,
+      1.0
+    ],
+    "groundedness": 1.0,
+    "hallucination_rate": 0.0,
+    "recall_at_3": 0.8771,
+    "latency_ms": 0.03
+  },
+  {
+    "round": "Round 2",
+    "win_rate": 1.0,
+    "win_rate_ci": [
+      1.0,
+      1.0
+    ],
+    "avg_reward": 1.1473,
+    "avg_reward_ci": [
+      1.1397,
+      1.1548
+    ],
+    "citation_accuracy": 1.0,
+    "citation_accuracy_ci": [
+      1.0,
+      1.0
+    ],
+    "groundedness": 1.0,
+    "hallucination_rate": 0.0,
+    "recall_at_3": 0.8771,
+    "latency_ms": 0.04
+  },
+  {
+    "round": "Final",
+    "win_rate": 1.0,
+    "win_rate_ci": [
+      1.0,
+      1.0
+    ],
+    "avg_reward": 1.1783,
+    "avg_reward_ci": [
+      1.1703,
+      1.186
+    ],
+    "citation_accuracy": 1.0,
+    "citation_accuracy_ci": [
+      1.0,
+      1.0
+    ],
+    "groundedness": 1.0,
+    "hallucination_rate": 0.0,
+    "recall_at_3": 0.8771,
+    "latency_ms": 0.03
+  }
+]
