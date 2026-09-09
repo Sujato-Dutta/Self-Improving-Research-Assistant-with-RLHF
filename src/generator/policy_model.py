@@ -14,6 +14,35 @@ def extract_citations(text: str) -> List[int]:
     return sorted(list(set(int(m) for m in matches)))
 
 
+def clean_excerpt(text: str, title: str = "") -> str:
+    """Strips metadata prefixes ('Title:', 'Abstract:', 'Authors:') to extract clean research prose."""
+    cleaned = text.strip()
+    if title:
+        escaped_title = re.escape(title.strip())
+        cleaned = re.sub(rf"^title:\s*{escaped_title}\s*", "", cleaned, flags=re.IGNORECASE).strip()
+    # Strip generic "Title: ... Abstract:" or "Title: ...\n"
+    cleaned = re.sub(r"^title:\s*.*?(?=(?:abstract:|summary:|\n\n|$))", "", cleaned, flags=re.IGNORECASE).strip()
+    # Strip "Abstract:", "Summary:", "Authors:" prefixes
+    cleaned = re.sub(r"^(?:abstract|summary|authors?):\s*", "", cleaned, flags=re.IGNORECASE).strip()
+    return cleaned
+
+
+def extract_key_sentence(text: str, title: str = "") -> str:
+    """Extracts a coherent first claim/sentence from a paper excerpt."""
+    cleaned = clean_excerpt(text, title=title)
+    # Split on sentence boundaries (. ! ?)
+    sentences = [s.strip() for s in re.split(r"(?<=[.!?])\s+", cleaned) if len(s.strip()) > 15]
+    if sentences:
+        sent = sentences[0]
+    else:
+        sent = cleaned[:220].rsplit(" ", 1)[0] if len(cleaned) > 220 else cleaned
+
+    sent = sent.strip().rstrip(".")
+    if sent and sent[0].islower():
+        sent = sent[0].upper() + sent[1:]
+    return sent
+
+
 class PolicyGenerator:
     """Manages Qwen policy model generation, dual-response sampling, and citation extraction."""
 
@@ -142,23 +171,42 @@ class PolicyGenerator:
                 "for this query. Please refine the query or add relevant publications to the evidence index."
             )
 
+        # Deduplicate evidence by unique paper so multiple chunks of the same paper don't cause duplicate citations
+        unique_evidence = []
+        seen_papers = set()
+        for doc in evidence:
+            paper_key = (doc.get("arxiv_id") or doc.get("title", "")).strip().lower()
+            if paper_key and paper_key not in seen_papers:
+                seen_papers.add(paper_key)
+                unique_evidence.append(doc)
+
+        selected_evidence = unique_evidence if unique_evidence else evidence
+
         citations_used = []
         body_paras = []
 
-        for doc in evidence[:3]:
+        for doc in selected_evidence:
             idx = doc.get("citation_index", 1)
             citations_used.append(idx)
             title = doc.get("title", "Research Study")
-            excerpt = doc.get("text", "")
-            # Extract key sentence
-            first_sent = excerpt.split(". ")[0] if ". " in excerpt else excerpt[:180]
+            key_sent = extract_key_sentence(doc.get("text", ""), title=title)
+
+            # Natural lead phrasing without awkward lowercasing or repeated metadata
+            if len(key_sent) > 1:
+                if key_sent[:2].isupper() or key_sent.startswith("I "):
+                    lead = key_sent
+                else:
+                    lead = key_sent[0].lower() + key_sent[1:]
+            else:
+                lead = key_sent
+
             body_paras.append(
-                f"According to {title} [{idx}], {first_sent.lower().strip()}."
+                f"According to **{title}** [{idx}], {lead}."
             )
 
         synthesis = " ".join(body_paras)
         refs_section = "\n\n### References\n"
-        for doc in evidence[:3]:
+        for doc in selected_evidence:
             idx = doc.get("citation_index", 1)
             title = doc.get("title", "Research Study")
             arxiv_id = doc.get("arxiv_id", "N/A")

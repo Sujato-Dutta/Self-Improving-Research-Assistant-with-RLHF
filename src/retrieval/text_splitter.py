@@ -29,7 +29,9 @@ class TextSplitter:
 
     def chunk_paper(self, paper: Dict[str, Any]) -> List[Dict[str, Any]]:
         """Splits a paper's title and summary/content into chunks with metadata."""
-        full_text = f"Title: {paper.get('title', '')}\n\nAbstract: {paper.get('summary', '')}"
+        title = paper.get("title", "").strip()
+        summary = paper.get("summary", "").strip()
+        full_text = f"{title}. {summary}" if title and summary else (title or summary)
         raw_chunks = self.split_text(full_text)
 
         chunks_with_meta = []

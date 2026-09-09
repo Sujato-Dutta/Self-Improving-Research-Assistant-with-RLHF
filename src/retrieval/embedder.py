@@ -1,4 +1,6 @@
 import os
+import re
+import zlib
 import logging
 import numpy as np
 from typing import List, Union
@@ -59,13 +61,13 @@ class SentenceEmbedder:
         vectors = []
         for text in texts:
             vec = np.zeros(self.embedding_dim, dtype=np.float32)
-            tokens = text.lower().split()
+            tokens = re.findall(r"\w+", text.lower())
             if not tokens:
                 vectors.append(vec)
                 continue
             for token in tokens:
-                h = hash(token)
-                idx = abs(h) % self.embedding_dim
+                h = zlib.crc32(token.encode("utf-8"))
+                idx = h % self.embedding_dim
                 sign = 1.0 if (h >> 3) % 2 == 0 else -1.0
                 vec[idx] += sign
             if normalize:

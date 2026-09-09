@@ -85,7 +85,12 @@ class FaissIndexer:
             except Exception as e:
                 logger.warning(f"Failed to write FAISS index: {e}")
 
-    def search(self, query: str, top_k: int = config.retrieval.top_k) -> List[Dict[str, Any]]:
+    def search(
+        self,
+        query: str,
+        top_k: int = config.retrieval.top_k,
+        deduplicate_by_paper: bool = True
+    ) -> List[Dict[str, Any]]:
         if not self.documents:
             return []
 
@@ -93,27 +98,73 @@ class FaissIndexer:
         query_vec = self.embedder.encode([query], normalize_embeddings=True)
 
         if self.index is not None and self.index.ntotal > 0:
-            distances, indices = self.index.search(query_vec, top_k)
+            fetch_k = min(len(self.documents), top_k * 4) if deduplicate_by_paper else top_k
+            distances, indices = self.index.search(query_vec, fetch_k)
             retrieved = []
-            for rank, (score, idx) in enumerate(zip(distances[0], indices[0]), start=1):
+            seen_papers = set()
+            for score, idx in zip(distances[0], indices[0]):
                 if idx < 0 or idx >= len(self.documents):
                     continue
                 doc = dict(self.documents[idx])
+                paper_id = (doc.get("arxiv_id") or doc.get("title", "")).strip().lower()
+                if deduplicate_by_paper and paper_id:
+                    if paper_id in seen_papers:
+                        continue
+                    seen_papers.add(paper_id)
                 doc["similarity_score"] = float(score)
-                doc["citation_index"] = rank
                 retrieved.append(doc)
+                if len(retrieved) >= top_k:
+                    break
+
+            # If not enough distinct papers, fill with remaining highest-scoring chunks
+            if len(retrieved) < top_k:
+                retrieved_chunks = {d.get("chunk_id") for d in retrieved if "chunk_id" in d}
+                for score, idx in zip(distances[0], indices[0]):
+                    if idx < 0 or idx >= len(self.documents):
+                        continue
+                    doc = dict(self.documents[idx])
+                    if doc.get("chunk_id") not in retrieved_chunks:
+                        doc["similarity_score"] = float(score)
+                        retrieved.append(doc)
+                        retrieved_chunks.add(doc.get("chunk_id"))
+                        if len(retrieved) >= top_k:
+                            break
+
+            for rank, doc in enumerate(retrieved, start=1):
+                doc["citation_index"] = rank
             return retrieved
 
         # In-memory NumPy cosine similarity fallback
         texts = [d["text"] for d in self.documents]
         doc_embeddings = self.embedder.encode(texts, normalize_embeddings=True)
         sims = np.dot(doc_embeddings, query_vec.T).flatten()
-        top_indices = np.argsort(-sims)[:top_k]
+        top_indices = np.argsort(-sims)
 
         retrieved = []
-        for rank, idx in enumerate(top_indices, start=1):
+        seen_papers = set()
+        for idx in top_indices:
             doc = dict(self.documents[idx])
+            paper_id = (doc.get("arxiv_id") or doc.get("title", "")).strip().lower()
+            if deduplicate_by_paper and paper_id:
+                if paper_id in seen_papers:
+                    continue
+                seen_papers.add(paper_id)
             doc["similarity_score"] = float(sims[idx])
-            doc["citation_index"] = rank
             retrieved.append(doc)
+            if len(retrieved) >= top_k:
+                break
+
+        if len(retrieved) < top_k:
+            retrieved_chunks = {d.get("chunk_id") for d in retrieved if "chunk_id" in d}
+            for idx in top_indices:
+                doc = dict(self.documents[idx])
+                if doc.get("chunk_id") not in retrieved_chunks:
+                    doc["similarity_score"] = float(sims[idx])
+                    retrieved.append(doc)
+                    retrieved_chunks.add(doc.get("chunk_id"))
+                    if len(retrieved) >= top_k:
+                        break
+
+        for rank, doc in enumerate(retrieved, start=1):
+            doc["citation_index"] = rank
         return retrieved

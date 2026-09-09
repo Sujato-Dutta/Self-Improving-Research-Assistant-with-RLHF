@@ -73,6 +73,14 @@ class SelfImprovingAssistantPipeline:
         )
         self.tracker = ExperimentTracker()
 
+    def set_db(self, db_session: Session):
+        """Updates active session across all pipeline components."""
+        self.db = db_session
+        if hasattr(self, "feedback_collector"):
+            self.feedback_collector.db = db_session
+        if hasattr(self, "preference_converter"):
+            self.preference_converter.db = db_session
+
     def query(
         self,
         query_text: str,
@@ -84,8 +92,7 @@ class SelfImprovingAssistantPipeline:
         # 1. Store query
         q_record = QueryRecord(query_text=query_text, session_id=session_id)
         self.db.add(q_record)
-        self.db.commit()
-        self.db.refresh(q_record)
+        self.db.flush()
 
         # 2. Retrieve evidence from FAISS
         retrieved_docs = self.indexer.search(query_text, top_k=config.retrieval.top_k)
@@ -110,7 +117,7 @@ class SelfImprovingAssistantPipeline:
                 url=doc.get("url", "")
             )
             self.db.add(ev_record)
-        self.db.commit()
+        self.db.flush()
 
         active_version = self.checkpoint_manager.get_active_version()
 

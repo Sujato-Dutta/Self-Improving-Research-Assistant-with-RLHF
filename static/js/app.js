@@ -191,13 +191,28 @@ document.addEventListener("DOMContentLoaded", () => {
     formatted = formatted.replace(/^## (.*$)/gim, '<h2>$1</h2>');
     formatted = formatted.replace(/^# (.*$)/gim, '<h1>$1</h1>');
 
-    // Bold
+    // Transform paper titles followed by citation [k] into interactive source chips:
+    // Matches **Title** [1] or *Title* [1]
+    formatted = formatted.replace(/(?:\*\*|\*)([^\*\n\r]+?)(?:\*\*|\*)\s*\[(\d+)\]/g, (match, p1, p2) => {
+      return `<cite class="source-title" data-citation="${p2}" title="Click to inspect evidence [${p2}]">${p1}</cite> <a class="citation-ref" data-citation="${p2}">[${p2}]</a>`;
+    });
+
+    // Handle any remaining bold **text**
     formatted = formatted.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
 
-    // Bullet points
+    // Handle any remaining italic *text*
+    formatted = formatted.replace(/\*(.*?)\*/g, '<em>$1</em>');
+
+    // Format References section bullet points nicely: - [1] Title (arXiv: ...)
+    formatted = formatted.replace(/^\-\s*\[(\d+)\]\s*(.*?)(?:\((arXiv:[^\)]+)\))?$/gim, (match, p1, p2, p3) => {
+      const arxiv = p3 ? `<span class="ref-arxiv">(${p3})</span>` : '';
+      return `<li class="ref-item"><a class="citation-ref" data-citation="${p1}">[${p1}]</a> <span class="ref-paper-name">${p2.trim()}</span> ${arxiv}</li>`;
+    });
+
+    // Standard Bullet points
     formatted = formatted.replace(/^\- (.*$)/gim, '<li>$1</li>');
 
-    // Replace citations [1], [2] with interactive chips
+    // Replace any remaining citations [1], [2] with interactive chips
     formatted = formatted.replace(/\[(\d+)\]/g, (match, p1) => {
       return `<a class="citation-ref" data-citation="${p1}">[${p1}]</a>`;
     });
@@ -208,8 +223,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function attachCitationListeners(container) {
-    container.querySelectorAll(".citation-ref").forEach(ref => {
+    container.querySelectorAll(".citation-ref, .source-title").forEach(ref => {
       const idx = ref.getAttribute("data-citation");
+      if (!idx) return;
 
       ref.addEventListener("mouseenter", () => highlightEvidence(idx, true));
       ref.addEventListener("mouseleave", () => highlightEvidence(idx, false));

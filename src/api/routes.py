@@ -23,7 +23,7 @@ def get_pipeline(db: Session = Depends(get_db)) -> SelfImprovingAssistantPipelin
     if _pipeline is None:
         _pipeline = SelfImprovingAssistantPipeline(db_session=db)
     else:
-        _pipeline.db = db
+        _pipeline.set_db(db)
     return _pipeline
 
 
