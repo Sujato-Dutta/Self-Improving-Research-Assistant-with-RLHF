@@ -10,81 +10,39 @@ Watch [**Demo Video 🎥**](https://youtu.be/QRBcttxp0Y8?si=4Z4ExdGyIGGl1Q7y)
 
 ---
 
-## Architecture
+## System Architecture
 
 ```mermaid
-graph TB
-    subgraph ClientLayer ["1. Client & Presentation Tier"]
-        User(["Researcher / User"])
-        WebUI["Modern Web Interface<br/>(FastAPI + Vanilla CSS Glassmorphism)"]
-        FeedbackModal["Human Preference Collection<br/>(Candidate A vs Candidate B Voting)"]
-        AnalyticsGateModal["Analytics & Gates Dashboard<br/>(Benchmark Visualizer & Gate Audits)"]
+flowchart TD
+    subgraph Online ["1. Online Retrieval & Grounded Inference Pipeline"]
+        direction TB
+        Q["User Research Query"] --> PRE["Query Preprocessor & Recency Classifier"]
+        PRE --> RET["Hybrid Retrieval (Live arXiv API + FAISS Vector DB)"]
+        RET --> GATE{"Dynamic Relevance Gate"}
+        GATE -->|"Evidence Verified"| POL["Qwen Policy Engine (A/B Dual Generation)"]
+        GATE -.->|"Weak / Stale"| RET
+        POL --> SYN["Grounded Research Answer & Inline Citations [k]"]
     end
 
-    subgraph RetrievalEngine ["2. Dynamic Hybrid Retrieval & Grounding Engine"]
-        QueryProc["Query Preprocessor & Intent Classifier<br/>(Acronyms, Recency Detection, NLP Cleaning)"]
-        ArxivAPI["Live arXiv Atom Feed Client<br/>(Category Constrained: cs.LG, cs.AI, cs.CV, stat.ML)"]
-        Embedder["SentenceTransformer Embedder<br/>(all-MiniLM-L6-v2, 384-dim)"]
-        VectorDB[("FAISS Vector Store<br/>(Partition Filtered via allowed_arxiv_ids)")]
-        SemanticGate{"Dynamic Relevance Gate<br/>(Score >= 0.20 + Keyword Alignment)"}
-        TextSplitter["Recursive Academic Text Splitter<br/>(450 Token Chunks + 50 Overlap)"]
+    subgraph RLHF ["2. Continuous RLHF Self-Improvement Loop"]
+        direction TB
+        SYN -->|"A/B Preference Voting"| PREF[("Pairwise Preference Store")]
+        PREF -->|"Tuples (x, e, y_w, y_l)"| RM["Multi-Factor Reward Model (Bradley-Terry)"]
+        RM -->|"Scalar Reward & Objective Penalties"| PPO["PPO Optimizer with KL Regularization"]
+        PPO -->|"Candidate Checkpoint"| BENCH{"350-Question Benchmark Gate"}
+        BENCH -->|"Pass: Win Rate >= 65%"| PROM["Promoted Active Serving Policy"]
+        BENCH -.->|"Fail: Regression"| QUAR["Quarantine / Rollback"]
     end
 
-    subgraph GenerationLayer ["3. Policy Model & Grounded Academic Synthesizer"]
-        PolicyGen["Qwen Policy Engine<br/>(Single Inference / Dual A/B Sampling)"]
-        Synthesizer["Evidence-Grounded Synthesis Engine<br/>(Objective Academic Tone, De-personalized)"]
-        CitationMapper["Inline Citation Engine<br/>(Numbered Badges [k] + Direct arXiv Links)"]
-        OllamaAdapter["Local Ollama Daemon Adapter<br/>(CPU / Edge Inference Fallback)"]
-    end
+    PROM ==>|"Hot-Swaps Active Model"| POL
 
-    subgraph PersistenceLayer ["4. Relational Data & Artifact Storage"]
-        DB[("SQLite Database via SQLAlchemy<br/>(Queries, Evidence, Responses, Feedback)")]
-        DocCache[("Paper & Benchmark JSON Cache<br/>(Multi-Domain Landmarked Literature)")]
-    end
+    classDef stage fill:#0f1e2e,stroke:#00d2b4,stroke-width:1.5px,color:#f1f5f9;
+    classDef gate fill:#2a2310,stroke:#f5a623,stroke-width:1.5px,color:#fef3c7;
+    classDef store fill:#182232,stroke:#60a5fa,stroke-width:1.5px,color:#e0f2fe;
 
-    subgraph RLHFLoop ["5. Preference-Based RLHF Post-Training Loop"]
-        PrefConverter["Pairwise Preference Converter<br/>(Constructs Bradley-Terry Tuples x, e, y_w, y_l)"]
-        RewardModel["PyTorch Multi-Factor Reward Model<br/>(Neural Tower + 6 Auxiliary Objective Penalties)"]
-        PPOTrainer["PPO Policy Optimizer<br/>(GAE Advantage + KL Divergence Regularizer)"]
-        MLflowTracker["MLflow Experiment Telemetry<br/>(Runs, Loss Curves, Reward Metrics)"]
-    end
-
-    subgraph EvaluationLifecycle ["6. Continuous Evaluation & Gate Promotion"]
-        EvalGate{"350-Question Held-Out Benchmark Gate<br/>(Win Rate >= 65%, Reward >= 0.65, Citations >= 85%)"}
-        ActiveCheckpoint["Promoted Serving Policy Checkpoint<br/>(Auto-loaded into Active Runtime)"]
-        Quarantine["Quarantine & Rollback Diagnostics<br/>(Prevents Destructive Policy Updates)"]
-    end
-
-    %% Flow connections
-    User -->|"Submits Research Query"| WebUI
-    WebUI -->|"Dispatches Query Text"| QueryProc
-    QueryProc -->|"Recency / Topical Expansion"| ArxivAPI
-    QueryProc -->|"Computes Dense Query Vector"| Embedder
-    ArxivAPI -->|"Fetches Latest Full Abstracts"| TextSplitter
-    TextSplitter -->|"Splits Chunks & Computes Embeddings"| VectorDB
-    Embedder -->|"Dense Similarity Search"| VectorDB
-    VectorDB -->|"Top-k Evidence Passages"| SemanticGate
-
-    SemanticGate -->|"Relevant Evidence Confirmed"| PolicyGen
-    SemanticGate -->|"Irrelevant / Stale Passages"| ArxivAPI
-
-    PolicyGen --> Synthesizer
-    Synthesizer --> CitationMapper
-    CitationMapper -->|"Grounded Research Answer"| WebUI
-    PolicyGen -.->|"Local Export / Offline Serving"| OllamaAdapter
-
-    WebUI -->|"Submits Preferred Candidate (A/B)"| FeedbackModal
-    FeedbackModal -->|"Stores Preference Pairs"| DB
-    DB -->|"Extracts Preference Pairs"| PrefConverter
-    PrefConverter -->|"Trains Bradley-Terry Objective"| RewardModel
-    RewardModel -->|"Evaluates Policy Trajectories"| PPOTrainer
-    PPOTrainer -->|"Tracks Post-Training Metrics"| MLflowTracker
-    PPOTrainer -->|"Evaluates Candidate Policy"| EvalGate
-
-    EvalGate -->|"Passes Criteria"| ActiveCheckpoint
-    EvalGate -->|"Fails Criteria"| Quarantine
-    ActiveCheckpoint -->|"Hot-Swaps Serving Policy"| PolicyGen
-    EvalGate -.->|"Pushes Benchmark Telemetry"| AnalyticsGateModal
+    class Q,PRE,RET,POL,SYN,RM,PPO,PROM stage;
+    class GATE,BENCH gate;
+    class PREF,QUAR store;
 ```
 
 ---
@@ -247,6 +205,12 @@ ollama run qwen-research-assistant "Explain FlashAttention tiling tradeoffs"
 ```powershell
 pytest -v tests/
 ```
+
+---
+
+## License
+
+MIT License
 
 ---
 
