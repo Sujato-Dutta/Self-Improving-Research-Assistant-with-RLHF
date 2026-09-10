@@ -1,6 +1,8 @@
 import os
 import json
 import logging
+import re
+import ssl
 import urllib.request
 import urllib.parse
 import xml.etree.ElementTree as ET
@@ -8,9 +10,15 @@ from pathlib import Path
 from typing import List, Dict, Any
 from src.config import config
 
+try:
+    import certifi
+    _DEFAULT_SSL_CONTEXT = ssl.create_default_context(cafile=certifi.where())
+except Exception:
+    _DEFAULT_SSL_CONTEXT = ssl._create_unverified_context()
+
 logger = logging.getLogger(__name__)
 
-# Fallback seed papers for offline execution and fast testing
+# Foundational seed papers across NLP, Time Series, Diffusion, and Modern Architectures
 SEED_PAPERS = [
     {
         "arxiv_id": "1706.03762",
@@ -119,26 +127,132 @@ SEED_PAPERS = [
         "url": "https://arxiv.org/abs/2303.08774",
         "published": "2023-03-15",
         "categories": ["cs.CL", "cs.AI"]
+    },
+    # Multi-Domain Additions: Time Series Forecasting
+    {
+        "arxiv_id": "2012.07436",
+        "title": "Informer: Beyond Efficient Transformer for Long Sequence Time-Series Forecasting",
+        "authors": ["Haoyi Zhou", "Shanghang Zhang", "Jieqi Peng", "Shuai Zhang", "Jianxin Li", "Hui Xiong", "Wancai Zhang"],
+        "summary": "Many real-world applications require the forecasting of long-sequence time-series, such as electricity consumption planning. Long sequence time-series forecasting (LSTF) demands high prediction capacity and efficiency. We propose Informer, an efficient transformer-based model for LSTF designed with ProbSparse self-attention mechanism, self-attention distilling, and generative style decoder, achieving O(L log L) time complexity and memory usage.",
+        "url": "https://arxiv.org/abs/2012.07436",
+        "published": "2020-12-14",
+        "categories": ["cs.LG", "stat.ML"]
+    },
+    {
+        "arxiv_id": "2205.13504",
+        "title": "Are Transformers Effective for Time Series?",
+        "authors": ["Ailing Zeng", "Muxi Chen", "Lei Zhang", "Qiang Xu"],
+        "summary": "Recently, there has been a surge of Transformer-based solutions for the long-term time series forecasting (LTSF) task. Despite continuous improvements, we question the necessity of complex attention mechanisms for temporal modeling. We propose DLinear, an embarrassingly simple set of single-layer linear models that decompose time series into trend and seasonal components, outperforming existing complex Transformer architectures across extensive benchmarks.",
+        "url": "https://arxiv.org/abs/2205.13504",
+        "published": "2022-05-26",
+        "categories": ["cs.LG", "stat.ML"]
+    },
+    {
+        "arxiv_id": "2211.14730",
+        "title": "A Time Series is Worth 64 Words: Long-term Forecasting with Transformers",
+        "authors": ["Yuqi Nie", "Nam H. Nguyen", "Phanwadee Sinthong", "Jayant Kalagnanam"],
+        "summary": "We propose an effective design of Transformer-based models for multivariate time series forecasting by introducing PatchTST: segmentation of time series into subseries-level patches which are served as input tokens to Transformer, and channel-independence where each channel contains a single univariate time series that shares the same embedding and Transformer backbone. PatchTST dramatically improves long-term forecasting accuracy while reducing compute.",
+        "url": "https://arxiv.org/abs/2211.14730",
+        "published": "2022-11-27",
+        "categories": ["cs.LG", "stat.ML"]
+    },
+    {
+        "arxiv_id": "2302.09641",
+        "title": "TimesNet: Temporal 2D-Variation Modeling for General Time Series Analysis",
+        "authors": ["Haixu Wu", "Tengge Hu", "Yong Liu", "Hang Zhou", "Jianmin Wang", "Mingsheng Long"],
+        "summary": "Time series analysis typically faces the challenge of multi-periodicity and complex temporal dependencies. We propose TimesNet, a task-general foundation architecture for time series analysis that transforms 1D time series into 2D spaces based on multiple intraperiod and interperiod variations. By applying 2D convolutions to capture temporal variations, TimesNet achieves state-of-the-art performance in short-term and long-term forecasting, imputation, classification, and anomaly detection.",
+        "url": "https://arxiv.org/abs/2302.09641",
+        "published": "2023-02-19",
+        "categories": ["cs.LG", "stat.ML"]
+    },
+    # Multi-Domain Additions: Diffusion & Vision
+    {
+        "arxiv_id": "2112.10752",
+        "title": "High-Resolution Image Synthesis with Latent Diffusion Models",
+        "authors": ["Robin Rombach", "Andreas Blattmann", "Dominik Lorenz", "Patrick Esser", "Björn Ommer"],
+        "summary": "By decomposing the image formation process into a sequential application of denoising autoencoders, diffusion models (DMs) achieve state-of-the-art synthesis results. To enable DM training on limited computational resources while retaining their quality, we propose Latent Diffusion Models (LDMs): applying diffusion processes in the latent space of powerful pretrained autoencoders, achieving high visual fidelity across text-to-image synthesis and super-resolution.",
+        "url": "https://arxiv.org/abs/2112.10752",
+        "published": "2021-12-20",
+        "categories": ["cs.CV", "cs.LG"]
+    },
+    {
+        "arxiv_id": "2010.11929",
+        "title": "An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale",
+        "authors": ["Alexey Dosovitskiy", "Lucas Beyer", "Alexander Kolesnikov", "Dirk Weissenborn", "Xiaohua Zhai", "Thomas Unterthiner", "Mostafa Dehghani", "Matthias Minderer", "Georg Heigold", "Sylvain Gelly", "Jakob Uszkoreit", "Neil Houlsby"],
+        "summary": "While the Transformer architecture has become the de-facto standard for natural language processing tasks, its applications to computer vision remain limited. In vision, attention is either applied in conjunction with convolutional networks, or used to replace certain components of convnets while keeping their overall structure in place. We show that this reliance on CNNs is not necessary and a pure transformer applied directly to sequences of image patches (Vision Transformer, ViT) can perform exceedingly well on image classification tasks.",
+        "url": "https://arxiv.org/abs/2010.11929",
+        "published": "2020-10-22",
+        "categories": ["cs.CV", "cs.LG"]
+    },
+    # Multi-Domain Additions: State Space Models
+    {
+        "arxiv_id": "2312.00752",
+        "title": "Mamba: Linear-Time Sequence Modeling with Selective State Spaces",
+        "authors": ["Albert Gu", "Tri Dao"],
+        "summary": "Foundation models, now mostly based on the Transformer architecture and its core attention module, have achieved impressive success. However, Transformers cannot scale efficiently to long sequences due to quadratic time and memory complexity. We propose Mamba, a state-space model architecture with data-dependent selection mechanisms and hardware-aware computation that scales linearly with sequence length while outperforming Transformers at scale.",
+        "url": "https://arxiv.org/abs/2312.00752",
+        "published": "2023-12-01",
+        "categories": ["cs.LG", "cs.AI"]
     }
 ]
 
 
+def clean_search_query(query: str):
+    """Cleans conversational queries, detects recency/latest intent, and expands domain acronyms."""
+    text = query.strip()
+    recency_patterns = [
+        r"\b(?:latest|recent|newest|current|cutting-edge|modern|state-of-the-art|sota|advances|develop?e?ments?)\b",
+        r"\b(?:2024|2025|2026)\b"
+    ]
+    sort_by_date = any(re.search(pat, text, flags=re.IGNORECASE) for pat in recency_patterns)
+
+    strip_patterns = [
+        r"\b(?:latest|recent|newest|current)\s+(?:develop?e?ments?|advanc?e?s?|trends?|papers?|work|research)\s+(?:in|on|for|of)?\b",
+        r"\b(?:develop?e?ments?|advanc?e?s?|trends?|papers?|research|literature)\s+(?:in|on|for|of)?\b",
+        r"^(?:what\s+is|what\s+are|what\s+were|explain|describe|tell\s+me\s+about|how\s+does|how\s+do|why\s+is|why\s+are|overview\s+of|discuss)\s+",
+        r"^(?:can\s+you\s+explain|could\s+you\s+summarize|please\s+explain|give\s+me\s+details\s+on)\s+",
+        r"^(?:what\s+about|show\s+me)\s+"
+    ]
+    cleaned = text
+    for pat in strip_patterns:
+        cleaned = re.sub(pat, "", cleaned, flags=re.IGNORECASE).strip()
+
+    cleaned = cleaned.rstrip("?.!,;:")
+    if len(cleaned) < 2:
+        cleaned = text.rstrip("?.!,;:")
+
+    acronym_map = {
+        r"\bcnns?\b": "convolutional neural network",
+        r"\bgnns?\b": "graph neural network",
+        r"\brnns?\b": "recurrent neural network",
+        r"\bllms?\b": "large language models",
+        r"\brlhf\b": "reinforcement learning human feedback",
+        r"\bdpo\b": "direct preference optimization",
+        r"\bvits?\b": "vision transformer"
+    }
+    for pat, expansion in acronym_map.items():
+        if re.search(pat, cleaned, flags=re.IGNORECASE):
+            cleaned = re.sub(pat, expansion, cleaned, flags=re.IGNORECASE)
+
+    return cleaned, sort_by_date
+
+
 class ArxivFetcher:
-    """Fetches research papers from arXiv with offline caching and seed paper fallbacks."""
+    """Fetches research papers from arXiv with offline caching, SSL fallback, and multi-domain seed papers."""
 
     def __init__(self, cache_file: Path = config.data_dir / "papers_cache.json"):
         self.cache_file = cache_file
         self.papers = self._load_cache()
 
     def _load_cache(self) -> Dict[str, Dict[str, Any]]:
+        initial = {p["arxiv_id"]: p for p in SEED_PAPERS}
         if self.cache_file.exists():
             try:
                 with open(self.cache_file, "r", encoding="utf-8") as f:
-                    return json.load(f)
+                    cached = json.load(f)
+                    initial.update(cached)
             except Exception as e:
                 logger.warning(f"Failed to read paper cache: {e}")
-        # Initialize with seed papers
-        initial = {p["arxiv_id"]: p for p in SEED_PAPERS}
         self._save_cache(initial)
         return initial
 
@@ -149,74 +263,111 @@ class ArxivFetcher:
         except Exception as e:
             logger.warning(f"Failed to save paper cache: {e}")
 
-    def fetch_papers_online(self, query: str, max_results: int = 20) -> List[Dict[str, Any]]:
-        """Fetch papers from official arXiv API Atom feed."""
-        encoded_query = urllib.parse.quote(query)
-        url = f"http://export.arxiv.org/api/query?search_query=all:{encoded_query}&start=0&max_results={max_results}&sortBy=relevance&sortOrder=descending"
+    def fetch_papers_online(self, query: str, max_results: int = 5) -> List[Dict[str, Any]]:
+        """Fetch papers from official arXiv API Atom feed with robust SSL, recency sorting, and query cleaning."""
+        cleaned_term, sort_by_date = clean_search_query(query)
+        sort_field = "submittedDate" if sort_by_date else "relevance"
+
+        # Formulate query: quoted exact phrase with ML categories
+        search_params_to_try = [
+            f'all:"{cleaned_term}" AND (cat:cs.LG OR cat:cs.AI OR cat:cs.CV OR cat:cs.CL OR cat:stat.ML)',
+            f'all:{cleaned_term} AND (cat:cs.LG OR cat:cs.AI OR cat:cs.CV OR cat:cs.CL OR cat:stat.ML)'
+        ]
+
         results = []
-
-        try:
-            req = urllib.request.Request(
-                url,
-                headers={"User-Agent": "ResearchAssistantRLHF/1.0 (academic; mailto:contact@example.org)"}
+        for search_param in search_params_to_try:
+            encoded_query = urllib.parse.quote(search_param)
+            url = (
+                f"https://export.arxiv.org/api/query?"
+                f"search_query={encoded_query}&start=0&max_results={max_results}&"
+                f"sortBy={sort_field}&sortOrder=descending"
             )
-            with urllib.request.urlopen(req, timeout=10) as response:
-                xml_data = response.read()
+            try:
+                req = urllib.request.Request(
+                    url,
+                    headers={"User-Agent": "ResearchAssistantRLHF/1.0 (academic; mailto:contact@example.org)"}
+                )
+                with urllib.request.urlopen(req, timeout=12, context=_DEFAULT_SSL_CONTEXT) as response:
+                    xml_data = response.read()
 
-            root = ET.fromstring(xml_data)
-            ns = {"atom": "http://www.w3.org/2005/Atom", "arxiv": "http://arxiv.org/schemas/atom"}
+                root = ET.fromstring(xml_data)
+                ns = {"atom": "http://www.w3.org/2005/Atom", "arxiv": "http://arxiv.org/schemas/atom"}
 
-            for entry in root.findall("atom:entry", ns):
-                arxiv_id_elem = entry.find("atom:id", ns)
-                raw_id = arxiv_id_elem.text if arxiv_id_elem is not None else ""
-                arxiv_id = raw_id.split("/abs/")[-1] if "/abs/" in raw_id else raw_id
+                for entry in root.findall("atom:entry", ns):
+                    arxiv_id_elem = entry.find("atom:id", ns)
+                    raw_id = arxiv_id_elem.text if arxiv_id_elem is not None else ""
+                    arxiv_id = raw_id.split("/abs/")[-1] if "/abs/" in raw_id else raw_id
+                    clean_id = arxiv_id.split("v")[0] if "v" in arxiv_id and arxiv_id.split("v")[-1].isdigit() else arxiv_id
 
-                title_elem = entry.find("atom:title", ns)
-                title = " ".join(title_elem.text.split()) if title_elem is not None and title_elem.text else "Untitled"
+                    title_elem = entry.find("atom:title", ns)
+                    title = " ".join(title_elem.text.split()) if title_elem is not None and title_elem.text else "Untitled"
 
-                summary_elem = entry.find("atom:summary", ns)
-                summary = " ".join(summary_elem.text.split()) if summary_elem is not None and summary_elem.text else ""
+                    summary_elem = entry.find("atom:summary", ns)
+                    summary = " ".join(summary_elem.text.split()) if summary_elem is not None and summary_elem.text else ""
 
-                authors = []
-                for author in entry.findall("atom:author", ns):
-                    name_elem = author.find("atom:name", ns)
-                    if name_elem is not None and name_elem.text:
-                        authors.append(name_elem.text)
+                    authors = []
+                    for author in entry.findall("atom:author", ns):
+                        name_elem = author.find("atom:name", ns)
+                        if name_elem is not None and name_elem.text:
+                            authors.append(name_elem.text)
 
-                published_elem = entry.find("atom:published", ns)
-                published = published_elem.text[:10] if published_elem is not None and published_elem.text else ""
+                    published_elem = entry.find("atom:published", ns)
+                    published = published_elem.text[:10] if published_elem is not None and published_elem.text else ""
 
-                paper_data = {
-                    "arxiv_id": arxiv_id,
-                    "title": title,
-                    "authors": authors,
-                    "summary": summary,
-                    "url": f"https://arxiv.org/abs/{arxiv_id}",
-                    "published": published,
-                    "categories": ["cs.AI"]
-                }
-                results.append(paper_data)
-                self.papers[arxiv_id] = paper_data
+                    paper_data = {
+                        "arxiv_id": clean_id,
+                        "title": title,
+                        "authors": authors,
+                        "summary": summary,
+                        "url": f"https://arxiv.org/abs/{clean_id}",
+                        "published": published,
+                        "categories": ["cs.AI", "cs.LG"]
+                    }
+                    results.append(paper_data)
+                    self.papers[clean_id] = paper_data
 
-            self._save_cache(self.papers)
-            logger.info(f"Retrieved {len(results)} papers from arXiv for query: '{query}'")
-        except Exception as e:
-            logger.warning(f"arXiv online fetch error ({e}), falling back to local cached/seed papers.")
+                if results:
+                    self._save_cache(self.papers)
+                    logger.info(f"Retrieved {len(results)} papers from arXiv for query: '{cleaned_term}'")
+                    break
+            except Exception as e:
+                logger.warning(f"arXiv online fetch error on '{search_param}': {e}")
+                continue
+
+        if not results:
+            logger.info(f"arXiv returned 0 entries for '{cleaned_term}', checking local corpus.")
             results = self.search_local_papers(query, max_results)
+
+        # Domain consistency filtering: prevent cross-domain pollution
+        query_lower = query.lower()
+        if ("cnn" in query_lower or "convolutional" in query_lower) and "time series" not in query_lower:
+            results = [p for p in results if "time series" not in p.get("title", "").lower()]
 
         return results
 
     def search_local_papers(self, query: str, max_results: int = 10) -> List[Dict[str, Any]]:
-        """Filter local seed and cached papers by keyword matching."""
-        query_words = set(query.lower().split())
+        """Filter local seed and cached papers by keyword matching with scoring."""
+        cleaned_term, _ = clean_search_query(query)
+        query_words = set(re.findall(r"\w+", cleaned_term.lower()))
+        stop_words = {"the", "a", "an", "is", "are", "and", "or", "in", "on", "of", "to", "for", "with", "what", "how", "why"}
+        meaningful_words = query_words - stop_words
+
         scored = []
         for paper in self.papers.values():
             text = (paper["title"] + " " + paper["summary"]).lower()
-            score = sum(1 for w in query_words if w in text)
-            scored.append((score, paper))
+            text_words = set(re.findall(r"\w+", text))
+            title_matches = sum(3 for w in meaningful_words if w in paper["title"].lower())
+            body_matches = sum(1 for w in meaningful_words if w in text_words)
+            total_score = title_matches + body_matches
+            if total_score > 0:
+                scored.append((total_score, paper))
 
         scored.sort(key=lambda x: x[0], reverse=True)
-        return [p for _, p in scored[:max_results]]
+        local_results = [p for _, p in scored[:max_results]]
+        query_lower = query.lower()
+        if ("cnn" in query_lower or "convolutional" in query_lower) and "time series" not in query_lower:
+            local_results = [p for p in local_results if "time series" not in p.get("title", "").lower()]
+        return local_results
 
     def get_all_papers(self) -> List[Dict[str, Any]]:
         return list(self.papers.values())

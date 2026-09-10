@@ -840,7 +840,7 @@
     "Final": {
       "round_number": 3,
       "model_path": "/dgxa_home/se23uari167/Self-Improving-Research-Assistant/artifacts/checkpoints/checkpoint_round_3",
-      "status": "promoted",
+      "status": "rejected",
       "metrics": {
         "num_questions": 350,
         "win_rate": 1.0,
@@ -1245,6 +1245,93 @@
           1.2637232542037964,
           1.1933128833770752,
           1.2175205945968628
+        ]
+      },
+      "rejection_reason": "win_rate_gate failed (value=0.500, expected >= 0.51)"
+    },
+    "RLHF Round 4": {
+      "round_number": 4,
+      "model_path": "F:\\Self-Improving Research Assistant with RLHF\\artifacts\\checkpoints\\checkpoint_round_4",
+      "status": "candidate",
+      "metrics": {
+        "num_questions": 25,
+        "win_rate": 0.5,
+        "win_rate_ci_lower": 0.5,
+        "win_rate_ci_upper": 0.5,
+        "avg_reward": 0.862,
+        "avg_reward_ci_lower": 0.8318,
+        "avg_reward_ci_upper": 0.8945,
+        "citation_accuracy": 1.0,
+        "citation_accuracy_ci_lower": 1.0,
+        "citation_accuracy_ci_upper": 1.0,
+        "groundedness": 1.0,
+        "groundedness_ci_lower": 1.0,
+        "groundedness_ci_upper": 1.0,
+        "hallucination_rate": 0.0,
+        "task_success_rate": 1.0,
+        "retrieval_recall_k1": 0.84,
+        "retrieval_recall_k3": 0.92,
+        "retrieval_recall_k5": 0.96,
+        "relevance_score": 0.369,
+        "latency_ms": 3.88,
+        "failure_analysis": {
+          "RETRIEVAL_FAILURE": {
+            "count": 3,
+            "rate": 0.12,
+            "percentage": 12.0
+          },
+          "CITATION_HALLUCINATION": {
+            "count": 0,
+            "rate": 0.0,
+            "percentage": 0.0
+          },
+          "UNSUPPORTED_CLAIMS": {
+            "count": 0,
+            "rate": 0.0,
+            "percentage": 0.0
+          },
+          "SYNTHESIS_DRIFT": {
+            "count": 12,
+            "rate": 0.48,
+            "percentage": 48.0
+          },
+          "VERBOSITY_ANOMALY": {
+            "count": 0,
+            "rate": 0.0,
+            "percentage": 0.0
+          },
+          "CLEAN_SUCCESS": {
+            "count": 13,
+            "rate": 0.52,
+            "percentage": 52.0
+          }
+        },
+        "raw_rewards": [
+          0.96943199634552,
+          0.8707724213600159,
+          0.8381498456001282,
+          0.7312628030776978,
+          0.8726804256439209,
+          0.8869978189468384,
+          0.9649103879928589,
+          0.8803645968437195,
+          0.9669003486633301,
+          0.698460578918457,
+          0.8999253511428833,
+          0.852514386177063,
+          0.9116451144218445,
+          1.0082147121429443,
+          0.8178800344467163,
+          0.8037996292114258,
+          0.811526894569397,
+          0.7443032264709473,
+          1.040610432624817,
+          0.8784714937210083,
+          0.7940301895141602,
+          0.8658381700515747,
+          0.8311463594436646,
+          0.7959562540054321,
+          0.8137466907501221
         ]
       }
     }

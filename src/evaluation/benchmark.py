@@ -154,3 +154,6 @@ class BenchmarkManager:
 
     def get_questions(self, limit: int = 350) -> List[Dict[str, Any]]:
         return self.questions[:limit]
+
+    def get_benchmark_questions(self, limit: int = 350) -> List[Dict[str, Any]]:
+        return self.get_questions(limit=limit)

@@ -68,6 +68,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Submit Query
   submitQueryBtn.addEventListener("click", submitQuery);
+
+  // Ollama Toggle Feedback
+  ollamaToggle.addEventListener("change", async () => {
+    if (ollamaToggle.checked) {
+      showToast("Checking local Ollama connection on http://localhost:11434...");
+      try {
+        const res = await fetch("/api/ollama/status");
+        const data = await res.json();
+        if (data.available) {
+          const modelName = data.configured_model || (data.models && data.models[0]) || "qwen";
+          showToast(`Ollama active! Using model '${modelName}' for local generation.`);
+          activeModelTag.textContent = `Ollama: ${modelName}`;
+        } else {
+          showToast("Ollama is not running on port 11434. Run 'ollama serve' in your terminal to serve via Ollama. (Auto-fallback to Neural Policy active).");
+          activeModelTag.textContent = "Ollama (Offline)";
+        }
+      } catch (err) {
+        showToast("Could not contact Ollama status endpoint. Fallback active.");
+      }
+    } else {
+      loadModelInfo();
+      showToast("Switched back to Neural Research Policy.");
+    }
+  });
   queryInput.addEventListener("keydown", (e) => {
     if (e.key === "Enter" && (e.metaKey || e.ctrlKey)) {
       submitQuery();
@@ -149,8 +173,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function renderEvidence(evidence) {
+    if (!evidenceList) return;
     evidenceList.innerHTML = "";
-    evidenceCountBadge.textContent = `${evidence.length} papers`;
+    if (evidenceCountBadge) evidenceCountBadge.textContent = `${evidence ? evidence.length : 0} papers`;
 
     if (!evidence || evidence.length === 0) {
       evidenceList.innerHTML = `<div class="empty-evidence">No external papers retrieved for this query.</div>`;
@@ -191,30 +216,58 @@ document.addEventListener("DOMContentLoaded", () => {
     formatted = formatted.replace(/^## (.*$)/gim, '<h2>$1</h2>');
     formatted = formatted.replace(/^# (.*$)/gim, '<h1>$1</h1>');
 
-    // Transform paper titles followed by citation [k] into interactive source chips:
-    // Matches **Title** [1] or *Title* [1]
-    formatted = formatted.replace(/(?:\*\*|\*)([^\*\n\r]+?)(?:\*\*|\*)\s*\[(\d+)\]/g, (match, p1, p2) => {
-      return `<cite class="source-title" data-citation="${p2}" title="Click to inspect evidence [${p2}]">${p1}</cite> <a class="citation-ref" data-citation="${p2}">[${p2}]</a>`;
+    // Format References section bullet points with direct arXiv links beside title:
+    // Matches: - [1] Title — [https://arxiv.org/abs/...](https://arxiv.org/abs/...)
+    // or: - [1] Title (arXiv: 1234.5678)
+    formatted = formatted.replace(/^\-\s*\[(\d+)\]\s*(.*?)(?:\s*[—–-]\s*\[?(https?:\/\/[^\s\)\]]+)\]?(?:\([^\)]+\))?|\s*\((arXiv:[^\)]+)\))?$/gim, (match, p1, p2, p3, p4) => {
+      let url = p3 || "";
+      let label = "arXiv Link";
+      if (!url && p4) {
+        const cleanId = p4.replace(/arxiv:\s*/i, "").trim();
+        url = `https://arxiv.org/abs/${cleanId}`;
+        label = `arXiv:${cleanId}`;
+      } else if (url) {
+        const matchId = url.match(/abs\/([^\/\s\?#]+)/);
+        if (matchId) label = `arXiv:${matchId[1]}`;
+      }
+      const titleClean = p2.trim();
+      const titleHtml = url
+        ? `<a href="${url}" target="_blank" rel="noopener noreferrer" class="ref-paper-name" title="Open paper on arXiv">${titleClean}</a>`
+        : `<span class="ref-paper-name">${titleClean}</span>`;
+      const linkHtml = url 
+        ? `<a href="${url}" target="_blank" rel="noopener noreferrer" class="ref-arxiv-link" title="Direct link to paper on arXiv">
+             <span>${label}</span>
+             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+               <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+               <polyline points="15 3 21 3 21 9"></polyline>
+               <line x1="10" y1="14" x2="21" y2="3"></line>
+             </svg>
+           </a>`
+        : "";
+      return `<li class="ref-item" id="ref-${p1}">
+  <div class="ref-item-main">
+    <span class="ref-num-badge">&#91;${p1}&#93;</span>
+    ${titleHtml}
+  </div>
+  ${linkHtml}
+</li>`;
     });
 
-    // Handle any remaining bold **text**
+    // Handle generic markdown links [text](url)
+    formatted = formatted.replace(/\[([^\]]+)\]\((https?:\/\/[^\)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer" class="ref-arxiv-link"><span>$1</span> <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>');
+
+    // Handle bold **text**
     formatted = formatted.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
 
-    // Handle any remaining italic *text*
+    // Handle italic *text*
     formatted = formatted.replace(/\*(.*?)\*/g, '<em>$1</em>');
-
-    // Format References section bullet points nicely: - [1] Title (arXiv: ...)
-    formatted = formatted.replace(/^\-\s*\[(\d+)\]\s*(.*?)(?:\((arXiv:[^\)]+)\))?$/gim, (match, p1, p2, p3) => {
-      const arxiv = p3 ? `<span class="ref-arxiv">(${p3})</span>` : '';
-      return `<li class="ref-item"><a class="citation-ref" data-citation="${p1}">[${p1}]</a> <span class="ref-paper-name">${p2.trim()}</span> ${arxiv}</li>`;
-    });
 
     // Standard Bullet points
     formatted = formatted.replace(/^\- (.*$)/gim, '<li>$1</li>');
 
-    // Replace any remaining citations [1], [2] with interactive chips
+    // Replace citations [1], [2] in body text with clickable chips that scroll to reference
     formatted = formatted.replace(/\[(\d+)\]/g, (match, p1) => {
-      return `<a class="citation-ref" data-citation="${p1}">[${p1}]</a>`;
+      return `<a class="citation-ref" data-citation="${p1}" href="#ref-${p1}" title="Jump to reference [${p1}]">[${p1}]</a>`;
     });
 
     // Paragraphs
@@ -223,16 +276,18 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function attachCitationListeners(container) {
-    container.querySelectorAll(".citation-ref, .source-title").forEach(ref => {
+    container.querySelectorAll(".citation-ref").forEach(ref => {
       const idx = ref.getAttribute("data-citation");
       if (!idx) return;
 
-      ref.addEventListener("mouseenter", () => highlightEvidence(idx, true));
-      ref.addEventListener("mouseleave", () => highlightEvidence(idx, false));
       ref.addEventListener("click", (e) => {
-        e.preventDefault();
-        highlightEvidence(idx, true);
-        scrollToEvidence(idx);
+        const targetRef = document.getElementById(`ref-${idx}`);
+        if (targetRef) {
+          e.preventDefault();
+          targetRef.scrollIntoView({ behavior: "smooth", block: "center" });
+          targetRef.classList.add("highlight-pulse");
+          setTimeout(() => targetRef.classList.remove("highlight-pulse"), 1800);
+        }
       });
     });
   }
@@ -384,15 +439,59 @@ document.addEventListener("DOMContentLoaded", () => {
     try {
       const res = await fetch("/api/metrics");
       const data = await res.json();
-      renderAnalytics(data.metrics_history);
+      renderAnalytics(data.metrics_history, data.live_stats);
     } catch (e) {
       console.error(e);
     }
   }
 
-  function renderAnalytics(history) {
+  // Live Re-Evaluation Trigger
+  const reEvalBtn = document.getElementById("reEvalBtn");
+  if (reEvalBtn) {
+    reEvalBtn.addEventListener("click", async () => {
+      reEvalBtn.disabled = true;
+      reEvalBtn.textContent = "Evaluating...";
+      showToast("Running live benchmark evaluation against active model...");
+      try {
+        const res = await fetch("/api/evaluation/run", { method: "POST" });
+        const data = await res.json();
+        if (data.status === "success") {
+          showToast(`Live Evaluation Complete! Gate ${data.gate_passed ? "PASSED (Promoted)" : "FAILED (Regressed)"}`);
+          await openAnalyticsModal();
+        } else {
+          showToast("Evaluation failed: " + (data.detail || "Unknown error"));
+        }
+      } catch (e) {
+        showToast("Error running live evaluation: " + e.message);
+      } finally {
+        reEvalBtn.disabled = false;
+        reEvalBtn.innerHTML = `
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M23 4v6h-6"></path>
+            <path d="M1 20v-6h6"></path>
+            <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+          </svg>
+          Run Live Evaluation
+        `;
+      }
+    });
+  }
+
+  function renderAnalytics(history, liveStats) {
+    if (liveStats) {
+      const statQueries = document.getElementById("statQueries");
+      const statFeedbacks = document.getElementById("statFeedbacks");
+      const statPreferences = document.getElementById("statPreferences");
+      const statActiveVersion = document.getElementById("statActiveVersion");
+
+      if (statQueries) statQueries.textContent = liveStats.total_queries ?? 0;
+      if (statFeedbacks) statFeedbacks.textContent = liveStats.total_feedbacks ?? 0;
+      if (statPreferences) statPreferences.textContent = liveStats.total_preferences ?? 0;
+      if (statActiveVersion) statActiveVersion.textContent = liveStats.active_version ?? "Active";
+    }
+
     if (!history || history.length === 0) {
-      progressionTableBody.innerHTML = `<tr><td colspan="8" class="text-center">No benchmark rounds executed yet. Click "Trigger RLHF" to initiate.</td></tr>`;
+      progressionTableBody.innerHTML = `<tr><td colspan="8" class="text-center">No benchmark rounds executed yet. Click "Trigger RLHF" or "Run Live Evaluation".</td></tr>`;
       return;
     }
 
@@ -412,6 +511,15 @@ document.addEventListener("DOMContentLoaded", () => {
     progressionTableBody.innerHTML = "";
     history.forEach(r => {
       const row = document.createElement("tr");
+      let statusBadge = "";
+      if (r.is_base) {
+        statusBadge = `<span class="status-badge status-base">Base Reference</span>`;
+      } else if (r.gate_passed) {
+        statusBadge = `<span class="status-badge status-passed">Gate Passed (Promoted)</span>`;
+      } else {
+        statusBadge = `<span class="status-badge status-failed">Gate Regressed</span>`;
+      }
+
       row.innerHTML = `
         <td><strong>${escapeHtml(r.round_name)}</strong></td>
         <td>${(r.win_rate * 100).toFixed(1)}% [${(r.win_rate_ci[0]*100).toFixed(1)}%, ${(r.win_rate_ci[1]*100).toFixed(1)}%]</td>
@@ -420,7 +528,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <td>${(r.groundedness * 100).toFixed(1)}%</td>
         <td>${(r.hallucination_rate * 100).toFixed(1)}%</td>
         <td>${(r.recall_at_k * 100).toFixed(1)}%</td>
-        <td><span class="status-badge status-passed">Promoted</span></td>
+        <td>${statusBadge}</td>
       `;
       progressionTableBody.appendChild(row);
     });

@@ -325,5 +325,781 @@
       "cs.CL",
       "cs.AI"
     ]
+  },
+  "2012.07436": {
+    "arxiv_id": "2012.07436",
+    "title": "Informer: Beyond Efficient Transformer for Long Sequence Time-Series Forecasting",
+    "authors": [
+      "Haoyi Zhou",
+      "Shanghang Zhang",
+      "Jieqi Peng",
+      "Shuai Zhang",
+      "Jianxin Li",
+      "Hui Xiong",
+      "Wancai Zhang"
+    ],
+    "summary": "Many real-world applications require the forecasting of long-sequence time-series, such as electricity consumption planning. Long sequence time-series forecasting (LSTF) demands high prediction capacity and efficiency. We propose Informer, an efficient transformer-based model for LSTF designed with ProbSparse self-attention mechanism, self-attention distilling, and generative style decoder, achieving O(L log L) time complexity and memory usage.",
+    "url": "https://arxiv.org/abs/2012.07436",
+    "published": "2020-12-14",
+    "categories": [
+      "cs.LG",
+      "stat.ML"
+    ]
+  },
+  "2205.13504": {
+    "arxiv_id": "2205.13504",
+    "title": "Are Transformers Effective for Time Series?",
+    "authors": [
+      "Ailing Zeng",
+      "Muxi Chen",
+      "Lei Zhang",
+      "Qiang Xu"
+    ],
+    "summary": "Recently, there has been a surge of Transformer-based solutions for the long-term time series forecasting (LTSF) task. Despite continuous improvements, we question the necessity of complex attention mechanisms for temporal modeling. We propose DLinear, an embarrassingly simple set of single-layer linear models that decompose time series into trend and seasonal components, outperforming existing complex Transformer architectures across extensive benchmarks.",
+    "url": "https://arxiv.org/abs/2205.13504",
+    "published": "2022-05-26",
+    "categories": [
+      "cs.LG",
+      "stat.ML"
+    ]
+  },
+  "2211.14730": {
+    "arxiv_id": "2211.14730",
+    "title": "A Time Series is Worth 64 Words: Long-term Forecasting with Transformers",
+    "authors": [
+      "Yuqi Nie",
+      "Nam H. Nguyen",
+      "Phanwadee Sinthong",
+      "Jayant Kalagnanam"
+    ],
+    "summary": "We propose an effective design of Transformer-based models for multivariate time series forecasting by introducing PatchTST: segmentation of time series into subseries-level patches which are served as input tokens to Transformer, and channel-independence where each channel contains a single univariate time series that shares the same embedding and Transformer backbone. PatchTST dramatically improves long-term forecasting accuracy while reducing compute.",
+    "url": "https://arxiv.org/abs/2211.14730",
+    "published": "2022-11-27",
+    "categories": [
+      "cs.LG",
+      "stat.ML"
+    ]
+  },
+  "2302.09641": {
+    "arxiv_id": "2302.09641",
+    "title": "TimesNet: Temporal 2D-Variation Modeling for General Time Series Analysis",
+    "authors": [
+      "Haixu Wu",
+      "Tengge Hu",
+      "Yong Liu",
+      "Hang Zhou",
+      "Jianmin Wang",
+      "Mingsheng Long"
+    ],
+    "summary": "Time series analysis typically faces the challenge of multi-periodicity and complex temporal dependencies. We propose TimesNet, a task-general foundation architecture for time series analysis that transforms 1D time series into 2D spaces based on multiple intraperiod and interperiod variations. By applying 2D convolutions to capture temporal variations, TimesNet achieves state-of-the-art performance in short-term and long-term forecasting, imputation, classification, and anomaly detection.",
+    "url": "https://arxiv.org/abs/2302.09641",
+    "published": "2023-02-19",
+    "categories": [
+      "cs.LG",
+      "stat.ML"
+    ]
+  },
+  "2112.10752": {
+    "arxiv_id": "2112.10752",
+    "title": "High-Resolution Image Synthesis with Latent Diffusion Models",
+    "authors": [
+      "Robin Rombach",
+      "Andreas Blattmann",
+      "Dominik Lorenz",
+      "Patrick Esser",
+      "Bj\u00f6rn Ommer"
+    ],
+    "summary": "By decomposing the image formation process into a sequential application of denoising autoencoders, diffusion models (DMs) achieve state-of-the-art synthesis results. To enable DM training on limited computational resources while retaining their quality, we propose Latent Diffusion Models (LDMs): applying diffusion processes in the latent space of powerful pretrained autoencoders, achieving high visual fidelity across text-to-image synthesis and super-resolution.",
+    "url": "https://arxiv.org/abs/2112.10752",
+    "published": "2021-12-20",
+    "categories": [
+      "cs.CV",
+      "cs.LG"
+    ]
+  },
+  "2010.11929": {
+    "arxiv_id": "2010.11929",
+    "title": "An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale",
+    "authors": [
+      "Alexey Dosovitskiy",
+      "Lucas Beyer",
+      "Alexander Kolesnikov",
+      "Dirk Weissenborn",
+      "Xiaohua Zhai",
+      "Thomas Unterthiner",
+      "Mostafa Dehghani",
+      "Matthias Minderer",
+      "Georg Heigold",
+      "Sylvain Gelly",
+      "Jakob Uszkoreit",
+      "Neil Houlsby"
+    ],
+    "summary": "While the Transformer architecture has become the de-facto standard for natural language processing tasks, its applications to computer vision remain limited. In vision, attention is either applied in conjunction with convolutional networks, or used to replace certain components of convnets while keeping their overall structure in place. We show that this reliance on CNNs is not necessary and a pure transformer applied directly to sequences of image patches (Vision Transformer, ViT) can perform exceedingly well on image classification tasks.",
+    "url": "https://arxiv.org/abs/2010.11929",
+    "published": "2020-10-22",
+    "categories": [
+      "cs.CV",
+      "cs.LG"
+    ]
+  },
+  "2312.00752": {
+    "arxiv_id": "2312.00752",
+    "title": "Mamba: Linear-Time Sequence Modeling with Selective State Spaces",
+    "authors": [
+      "Albert Gu",
+      "Tri Dao"
+    ],
+    "summary": "Foundation models, now mostly based on the Transformer architecture and its core attention module, have achieved impressive success. However, Transformers cannot scale efficiently to long sequences due to quadratic time and memory complexity. We propose Mamba, a state-space model architecture with data-dependent selection mechanisms and hardware-aware computation that scales linearly with sequence length while outperforming Transformers at scale.",
+    "url": "https://arxiv.org/abs/2312.00752",
+    "published": "2023-12-01",
+    "categories": [
+      "cs.LG",
+      "cs.AI"
+    ]
+  },
+  "2410.11674": {
+    "arxiv_id": "2410.11674",
+    "title": "LLM-Mixer: Multiscale Mixing in LLMs for Time Series Forecasting",
+    "authors": [
+      "Md Kowsher",
+      "Md. Shohanur Islam Sobuj",
+      "Nusrat Jahan Prottasha",
+      "E. Alejandro Alanis",
+      "Ozlem Ozmen Garibay",
+      "Niloofar Yousefi"
+    ],
+    "summary": "Time series forecasting remains a challenging task, particularly in the context of complex multiscale temporal patterns. This study presents LLM-Mixer, a framework that improves forecasting accuracy through the combination of multiscale time-series decomposition with pre-trained LLMs (Large Language Models). LLM-Mixer captures both short-term fluctuations and long-term trends by decomposing the data into multiple temporal resolutions and processing them with a frozen LLM, guided by a textual prompt specifically designed for time-series data. Extensive experiments conducted on multivariate and univariate datasets demonstrate that LLM-Mixer achieves competitive performance, outperforming recent state-of-the-art models across various forecasting horizons. This work highlights the potential of combining multiscale analysis and LLMs for effective and scalable time-series forecasting.",
+    "url": "https://arxiv.org/abs/2410.11674",
+    "published": "2024-10-15",
+    "categories": [
+      "cs.AI",
+      "cs.LG"
+    ]
+  },
+  "2502.19086": {
+    "arxiv_id": "2502.19086",
+    "title": "Forecasting intermittent time series with Gaussian Processes and Tweedie likelihood",
+    "authors": [
+      "Stefano Damato",
+      "Dario Azzimonti",
+      "Giorgio Corani"
+    ],
+    "summary": "We adopt Gaussian Processes (GPs) as latent functions for probabilistic forecasting of intermittent time series. The model is trained in a Bayesian framework that accounts for the uncertainty about the latent function. We couple the latent GP variable with two types of forecast distributions: the negative binomial (NegBinGP) and the Tweedie distribution (TweedieGP). While the negative binomial has already been used in forecasting intermittent time series, this is the first time in which a fully parameterized Tweedie density is used for intermittent time series. We properly evaluate the Tweedie density, which has both a point mass at zero and heavy tails, avoiding simplifying assumptions made in existing models. We test our models on thousands of intermittent count time series. Results show that our models provide consistently better probabilistic forecasts than the competitors. In particular, TweedieGP obtains the best estimates of the highest quantiles, thus showing that it is more flexible than NegBinGP.",
+    "url": "https://arxiv.org/abs/2502.19086",
+    "published": "2025-02-26",
+    "categories": [
+      "cs.AI",
+      "cs.LG"
+    ]
+  },
+  "2110.13179": {
+    "arxiv_id": "2110.13179",
+    "title": "Probabilistic Hierarchical Forecasting with Deep Poisson Mixtures",
+    "authors": [
+      "Kin G. Olivares",
+      "O. Nganba Meetei",
+      "Ruijun Ma",
+      "Rohan Reddy",
+      "Mengfei Cao",
+      "Lee Dicker"
+    ],
+    "summary": "Hierarchical forecasting problems arise when time series have a natural group structure, and predictions at multiple levels of aggregation and disaggregation across the groups are needed. In such problems, it is often desired to satisfy the aggregation constraints in a given hierarchy, referred to as hierarchical coherence in the literature. Maintaining coherence while producing accurate forecasts can be a challenging problem, especially in the case of probabilistic forecasting. We present a novel method capable of accurate and coherent probabilistic forecasts for time series when reliable hierarchical information is present. We call it Deep Poisson Mixture Network (DPMN). It relies on the combination of neural networks and a statistical model for the joint distribution of the hierarchical multivariate time series structure. By construction, the model guarantees hierarchical coherence and provides simple rules for aggregation and disaggregation of the predictive distributions. We perform an extensive empirical evaluation comparing the DPMN to other state-of-the-art methods which produce hierarchically coherent probabilistic forecasts on multiple public datasets. Comparing to existing coherent probabilistic models, we obtain a relative improvement in the overall Continuous Ranked Probability Score (CRPS) of 11.8% on Australian domestic tourism data, and 8.1% on the Favorita grocery sales dataset, where time series are grouped with geographical hierarchies or travel intent hierarchies. For San Francisco Bay Area highway traffic, where the series' hierarchical structure is randomly assigned, and their correlations are less informative, our method does not show significant performance differences over statistical baselines.",
+    "url": "https://arxiv.org/abs/2110.13179",
+    "published": "2021-10-25",
+    "categories": [
+      "cs.AI",
+      "cs.LG"
+    ]
+  },
+  "2106.09305": {
+    "arxiv_id": "2106.09305",
+    "title": "SCINet: Time Series Modeling and Forecasting with Sample Convolution and Interaction",
+    "authors": [
+      "Minhao Liu",
+      "Ailing Zeng",
+      "Muxi Chen",
+      "Zhijian Xu",
+      "Qiuxia Lai",
+      "Lingna Ma",
+      "Qiang Xu"
+    ],
+    "summary": "One unique property of time series is that the temporal relations are largely preserved after downsampling into two sub-sequences. By taking advantage of this property, we propose a novel neural network architecture that conducts sample convolution and interaction for temporal modeling and forecasting, named SCINet. Specifically, SCINet is a recursive downsample-convolve-interact architecture. In each layer, we use multiple convolutional filters to extract distinct yet valuable temporal features from the downsampled sub-sequences or features. By combining these rich features aggregated from multiple resolutions, SCINet effectively models time series with complex temporal dynamics. Experimental results show that SCINet achieves significant forecasting accuracy improvements over both existing convolutional models and Transformer-based solutions across various real-world time series forecasting datasets. Our codes and data are available at https://github.com/cure-lab/SCINet.",
+    "url": "https://arxiv.org/abs/2106.09305",
+    "published": "2021-06-17",
+    "categories": [
+      "cs.AI",
+      "cs.LG"
+    ]
+  },
+  "2303.14295": {
+    "arxiv_id": "2303.14295",
+    "title": "Clustering Multivariate Time Series using Energy Distance",
+    "authors": [
+      "Richard A. Davis",
+      "Leon Fernandes",
+      "Konstantinos Fokianos"
+    ],
+    "summary": "A novel methodology is proposed for clustering multivariate time series data using energy distance defined in Sz\u00e9kely and Rizzo (2013). Specifically, a dissimilarity matrix is formed using the energy distance statistic to measure separation between the finite dimensional distributions for the component time series. Once the pairwise dissimilarity matrix is calculated, a hierarchical clustering method is then applied to obtain the dendrogram. This procedure is completely nonparametric as the dissimilarities between stationary distributions are directly calculated without making any model assumptions. In order to justify this procedure, asymptotic properties of the energy distance estimates are derived for general stationary and ergodic time series. The method is illustrated in a simulation study for various component time series that are either linear or nonlinear. Finally the methodology is applied to two examples; one involves GDP of selected countries and the other is population size of various states in the U.S.A. in the years 1900 -1999.",
+    "url": "https://arxiv.org/abs/2303.14295",
+    "published": "2023-03-24",
+    "categories": [
+      "cs.AI",
+      "cs.LG"
+    ]
+  },
+  "2411.14961": {
+    "arxiv_id": "2411.14961",
+    "title": "LoRA-FAIR: Federated LoRA Fine-Tuning with Aggregation and Initialization Refinement",
+    "authors": [
+      "Jieming Bian",
+      "Lei Wang",
+      "Letian Zhang",
+      "Jie Xu"
+    ],
+    "summary": "Foundation models (FMs) achieve strong performance across diverse tasks with task-specific fine-tuning, yet full parameter fine-tuning is often computationally prohibitive for large models. Parameter-efficient fine-tuning (PEFT) methods like Low-Rank Adaptation (LoRA) reduce this cost by introducing low-rank matrices for tuning fewer parameters. While LoRA allows for efficient fine-tuning, it requires significant data for adaptation, making Federated Learning (FL) an appealing solution due to its privacy-preserving collaborative framework. However, combining LoRA with FL introduces two key challenges: the \\textbf{Server-Side Aggregation Bias}, where server-side averaging of LoRA matrices diverges from the ideal global update, and the \\textbf{Client-Side Initialization Lag}, emphasizing the need for consistent initialization across rounds. Existing approaches address these challenges individually, limiting their effectiveness. We propose LoRA-FAIR, a novel method that tackles both issues by introducing a correction term on the server, enhancing aggregation efficiency and accuracy. LoRA-FAIR maintains computational and communication efficiency, yielding superior performance over state-of-the-art methods. Experimental results on ViT and MLP-Mixer models across large-scale datasets demonstrate that LoRA-FAIR consistently achieves performance improvements in FL settings.",
+    "url": "https://arxiv.org/abs/2411.14961",
+    "published": "2024-11-22",
+    "categories": [
+      "cs.AI",
+      "cs.LG"
+    ]
+  },
+  "2607.11940": {
+    "arxiv_id": "2607.11940",
+    "title": "CARE-LoRA: Compressed Activation REconstruction for Memory-Efficient LoRA",
+    "authors": [
+      "Gengyu Zhang",
+      "Haiyin Ran",
+      "Zhengbao He",
+      "Yuhang Liu",
+      "Hanling Tian",
+      "Zhehao Huang",
+      "Xiaolin Huang"
+    ],
+    "summary": "As the scale of large pre-trained models continues to grow, fine-tuning them under limited memory budgets has become increasingly challenging. Low-Rank Adaptation (LoRA), currently one of the most widely adopted parameter-efficient fine-tuning (PEFT) methods, mitigates this challenge by optimizing only low-rank adaptation matrices, thereby greatly reducing the number of trainable parameters. With the parameter overhead substantially reduced, the activations retained for backpropagation have emerged as the primary remaining memory bottleneck during LoRA fine-tuning. To address this, we propose CARE-LoRA, a data-aware Compressed Activation REconstruction framework. By exploiting the inherent projection structure of LoRA, CARE-LoRA replaces the full input activation with the low-rank compressed activation naturally produced by the LoRA branch. It further computes a lightweight reconstruction matrix during the forward pass with negligible additional computation cost, which is used during backpropagation to reconstruct the gradient signal, thereby keeping LoRA matrices fully trainable. Extensive experiments across diverse models and downstream tasks demonstrate that, while substantially reducing the overall memory footprint, CARE-LoRA achieves competitive or even superior performance compared with standard LoRA and representative LoRA variants. Our code is publicly available at https://github.com/fishandyu/CARE-LoRA .",
+    "url": "https://arxiv.org/abs/2607.11940",
+    "published": "2026-07-11",
+    "categories": [
+      "cs.AI",
+      "cs.LG"
+    ]
+  },
+  "2410.20625": {
+    "arxiv_id": "2410.20625",
+    "title": "LoRA Done RITE: Robust Invariant Transformation Equilibration for LoRA Optimization",
+    "authors": [
+      "Jui-Nan Yen",
+      "Si Si",
+      "Zhao Meng",
+      "Felix Yu",
+      "Sai Surya Duvvuri",
+      "Inderjit S. Dhillon",
+      "Cho-Jui Hsieh",
+      "Sanjiv Kumar"
+    ],
+    "summary": "Low-rank adaption (LoRA) is a widely used parameter-efficient finetuning method for LLM that reduces memory requirements. However, current LoRA optimizers lack transformation invariance, meaning the actual updates to the weights depends on how the two LoRA factors are scaled or rotated. This deficiency leads to inefficient learning and sub-optimal solutions in practice. This paper introduces LoRA-RITE, a novel adaptive matrix preconditioning method for LoRA optimization, which can achieve transformation invariance and remain computationally efficient. We provide theoretical analysis to demonstrate the benefit of our method and conduct experiments on various LLM tasks with different models including Gemma 2B, 7B, and mT5-XXL. The results demonstrate consistent improvements against existing optimizers. For example, replacing Adam with LoRA-RITE during LoRA fine-tuning of Gemma-2B yielded 4.6\\% accuracy gain on Super-Natural Instructions and 3.5\\% accuracy gain across other four LLM benchmarks (HellaSwag, ArcChallenge, GSM8K, OpenBookQA).",
+    "url": "https://arxiv.org/abs/2410.20625",
+    "published": "2024-10-27",
+    "categories": [
+      "cs.AI",
+      "cs.LG"
+    ]
+  },
+  "2506.20629": {
+    "arxiv_id": "2506.20629",
+    "title": "PLoP: Precise LoRA Placement for Efficient Finetuning of Large Models",
+    "authors": [
+      "Soufiane Hayou",
+      "Nikhil Ghosh",
+      "Bin Yu"
+    ],
+    "summary": "Low-Rank Adaptation (LoRA) is a widely used finetuning method for large models. Its small memory footprint allows practitioners to adapt large models to specific tasks at a fraction of the cost of full finetuning. Different modifications have been proposed to enhance its efficiency by, for example, setting the learning rate, the rank, and the initialization. Another improvement axis is adapter placement strategy: when using LoRA, practitioners usually pick module types to adapt with LoRA, such as Query and Key modules. Few works have studied the problem of adapter placement, with nonconclusive results: original LoRA paper suggested placing adapters in attention modules, while other works suggested placing them in the MLP modules. Through an intuitive theoretical analysis, we introduce PLoP (Precise LoRA Placement), a lightweight method that allows automatic identification of module types where LoRA adapters should be placed, given a pretrained model and a finetuning task. We demonstrate that PLoP consistently outperforms, and in the worst case competes, with commonly used placement strategies through comprehensive experiments on supervised finetuning and reinforcement learning for reasoning.",
+    "url": "https://arxiv.org/abs/2506.20629",
+    "published": "2025-06-25",
+    "categories": [
+      "cs.AI",
+      "cs.LG"
+    ]
+  },
+  "2403.14572": {
+    "arxiv_id": "2403.14572",
+    "title": "Implicit Style-Content Separation using B-LoRA",
+    "authors": [
+      "Yarden Frenkel",
+      "Yael Vinker",
+      "Ariel Shamir",
+      "Daniel Cohen-Or"
+    ],
+    "summary": "Image stylization involves manipulating the visual appearance and texture (style) of an image while preserving its underlying objects, structures, and concepts (content). The separation of style and content is essential for manipulating the image's style independently from its content, ensuring a harmonious and visually pleasing result. Achieving this separation requires a deep understanding of both the visual and semantic characteristics of images, often necessitating the training of specialized models or employing heavy optimization. In this paper, we introduce B-LoRA, a method that leverages LoRA (Low-Rank Adaptation) to implicitly separate the style and content components of a single image, facilitating various image stylization tasks. By analyzing the architecture of SDXL combined with LoRA, we find that jointly learning the LoRA weights of two specific blocks (referred to as B-LoRAs) achieves style-content separation that cannot be achieved by training each B-LoRA independently. Consolidating the training into only two blocks and separating style and content allows for significantly improving style manipulation and overcoming overfitting issues often associated with model fine-tuning. Once trained, the two B-LoRAs can be used as independent components to allow various image stylization tasks, including image style transfer, text-based image stylization, consistent style generation, and style-content mixing.",
+    "url": "https://arxiv.org/abs/2403.14572",
+    "published": "2024-03-21",
+    "categories": [
+      "cs.AI",
+      "cs.LG"
+    ]
+  },
+  "1512.00242": {
+    "arxiv_id": "1512.00242",
+    "title": "Towards Dropout Training for Convolutional Neural Networks",
+    "authors": [
+      "Haibing Wu",
+      "Xiaodong Gu"
+    ],
+    "summary": "Recently, dropout has seen increasing use in deep learning. For deep convolutional neural networks, dropout is known to work well in fully-connected layers. However, its effect in convolutional and pooling layers is still not clear. This paper demonstrates that max-pooling dropout is equivalent to randomly picking activation based on a multinomial distribution at training time. In light of this insight, we advocate employing our proposed probabilistic weighted pooling, instead of commonly used max-pooling, to act as model averaging at test time. Empirical evidence validates the superiority of probabilistic weighted pooling. We also empirically show that the effect of convolutional dropout is not trivial, despite the dramatically reduced possibility of over-fitting due to the convolutional architecture. Elaborately designing dropout training simultaneously in max-pooling and fully-connected layers, we achieve state-of-the-art performance on MNIST, and very competitive results on CIFAR-10 and CIFAR-100, relative to other approaches without data augmentation. Finally, we compare max-pooling dropout and stochastic pooling, both of which introduce stochasticity based on multinomial distributions at pooling stage.",
+    "url": "https://arxiv.org/abs/1512.00242",
+    "published": "2015-12-01",
+    "categories": [
+      "cs.AI",
+      "cs.LG"
+    ]
+  },
+  "2205.13273": {
+    "arxiv_id": "2205.13273",
+    "title": "Acute Lymphoblastic Leukemia Detection Using Hypercomplex-Valued Convolutional Neural Networks",
+    "authors": [
+      "Guilherme Vieira",
+      "Marcos Eduardo Valle"
+    ],
+    "summary": "This paper features convolutional neural networks defined on hypercomplex algebras applied to classify lymphocytes in blood smear digital microscopic images. Such classification is helpful for the diagnosis of acute lymphoblast leukemia (ALL), a type of blood cancer. We perform the classification task using eight hypercomplex-valued convolutional neural networks (HvCNNs) along with real-valued convolutional networks. Our results show that HvCNNs perform better than the real-valued model, showcasing higher accuracy with a much smaller number of parameters. Moreover, we found that HvCNNs based on Clifford algebras processing HSV-encoded images attained the highest observed accuracies. Precisely, our HvCNN yielded an average accuracy rate of 96.6% using the ALL-IDB2 dataset with a 50% train-test split, a value extremely close to the state-of-the-art models but using a much simpler architecture with significantly fewer parameters.",
+    "url": "https://arxiv.org/abs/2205.13273",
+    "published": "2022-05-26",
+    "categories": [
+      "cs.AI",
+      "cs.LG"
+    ]
+  },
+  "2306.14753": {
+    "arxiv_id": "2306.14753",
+    "title": "The Deep Arbitrary Polynomial Chaos Neural Network or how Deep Artificial Neural Networks could benefit from Data-Driven Homogeneous Chaos Theory",
+    "authors": [
+      "Sergey Oladyshkin",
+      "Timothy Praditia",
+      "Ilja Kr\u00f6ker",
+      "Farid Mohammadi",
+      "Wolfgang Nowak",
+      "Sebastian Otte"
+    ],
+    "summary": "Artificial Intelligence and Machine learning have been widely used in various fields of mathematical computing, physical modeling, computational science, communication science, and stochastic analysis. Approaches based on Deep Artificial Neural Networks (DANN) are very popular in our days. Depending on the learning task, the exact form of DANNs is determined via their multi-layer architecture, activation functions and the so-called loss function. However, for a majority of deep learning approaches based on DANNs, the kernel structure of neural signal processing remains the same, where the node response is encoded as a linear superposition of neural activity, while the non-linearity is triggered by the activation functions. In the current paper, we suggest to analyze the neural signal processing in DANNs from the point of view of homogeneous chaos theory as known from polynomial chaos expansion (PCE). From the PCE perspective, the (linear) response on each node of a DANN could be seen as a $1^{st}$ degree multi-variate polynomial of single neurons from the previous layer, i.e. linear weighted sum of monomials. From this point of view, the conventional DANN structure relies implicitly (but erroneously) on a Gaussian distribution of neural signals. Additionally, this view revels that by design DANNs do not necessarily fulfill any orthogonality or orthonormality condition for a majority of data-driven applications. Therefore, the prevailing handling of neural signals in DANNs could lead to redundant representation as any neural signal could contain some partial information from other neural signals. To tackle that challenge, we suggest to employ the data-driven generalization of PCE theory known as arbitrary polynomial chaos (aPC) to construct a corresponding multi-variate orthonormal representations on each node of a DANN to obtain Deep arbitrary polynomial chaos neural networks.",
+    "url": "https://arxiv.org/abs/2306.14753",
+    "published": "2023-06-26",
+    "categories": [
+      "cs.AI",
+      "cs.LG"
+    ]
+  },
+  "1901.06610": {
+    "arxiv_id": "1901.06610",
+    "title": "Hierarchical Attentional Hybrid Neural Networks for Document Classification",
+    "authors": [
+      "Jader Abreu",
+      "Luis Fred",
+      "David Mac\u00eado",
+      "Cleber Zanchettin"
+    ],
+    "summary": "Document classification is a challenging task with important applications. The deep learning approaches to the problem have gained much attention recently. Despite the progress, the proposed models do not incorporate the knowledge of the document structure in the architecture efficiently and not take into account the contexting importance of words and sentences. In this paper, we propose a new approach based on a combination of convolutional neural networks, gated recurrent units, and attention mechanisms for document classification tasks. The main contribution of this work is the use of convolution layers to extract more meaningful, generalizable and abstract features by the hierarchical representation. The proposed method in this paper improves the results of the current attention-based approaches for document classification.",
+    "url": "https://arxiv.org/abs/1901.06610",
+    "published": "2019-01-20",
+    "categories": [
+      "cs.AI",
+      "cs.LG"
+    ]
+  },
+  "1603.06759": {
+    "arxiv_id": "1603.06759",
+    "title": "Convolution in Convolution for Network in Network",
+    "authors": [
+      "Yanwei Pang",
+      "Manli Sun",
+      "Xiaoheng Jiang",
+      "Xuelong Li"
+    ],
+    "summary": "Network in Netwrok (NiN) is an effective instance and an important extension of Convolutional Neural Network (CNN) consisting of alternating convolutional layers and pooling layers. Instead of using a linear filter for convolution, NiN utilizes shallow MultiLayer Perceptron (MLP), a nonlinear function, to replace the linear filter. Because of the powerfulness of MLP and $ 1\\times 1 $ convolutions in spatial domain, NiN has stronger ability of feature representation and hence results in better recognition rate. However, MLP itself consists of fully connected layers which give rise to a large number of parameters. In this paper, we propose to replace dense shallow MLP with sparse shallow MLP. One or more layers of the sparse shallow MLP are sparely connected in the channel dimension or channel-spatial domain. The proposed method is implemented by applying unshared convolution across the channel dimension and applying shared convolution across the spatial dimension in some computational layers. The proposed method is called CiC. Experimental results on the CIFAR10 dataset, augmented CIFAR10 dataset, and CIFAR100 dataset demonstrate the effectiveness of the proposed CiC method.",
+    "url": "https://arxiv.org/abs/1603.06759",
+    "published": "2016-03-22",
+    "categories": [
+      "cs.AI",
+      "cs.LG"
+    ]
+  },
+  "gr-qc/9810059": {
+    "arxiv_id": "gr-qc/9810059",
+    "title": "Space-time distributions",
+    "authors": [
+      "Mihaela Time"
+    ],
+    "summary": "The space-time foliation Sigma compatible with the gravitational field g on a 4-manifold M determines a fibration pi of M, pi : M -> N is a surjective submersion over the 1-dimensional leaves space N. M is then written as a disjoint union of the leaves of Sigma, which are 3-dimensional spacelike surfaces on M. The decomposition, TM=Sigma + T^0 M, also implies that we can define a lift of the curves on N to curves (non-spacelike) on M. The stable causality condition M coincides with Sigma being a causal space-time distribution, generated by an exact timelike 1-form omega^0 = dt where t is some real function on M. In this case M is written as a disjoint union of a family of spacelike 3-surfaces of constant t, which cover D^+(S) of a initial 3-surface S of M.",
+    "url": "https://arxiv.org/abs/gr-qc/9810059",
+    "published": "1998-10-18",
+    "categories": [
+      "cs.AI",
+      "cs.LG"
+    ]
+  },
+  "1906.05264": {
+    "arxiv_id": "1906.05264",
+    "title": "GluonTS: Probabilistic Time Series Models in Python",
+    "authors": [
+      "Alexander Alexandrov",
+      "Konstantinos Benidis",
+      "Michael Bohlke-Schneider",
+      "Valentin Flunkert",
+      "Jan Gasthaus",
+      "Tim Januschowski",
+      "Danielle C. Maddix",
+      "Syama Rangapuram",
+      "David Salinas",
+      "Jasper Schulz",
+      "Lorenzo Stella",
+      "Ali Caner T\u00fcrkmen",
+      "Yuyang Wang"
+    ],
+    "summary": "We introduce Gluon Time Series (GluonTS, available at https://gluon-ts.mxnet.io), a library for deep-learning-based time series modeling. GluonTS simplifies the development of and experimentation with time series models for common tasks such as forecasting or anomaly detection. It provides all necessary components and tools that scientists need for quickly building new models, for efficiently running and analyzing experiments and for evaluating model accuracy.",
+    "url": "https://arxiv.org/abs/1906.05264",
+    "published": "2019-06-12",
+    "categories": [
+      "cs.AI",
+      "cs.LG"
+    ]
+  },
+  "2208.09300": {
+    "arxiv_id": "2208.09300",
+    "title": "Expressing Multivariate Time Series as Graphs with Time Series Attention Transformer",
+    "authors": [
+      "William T. Ng",
+      "K. Siu",
+      "Albert C. Cheung",
+      "Michael K. Ng"
+    ],
+    "summary": "A reliable and efficient representation of multivariate time series is crucial in various downstream machine learning tasks. In multivariate time series forecasting, each variable depends on its historical values and there are inter-dependencies among variables as well. Models have to be designed to capture both intra- and inter-relationships among the time series. To move towards this goal, we propose the Time Series Attention Transformer (TSAT) for multivariate time series representation learning. Using TSAT, we represent both temporal information and inter-dependencies of multivariate time series in terms of edge-enhanced dynamic graphs. The intra-series correlations are represented by nodes in a dynamic graph; a self-attention mechanism is modified to capture the inter-series correlations by using the super-empirical mode decomposition (SMD) module. We applied the embedded dynamic graphs to times series forecasting problems, including two real-world datasets and two benchmark datasets. Extensive experiments show that TSAT clearly outerperforms six state-of-the-art baseline methods in various forecasting horizons. We further visualize the embedded dynamic graphs to illustrate the graph representation power of TSAT. We share our code at https://github.com/RadiantResearch/TSAT.",
+    "url": "https://arxiv.org/abs/2208.09300",
+    "published": "2022-08-19",
+    "categories": [
+      "cs.AI",
+      "cs.LG"
+    ]
+  },
+  "1010.3362": {
+    "arxiv_id": "1010.3362",
+    "title": "A pointwise ergodic theorem for Fuchsian groups",
+    "authors": [
+      "Alexander I. Bufetov",
+      "Caroline Series"
+    ],
+    "summary": "We use Series' Markovian coding for words in Fuchsian groups and the Bowen-Series coding of limit sets to prove an ergodic theorem for Cesaro averages of spherical averages in a Fuchsian group.",
+    "url": "https://arxiv.org/abs/1010.3362",
+    "published": "2010-10-16",
+    "categories": [
+      "cs.AI",
+      "cs.LG"
+    ]
+  },
+  "1903.06254": {
+    "arxiv_id": "1903.06254",
+    "title": "Demonstration of Vector Flow Imaging using Convolutional Neural Networks",
+    "authors": [
+      "Thomas Robins",
+      "Antonio Stanziola",
+      "Kai Reimer",
+      "Peter Weinberg",
+      "Meng-Xing Tang"
+    ],
+    "summary": "Synthetic Aperture Vector Flow Imaging (SA-VFI) can visualize complex cardiac and vascular blood flow patterns at high temporal resolution with a large field of view. Convolutional neural networks (CNNs) are commonly used in image and video recognition and classification. However, most recently presented CNNs also allow for making per-pixel predictions as needed in optical flow velocimetry. To our knowledge we demonstrate here for the first time a CNN architecture to produce 2D full flow field predictions from high frame rate SA ultrasound images using supervised learning. The CNN was initially trained using CFD-generated and augmented noiseless SA ultrasound data of a realistic vessel geometry. Subsequently, a mix of noisy simulated and real \\textit{in vivo} acquisitions were added to increase the network's robustness. The resulting flow field of the CNN resembled the ground truth accurately with an endpoint-error percentage between 6.5\\% to 14.5\\%. Furthermore, when confronted with an unknown geometry of an arterial bifurcation, the CNN was able to predict an accurate flow field indicating its ability for generalization. Remarkably, the CNN also performed well for rotational flows, which usually requires advanced, computationally intensive VFI methods. We have demonstrated that convolutional neural networks can be used to estimate complex multidirectional flow.",
+    "url": "https://arxiv.org/abs/1903.06254",
+    "published": "2019-03-11",
+    "categories": [
+      "cs.AI",
+      "cs.LG"
+    ]
+  },
+  "2203.10596": {
+    "arxiv_id": "2203.10596",
+    "title": "Towards Clinical Practice: Design and Implementation of Convolutional Neural Network-Based Assistive Diagnosis System for COVID-19 Case Detection from Chest X-Ray Images",
+    "authors": [
+      "Daniel Kvak",
+      "Marian Bendik",
+      "Anna Chromcova"
+    ],
+    "summary": "One of the critical tools for early detection and subsequent evaluation of the incidence of lung diseases is chest radiography. This study presents a real-world implementation of a convolutional neural network (CNN) based Carebot Covid app to detect COVID-19 from chest X-ray (CXR) images. Our proposed model takes the form of a simple and intuitive application. Used CNN can be deployed as a STOW-RS prediction endpoint for direct implementation into DICOM viewers. The results of this study show that the deep learning model based on DenseNet and ResNet architecture can detect SARS-CoV-2 from CXR images with precision of 0.981, recall of 0.962 and AP of 0.993.",
+    "url": "https://arxiv.org/abs/2203.10596",
+    "published": "2022-03-20",
+    "categories": [
+      "cs.AI",
+      "cs.LG"
+    ]
+  },
+  "2601.09933": {
+    "arxiv_id": "2601.09933",
+    "title": "Malware Classification using Diluted Convolutional Neural Network with Fast Gradient Sign Method",
+    "authors": [
+      "Ashish Anand",
+      "Bhupendra Singh",
+      "Sunil Khemka",
+      "Bireswar Banerjee",
+      "Vishi Singh Bhatia",
+      "Piyush Ranjan"
+    ],
+    "summary": "Android malware has become an increasingly critical threat to organizations, society and individuals, posing significant risks to privacy, data security and infrastructure. As malware continues to evolve in terms of complexity and sophistication, the mitigation and detection of these malicious software instances have become more time consuming and challenging particularly due to the requirement of large number of features to identify potential malware. To address these challenges, this research proposes Fast Gradient Sign Method with Diluted Convolutional Neural Network (FGSM DICNN) method for malware classification. DICNN contains diluted convolutions which increases receptive field, enabling the model to capture dispersed malware patterns across long ranges using fewer features without adding parameters. Additionally, the FGSM strategy enhance the accuracy by using one-step perturbations during training that provides more defensive advantage of lower computational cost. This integration helps to manage high classification accuracy while reducing the dependence on extensive feature sets. The proposed FGSM DICNN model attains 99.44% accuracy while outperforming other existing approaches such as Custom Deep Neural Network (DCNN).",
+    "url": "https://arxiv.org/abs/2601.09933",
+    "published": "2026-01-14",
+    "categories": [
+      "cs.AI",
+      "cs.LG"
+    ]
+  },
+  "1906.01054": {
+    "arxiv_id": "1906.01054",
+    "title": "Deep 3D Convolutional Neural Network for Automated Lung Cancer Diagnosis",
+    "authors": [
+      "Sumita Mishra",
+      "Naresh Kumar Chaudhary",
+      "Pallavi Asthana",
+      "Anil Kumar"
+    ],
+    "summary": "Computer Aided Diagnosis has emerged as an indispensible technique for validating the opinion of radiologists in CT interpretation. This paper presents a deep 3D Convolutional Neural Network (CNN) architecture for automated CT scan-based lung cancer detection system. It utilizes three dimensional spatial information to learn highly discriminative 3 dimensional features instead of 2D features like texture or geometric shape whick need to be generated manually. The proposed deep learning method automatically extracts the 3D features on the basis of spatio-temporal statistics.The developed model is end-to-end and is able to predict malignancy of each voxel for given input scan. Simulation results demonstrate the effectiveness of proposed 3D CNN network for classification of lung nodule in-spite of limited computational capabilities.",
+    "url": "https://arxiv.org/abs/1906.01054",
+    "published": "2019-05-04",
+    "categories": [
+      "cs.AI",
+      "cs.LG"
+    ]
+  },
+  "2104.00035": {
+    "arxiv_id": "2104.00035",
+    "title": "Strengthening the Training of Convolutional Neural Networks By Using Walsh Matrix",
+    "authors": [
+      "Tamer \u00d6lmez",
+      "Z\u00fcmray Dokur"
+    ],
+    "summary": "DNN structures are continuously developing and achieving high performances in classification problems. Also, it is observed that success rates obtained with DNNs are higher than those obtained with traditional neural networks. In addition, one of the advantages of DNNs is that there is no need to spend an extra effort to determine the features; the CNN automatically extracts the features from the dataset during the training. Besides their benefits, the DNNs have the following three major drawbacks among the others: (i) Researchers have struggled with over-fitting and under-fitting issues in the training of DNNs, (ii) determination of even a coarse structure for the DNN may take days, and (iii) most of the time, the proposed network structure is too large to be too bulky to be used in real time applications. We have modified the training and structure of DNN to increase the classification performance, to decrease the number of nodes in the structure, and to be used with less number of hyper parameters. A minimum distance network (MDN) following the last layer of the convolutional neural network (CNN) is used as the classifier instead of a fully connected neural network (FCNN). In order to strengthen the training of the CNN, we suggest employing Walsh function. We tested the performances of the proposed DNN (named as DivFE) on the classification of ECG, EEG, heart sound, detection pneumonia in X-ray chest images, detection of BGA solder defects, and patterns of benchmark datasets (MNIST, IRIS, CIFAR10 and CIFAR20). In different areas, it has been observed that a higher classification performance was obtained by using the DivFE with less number of nodes.",
+    "url": "https://arxiv.org/abs/2104.00035",
+    "published": "2021-03-31",
+    "categories": [
+      "cs.AI",
+      "cs.LG"
+    ]
+  },
+  "2609.10479": {
+    "arxiv_id": "2609.10479",
+    "title": "Deep Learning-Based Detection of Electrical Faults and Power Quality Disturbances in Aerospace Power Systems",
+    "authors": [
+      "Ian C. Guzm\u00e1n",
+      "Radu Babiceanu",
+      "Berker Pek\u00f6z"
+    ],
+    "summary": "More Electric Aircraft require fast and reliable monitoring of high-frequency electrical networks, yet most power quality disturbance and fault diagnosis methods are developed for conventional 50 or 60 Hz grids. This work presents a hardware-aware deep learning framework for multiclass detection of electrical faults and power quality disturbances in a 400 Hz aerospace power system. A high-fidelity simulation model inspired by the Boeing 787 electrical architecture generates voltage and current waveforms for 21 normal, disturbance, switching, open-circuit, and short-circuit conditions. Two datasets, each containing 73,500 samples, are formed from one-dimensional time-series signals and short-time Fourier transform time-frequency representations. Signal-processing augmentation, domain randomization, and class-specific generative adversarial networks increase waveform diversity, and the time-series dataset is released through IEEE DataPort. We compare 1D and 2D convolutional neural networks, long short-term memory networks, CNN-LSTM hybrids, ResNet, MobileNet, and VGG models under common training conditions. A compact ResNet provides the best accuracy-complexity tradeoff, achieving 96.94 percent software test accuracy with 175,685 parameters. After 8-bit quantization and deployment on a Xilinx Zynq UltraScale Plus MPSoC ZCU102, the model achieves 95.87 percent accuracy and a measured mean neural-network accelerator latency of 6.90 ms per input record. The results establish simulation-based, accelerator-level feasibility for embedded edge AI in aircraft electrical health monitoring and motivate future end-to-end data acquisition and experimental validation.",
+    "url": "https://arxiv.org/abs/2609.10479",
+    "published": "2026-09-09",
+    "categories": [
+      "cs.AI",
+      "cs.LG"
+    ]
+  },
+  "2609.10357": {
+    "arxiv_id": "2609.10357",
+    "title": "A Later Test Set Is Not a New Domain: Pretraining Familiarity Survives a Contamination-Free Hold-Out",
+    "authors": [
+      "Mahdi Naser Moghadasi",
+      "Faezeh Ghaderi"
+    ],
+    "summary": "Time-series foundation models are evaluated almost exclusively on public archives that predate them, so a strong score cannot be separated from having seen the test set during pretraining. The obvious remedy is a hold-out that postdates the models. We build one: thirteen forecasters -- four classical, three trained per dataset, six pretrained -- on seven groups drawn from five domains, every observation published after the last model was released, and every dataset rebuildable without an API key. Under this protocol pretrained models win 5 of 7 groups, lose one to a Theta baseline, and on daily exchange rates are indistinguishable from a seasonal naive forecast, along with every other method tested. We then ask what separates the wins from the losses, and report a negative result: the two intrinsic properties one would reach for -- seasonal strength and spectral entropy, measured on the input window -- do not account for the pattern, and seasonal strength is if anything negatively associated with the advantage. What does track it is corpus familiarity. Our largest gain (28% lower MASE than the best classical method, on weekly Wikipedia pageviews) falls on Wikipedia pageviews, the domain TimesFM's authors describe as the bulk of its pretraining corpus, at the same granularities and differing only in time window. Within the pretrained family, where every model forecasts identical series so that series difficulty cancels, the TimesFM family outranks the Chronos family by -0.53 ranks on Wikipedia against -0.09 everywhere else (1,500 vs. 754 series, Mann-Whitney p < 1e-5). We conclude that a temporal hold-out removes memorisation of a window but not familiarity with a domain, that benchmarks therefore need domain hold-outs stated relative to disclosed corpora, and that the practitioner's question is less which model is better than whether their domain is one the model was raised on.",
+    "url": "https://arxiv.org/abs/2609.10357",
+    "published": "2026-09-09",
+    "categories": [
+      "cs.AI",
+      "cs.LG"
+    ]
+  },
+  "2609.09586": {
+    "arxiv_id": "2609.09586",
+    "title": "Distillation of Synthetic Data for Time Series Foundation Models",
+    "authors": [
+      "Niloy Biswas",
+      "Noureddine El Karoui"
+    ],
+    "summary": "Time series foundation models (TSFMs) are increasingly pre-trained on synthetically generated time series trajectories, where the data generating process is known. Current pre-training recipes are based on loss objectives which compare TSFM outputs to realized future values of each trajectory. We instead propose loss objectives which compare TSFM outputs to the conditional forecast distribution of each trajectory, a procedure we call synthetic data distillation (SDD). SDD corresponds to a Rao-Blackwellization of the training objective, in that it leaves the expectation of stochastic gradients unchanged while provably reducing the covariance of the stochastic gradient under the Loewner partial ordering. We empirically validate SDD on a TSFM model family of sizes from $4$M to $2.5$B parameters, and observe faster convergence of validation loss at every model size: on Gaussian Process data, SDD attains or improves upon the Status Quo loss whilst requiring $10\\%-40\\%$ less training iterations.",
+    "url": "https://arxiv.org/abs/2609.09586",
+    "published": "2026-09-09",
+    "categories": [
+      "cs.AI",
+      "cs.LG"
+    ]
+  },
+  "2609.09140": {
+    "arxiv_id": "2609.09140",
+    "title": "NOAH: Learning the Full Patient Journey. A Longitudinal Multimodal Time-Aware Model for Representation and Forecasting",
+    "authors": [
+      "Tobias Susetzky",
+      "Raphael Rehms",
+      "Dmitrii Seletkov",
+      "\u00d6zg\u00fcn Turgut",
+      "Michelle Espranita Liman",
+      "Lisa Steinhelfer",
+      "Rickmer Braren",
+      "Daniel Rueckert"
+    ],
+    "summary": "The digitization of healthcare has generated vast, longitudinal, and multimodal patient records over a lifetime, yet fully exploiting these data to represent and predict patient state trajectories remains a critical challenge. Current AI models often struggle to capture the complex, irregular temporal dynamics and inherent stochasticity of real-world multimodal patient data. Existing AI approaches for modeling longitudinal patient records are predominantly discriminative, limited to a few modalities, constrained by closed categorical vocabularies, treating time as a monotonic inductive bias, or they are limited in forecasting future patient states. We introduce NOAH, a time-aware, task-agnostic, generative transformer model representing and forecasting the full multimodal patient journey. NOAH features a novel bidirectional time integration and a variational latent space to capture the continuous evolution of patient states and the stochasticity of clinical trajectories. Built from over 559 million clinical events from 431,000 hospital visits of 299,000 patients across the MIMIC dataset family, NOAH natively processes medical images, time-series and numeric signals, categorical events, as well as structured and unstructured clinical records. NOAH is the first truly holistic generative model in its field, enabling autoregressive forecasting with optional time control, zero-shot classification, and counterfactual intervention simulation. It generates highly informative and predictive patient state representations that demonstrate strong performance in probing for clinical outcomes, 15 ICD chapters, and 29 comorbidities, as well as in time-to-event prediction. Seamlessly handling diverse modalities and complex temporal dynamics, NOAH provides a versatile, task-agnostic, scalable foundation for intelligent predictive systems in personalized clinical care and digital medicine.",
+    "url": "https://arxiv.org/abs/2609.09140",
+    "published": "2026-09-08",
+    "categories": [
+      "cs.AI",
+      "cs.LG"
+    ]
+  },
+  "2609.09062": {
+    "arxiv_id": "2609.09062",
+    "title": "Multi-Task Learning for Sparsely-Labeled Time Series: A Case Study on Cold-Hardiness Modeling",
+    "authors": [
+      "Aseem Saxena",
+      "Paola Pes\u00e1ntez-Cabrera",
+      "Jonathan Magby",
+      "Markus Keller",
+      "Alan Fern"
+    ],
+    "summary": "We present a real-world case study of multi-task learning (MTL) for temporal process modeling from limited data with temporally sparse labels. Specifically, we investigate multi-task learning for the important agricultural problem of predicting grape cold hardiness, which is the temperature at which lethal freezing occurs. Cold hardiness changes in response to weather and is difficult to measure directly in the field. Thus, growers rely on predictions to decide when to apply costly frost mitigation measures. We apply recurrent neural networks (RNNs) for daily cold-hardiness prediction from time series weather data. A major challenge is that the cold hardiness response varies across plant cultivars and ground-truth data for each cultivar is temporally sparse and limited. To address this challenge, we investigate multi-task learning (MTL) approaches for combining data, where different tasks correspond to different cultivars. We develop a variety of MTL architectures and evaluate them in both MTL and transfer learning settings. Our results show significant differences between architectures and that certain architectures are able to consistently outperform single-task learning and state-of-the-art scientific models. Additionally, we show similar results for the qualitatively different, but related, task of budbreak prediction. Further, improved accuracy for budbreak and cold hardiness is achieved by a single MTL model that simultaneously learns both tasks.",
+    "url": "https://arxiv.org/abs/2609.09062",
+    "published": "2026-09-08",
+    "categories": [
+      "cs.AI",
+      "cs.LG"
+    ]
+  },
+  "2607.08186": {
+    "arxiv_id": "2607.08186",
+    "title": "Hidden Decoding at Scale: Latent Computation Scaling for Large Language Models",
+    "authors": [
+      "Aiwei Liu",
+      "Cheng Shi",
+      "Chuhan Wu",
+      "Ci Lei",
+      "Di Lu",
+      "Donald He",
+      "Fan Zhang",
+      "Fanhao Kong",
+      "Feifei Zhang",
+      "Guan Wang",
+      "Haicheng Wang",
+      "Haoyu Liu",
+      "Houjin Yu",
+      "Jiachen Ding",
+      "Jiayi Feng",
+      "Jie Zhou",
+      "Jijun Chi",
+      "Jindi Shi",
+      "Jing Lei",
+      "Junjie Zhang",
+      "Laiyi Li",
+      "Le Tian",
+      "Linhao Zhang",
+      "Miao Fan",
+      "Sijun Zhang",
+      "Wei Jia",
+      "Weiwei Shi",
+      "Wenhan Li",
+      "Wentao Zhao",
+      "Wenteng Liang",
+      "Xiao Zhou",
+      "Xiaojin Zhou",
+      "Xihuai Wang",
+      "Xinyu Gao",
+      "Xuanliang Wang",
+      "Xuyang Ao",
+      "Yang Yu",
+      "Yangxiu You",
+      "Yinuo Zhao",
+      "Yufei Kuang",
+      "Yufei Wang",
+      "Yuan Liu",
+      "Yuan Liu",
+      "Yuwen Chen",
+      "Zhencong Tian",
+      "Zhongyin Zhao",
+      "Zilin Yu",
+      "Zitao Wang"
+    ],
+    "summary": "Scaling Large Language Models (LLMs) has been driven mainly by enlarging the Transformer backbone, but for an already-strong model this requires another round of costly pretraining. We study whether an existing backbone can keep improving by allocating more computation to each token while leaving the Transformer backbone fixed. Depth-recurrent (looped) Transformers pursue this goal but are hard to scale, because looped computation does not fit naturally with the pipeline parallelism used to train the largest models. We add computation along the sequence-length dimension, where the extra computation is simply a longer input and stays compatible with standard large-model training. We propose Hidden Decoding, a sequence-length scaling method applied during continued pretraining (CPT). It expands each token into n streams with independent embedding tables and keeps the intermediate streams' key-value cache as context, so each token performs more internal computation without adding or widening Transformer layers. To keep this affordable at scale, we introduce Stream-Factorized Attention, in which most layers attend only within each stream and only a few layers mix across streams, reducing the attention cost from quadratic to roughly linear in n. Experiments support two scaling results. At frontier scale, we train WeLM-HD4-80B and WeLM-HD4-617B at n=4 and improve their matched non-HD baselines, making Hidden Decoding the first demonstrated sequence-length scaling method at the 100B+ MoE scale. Across expansion factors, the gains grow as n increases, showing that sequence-length expansion is a practical fixed-backbone scaling path for frontier-scale LLMs.",
+    "url": "https://arxiv.org/abs/2607.08186",
+    "published": "2026-07-09",
+    "categories": [
+      "cs.AI",
+      "cs.LG"
+    ]
+  },
+  "2512.22189": {
+    "arxiv_id": "2512.22189",
+    "title": "Physics-Informed Machine Learning for Transformer Condition Monitoring -- Part II: Physics-Informed Neural Networks and Uncertainty Quantification",
+    "authors": [
+      "Jose I. Aizpurua"
+    ],
+    "summary": "The integration of physics-based knowledge with machine learning models is increasingly shaping the monitoring, diagnostics, and prognostics of electrical transformers. In this two-part series, the first paper introduced the foundations of Neural Networks (NNs) and their variants for health assessment tasks. This second paper focuses on integrating physics and uncertainty into the learning process. We begin with the fundamentals of Physics-Informed Neural Networks (PINNs), applied to spatiotemporal thermal modeling and solid insulation ageing. Building on this, we present Bayesian PINNs as a principled framework to quantify epistemic uncertainty and deliver robust predictions under sparse data. Finally, we outline emerging research directions that highlight the potential of physics-aware and trustworthy machine learning for critical power assets.",
+    "url": "https://arxiv.org/abs/2512.22189",
+    "published": "2025-12-20",
+    "categories": [
+      "cs.AI",
+      "cs.LG"
+    ]
+  },
+  "2506.22084": {
+    "arxiv_id": "2506.22084",
+    "title": "Transformers are Graph Neural Networks",
+    "authors": [
+      "Chaitanya K. Joshi"
+    ],
+    "summary": "We establish connections between the Transformer architecture, originally introduced for natural language processing, and Graph Neural Networks (GNNs) for representation learning on graphs. We show how Transformers can be viewed as message passing GNNs operating on fully connected graphs of tokens, where the self-attention mechanism capture the relative importance of all tokens w.r.t. each-other, and positional encodings provide hints about sequential ordering or structure. Thus, Transformers are expressive set processing networks that learn relationships among input elements without being constrained by apriori graphs. Despite this mathematical connection to GNNs, Transformers are implemented via dense matrix operations that are significantly more efficient on modern hardware than sparse message passing. This leads to the perspective that Transformers are GNNs currently winning the hardware lottery.",
+    "url": "https://arxiv.org/abs/2506.22084",
+    "published": "2025-06-27",
+    "categories": [
+      "cs.AI",
+      "cs.LG"
+    ]
+  },
+  "2209.07474": {
+    "arxiv_id": "2209.07474",
+    "title": "On the Surprising Effectiveness of Transformers in Low-Labeled Video Recognition",
+    "authors": [
+      "Farrukh Rahman",
+      "\u00d6mer Mubarek",
+      "Zsolt Kira"
+    ],
+    "summary": "Recently vision transformers have been shown to be competitive with convolution-based methods (CNNs) broadly across multiple vision tasks. The less restrictive inductive bias of transformers endows greater representational capacity in comparison with CNNs. However, in the image classification setting this flexibility comes with a trade-off with respect to sample efficiency, where transformers require ImageNet-scale training. This notion has carried over to video where transformers have not yet been explored for video classification in the low-labeled or semi-supervised settings. Our work empirically explores the low data regime for video classification and discovers that, surprisingly, transformers perform extremely well in the low-labeled video setting compared to CNNs. We specifically evaluate video vision transformers across two contrasting video datasets (Kinetics-400 and SomethingSomething-V2) and perform thorough analysis and ablation studies to explain this observation using the predominant features of video transformer architectures. We even show that using just the labeled data, transformers significantly outperform complex semi-supervised CNN methods that leverage large-scale unlabeled data as well. Our experiments inform our recommendation that semi-supervised learning video work should consider the use of video transformers in the future.",
+    "url": "https://arxiv.org/abs/2209.07474",
+    "published": "2022-09-15",
+    "categories": [
+      "cs.AI",
+      "cs.LG"
+    ]
+  },
+  "2202.07125": {
+    "arxiv_id": "2202.07125",
+    "title": "Transformers in Time Series: A Survey",
+    "authors": [
+      "Qingsong Wen",
+      "Tian Zhou",
+      "Chaoli Zhang",
+      "Weiqi Chen",
+      "Ziqing Ma",
+      "Junchi Yan",
+      "Liang Sun"
+    ],
+    "summary": "Transformers have achieved superior performances in many tasks in natural language processing and computer vision, which also triggered great interest in the time series community. Among multiple advantages of Transformers, the ability to capture long-range dependencies and interactions is especially attractive for time series modeling, leading to exciting progress in various time series applications. In this paper, we systematically review Transformer schemes for time series modeling by highlighting their strengths as well as limitations. In particular, we examine the development of time series Transformers in two perspectives. From the perspective of network structure, we summarize the adaptations and modifications that have been made to Transformers in order to accommodate the challenges in time series analysis. From the perspective of applications, we categorize time series Transformers based on common tasks including forecasting, anomaly detection, and classification. Empirically, we perform robust analysis, model size analysis, and seasonal-trend decomposition analysis to study how Transformers perform in time series. Finally, we discuss and suggest future directions to provide useful research guidance. To the best of our knowledge, this paper is the first work to comprehensively and systematically summarize the recent advances of Transformers for modeling time series data. We hope this survey will ignite further research interests in time series Transformers.",
+    "url": "https://arxiv.org/abs/2202.07125",
+    "published": "2022-02-15",
+    "categories": [
+      "cs.AI",
+      "cs.LG"
+    ]
+  },
+  "2512.22190": {
+    "arxiv_id": "2512.22190",
+    "title": "Physics-Informed Machine Learning for Transformer Condition Monitoring -- Part I: Basic Concepts, Neural Networks, and Variants",
+    "authors": [
+      "Jose I. Aizpurua"
+    ],
+    "summary": "Power transformers are critical assets in power networks, whose reliability directly impacts grid resilience and stability. Traditional condition monitoring approaches, often rule-based or purely physics-based, struggle with uncertainty, limited data availability, and the complexity of modern operating conditions. Recent advances in machine learning (ML) provide powerful tools to complement and extend these methods, enabling more accurate diagnostics, prognostics, and control. In this two-part series, we examine the role of Neural Networks (NNs) and their extensions in transformer condition monitoring and health management tasks. This first paper introduces the basic concepts of NNs, explores Convolutional Neural Networks (CNNs) for condition monitoring using diverse data modalities, and discusses the integration of NN concepts within the Reinforcement Learning (RL) paradigm for decision-making and control. Finally, perspectives on emerging research directions are also provided.",
+    "url": "https://arxiv.org/abs/2512.22190",
+    "published": "2025-12-20",
+    "categories": [
+      "cs.AI",
+      "cs.LG"
+    ]
   }
 }

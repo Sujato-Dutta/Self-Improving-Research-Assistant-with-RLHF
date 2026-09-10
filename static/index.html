@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/static/css/style.css?v=2" />
+  <link rel="stylesheet" href="/static/css/style.css?v=5" />
 </head>
 <body class="dark-theme">
   <div class="app-container">
@@ -210,21 +210,6 @@
           </div>
         </div>
       </section>
-
-      <!-- Right Column: Evidence Explorer Drawer -->
-      <aside class="evidence-sidebar">
-        <div class="card evidence-card">
-          <div class="sidebar-header">
-            <h3>Retrieved Evidence</h3>
-            <span id="evidenceCountBadge" class="badge">0 papers</span>
-          </div>
-          <p class="sidebar-subtext">Click citation tags [1], [2] in answer to illuminate corresponding paper passage.</p>
-
-          <div id="evidenceList" class="evidence-list">
-            <div class="empty-evidence">No papers currently active. Submit a query to inspect semantic retrieval results.</div>
-          </div>
-        </div>
-      </aside>
     </main>
 
     <!-- Modal: Analytics, Benchmark Progression & Evaluation Gates -->
@@ -232,11 +217,36 @@
       <div class="modal-backdrop"></div>
       <div class="modal-dialog">
         <div class="modal-header">
-          <h2>Self-Improvement Analytics & Regression Gates</h2>
-          <button id="closeModalBtn" class="btn-close">&times;</button>
+          <div>
+            <h2>Self-Improvement Analytics & Regression Gates</h2>
+            <p class="subtitle" style="margin-top: 0.2rem;">Live checkpoint progression, bootstrap confidence intervals, and gate promotion history</p>
+          </div>
+          <div style="display: flex; gap: 0.8rem; align-items: center;">
+            <button id="reEvalBtn" class="btn btn-outline btn-sm" title="Re-evaluate benchmark against active model">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M23 4v6h-6"></path>
+                <path d="M1 20v-6h6"></path>
+                <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+              </svg>
+              Run Live Evaluation
+            </button>
+            <button id="closeModalBtn" class="btn-close">&times;</button>
+          </div>
         </div>
 
         <div class="modal-body">
+          <div id="liveInteractionBar" class="live-interaction-bar">
+            <div class="live-stats-items">
+              <span class="live-stat-chip">Queries: <span id="statQueries" class="live-stat-val">0</span></span>
+              <span>•</span>
+              <span class="live-stat-chip">Feedback Recorded: <span id="statFeedbacks" class="live-stat-val">0</span></span>
+              <span>•</span>
+              <span class="live-stat-chip">A/B Comparisons: <span id="statPreferences" class="live-stat-val">0</span></span>
+              <span>•</span>
+              <span class="live-stat-chip">Active Policy: <span id="statActiveVersion" class="live-stat-val">Loading</span></span>
+            </div>
+          </div>
+
           <div class="metrics-kpi-grid">
             <div class="kpi-card">
               <span class="kpi-title">Win Rate vs Base</span>
@@ -299,6 +309,6 @@
     <div id="toast" class="toast hidden"></div>
   </div>
 
-  <script src="/static/js/app.js?v=2"></script>
+  <script src="/static/js/app.js?v=5"></script>
 </body>
 </html>
