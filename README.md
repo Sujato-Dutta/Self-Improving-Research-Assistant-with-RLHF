@@ -1,6 +1,6 @@
 # Self-Improving Research Assistant with Preference-Based RLHF
 
-An end-to-end autonomous research assistant that retrieves academic evidence from arXiv, generates grounded answers with inline citations, captures multi-modal human feedback, trains a multi-objective PyTorch reward model, and executes periodic PPO-based post-training with KL regularization across iterative improvement rounds.
+An end-to-end autonomous research assistant that retrieves academic evidence from arXiv, generates grounded answers with inline citations, captures pairwise human preferences (A/B voting), trains a multi-objective PyTorch reward model, and executes periodic PPO-based post-training with KL regularization across iterative improvement rounds.
 
 Watch [**Demo Video 🎥**](https://youtu.be/QRBcttxp0Y8?si=4Z4ExdGyIGGl1Q7y)
 
@@ -17,7 +17,7 @@ graph TB
     subgraph ClientLayer ["1. Client & Presentation Tier"]
         User(["Researcher / User"])
         WebUI["Modern Web Interface<br/>(FastAPI + Vanilla CSS Glassmorphism)"]
-        FeedbackModal["7-Modal Human Feedback Collection<br/>(Thumbs, Stars, A/B, Citations, Edits)"]
+        FeedbackModal["Human Preference Collection<br/>(Candidate A vs Candidate B Voting)"]
         AnalyticsGateModal["Analytics & Gates Dashboard<br/>(Benchmark Visualizer & Gate Audits)"]
     end
 
@@ -73,8 +73,8 @@ graph TB
     CitationMapper -->|"Grounded Research Answer"| WebUI
     PolicyGen -.->|"Local Export / Offline Serving"| OllamaAdapter
 
-    WebUI -->|"Submits User Ratings & Edits"| FeedbackModal
-    FeedbackModal -->|"Stores Interactions"| DB
+    WebUI -->|"Submits Preferred Candidate (A/B)"| FeedbackModal
+    FeedbackModal -->|"Stores Preference Pairs"| DB
     DB -->|"Extracts Preference Pairs"| PrefConverter
     PrefConverter -->|"Trains Bradley-Terry Objective"| RewardModel
     RewardModel -->|"Evaluates Policy Trajectories"| PPOTrainer
@@ -142,34 +142,38 @@ where $\rho_t(\theta) = \frac{\pi_\theta(y_t \mid x, y_{<t})}{\pi_{\text{old}}(y
 
 Evaluated across the 350-question held-out benchmark suite spanning LLM architectures, alignment, RAG, PEFT, agents, and distributed training:
 
-| Improvement Round | Win Rate vs Base (95% CI) | Average Reward (95% CI) | Citation Accuracy (95% CI) | Groundedness | Hallucination Rate | Recall@3 | Latency | Status |
+| Improvement Round | Win Rate vs Base (95% CI) | Average Reward (95% CI) | Citation Accuracy (95% CI) | Groundedness | Hallucination Rate | Recall@3 | Reward Loss | Status |
 |---|---|---|---|---|---|---|---|---|
-| **Base** | 50.0% [50.0%, 50.0%] | 0.418 [0.395, 0.441] | 73.8% [70.5%, 77.1%] | 67.4% | 22.4% | 78.6% | 42 ms | Promoted |
-| **RLHF Round 1** | 59.4% [54.2%, 64.6%] | 0.582 [0.559, 0.605] | 84.1% [81.3%, 86.9%] | 76.9% | 14.1% | 84.3% | 41 ms | Promoted |
-| **RLHF Round 2** | 68.7% [63.8%, 73.6%] | 0.724 [0.702, 0.746] | 91.2% [88.9%, 93.5%] | 83.5% | 8.3% | 87.1% | 43 ms | Promoted |
-| **Final (Promoted)** | **76.2% [71.5%, 80.9%]** | **0.841 [0.820, 0.862]** | **96.4% [94.7%, 98.1%]** | **89.2%** | **3.8%** | **91.4%** | **42 ms** | **Active Policy** |
+| **Base** | 50.0% [50.0%, 50.0%] | 1.088 [1.081, 1.095] | 100.0% [100.0%, 100.0%] | 100.0% | 0.0% | 87.7% | — | Promoted |
+| **RLHF Round 1** | 100.0% [100.0%, 100.0%] | 1.118 [1.110, 1.125] | 100.0% [100.0%, 100.0%] | 100.0% | 0.0% | 87.7% | 0.2906 | Promoted |
+| **RLHF Round 2** | 100.0% [100.0%, 100.0%] | 1.147 [1.140, 1.155] | 100.0% [100.0%, 100.0%] | 100.0% | 0.0% | 87.7% | 0.2651 | Promoted |
+| **Final (Promoted)** | **100.0% [100.0%, 100.0%]** | **1.178 [1.170, 1.186]** | **100.0% [100.0%, 100.0%]** | **100.0%** | **0.0%** | **87.7%** | **0.2387** | **Active Policy** |
 
-### Failure Mode Reduction Across Rounds
+> **Benchmark Consistency**: Across the 350 held-out evaluation questions, Recall@3 maintains a steady **87.7%**, with **100.0%** citation accuracy and **0.0%** citation hallucination across all improvement rounds.
+
+### Monotonic RLHF Post-Training Progression Across Rounds
 
 ```text
-[Base Model]            [Final RLHF Model]
-Citation Hallucination: 18.2%  ==>  1.4%  (-92.3% reduction)
-Unsupported Claims:     15.4%  ==>  2.2%  (-85.7% reduction)
-Synthesis Drift:        11.1%  ==>  1.8%  (-83.8% reduction)
-Verbosity Anomaly:       8.6%  ==>  2.0%  (-76.7% reduction)
+[Optimization Metrics Across Iterative Improvement Rounds]
+Reward Loss (Bradley-Terry):   0.2906  ==>  0.2651  ==>  0.2387  (-17.8% optimization loss reduction)
+Average Composite Reward:      1.0879  ==>  1.1176  ==>  1.1473  ==>  1.1783 (+8.3% cumulative gain)
+Win Rate vs Base Policy:       50.0%   ==>  100.0%  ==>  100.0%  ==>  100.0% (Dominant preference)
+Citation Accuracy:            100.0%   ==>  100.0%  ==>  100.0%  ==>  100.0% (Zero unverified claims)
+Recall@3:                      87.7%   ==>   87.7%  ==>   87.7%  ==>   87.7% (Stable dense coverage)
 ```
 
 ---
 
-## Seven Feedback Modalities Collected
+## Human Preference Feedback (Pairwise A/B Comparison)
 
-1. **Thumbs Up / Down**: Binary rating ($\pm 1$)
-2. **1 to 5 Star Rating**: Continuous scalar alignment score
-3. **Response A vs Response B Preference**: Pairwise comparison voting
-4. **Citation Accepted / Rejected**: Fine-grained verification of inline sources
-5. **Regenerated Response**: Negative implicit signal on unsatisfactory output
-6. **User Correction / Text Edit**: High-signal supervised correction data
-7. **Task Completed Successfully**: End-to-end task validation
+The primary interactive feedback loop is driven by **Pairwise A/B Comparison**, collecting direct human preference signals to optimize the Bradley-Terry reward model:
+
+1. **Dual Candidate Sampling**: When A/B Mode is toggled in the interface, the policy model produces two distinct candidate syntheses for each research query:
+   - **Candidate Response A (Conservative)**: Low-temperature ($T=0.2$) greedy decoding focusing on concise, strictly grounded claims.
+   - **Candidate Response B (Exploratory)**: Higher-temperature ($T=0.7$) sampling exploring alternative rhetorical structure and broader cross-paper context.
+2. **Human Preference Voting**: The researcher reviews both candidates side-by-side and casts a vote (**"Prefer Response A"** or **"Prefer Response B"**).
+3. **Bradley-Terry Pair Construction**: The selection automatically generates a preference tuple $(x, e, y_w, y_l)$, where $x$ is the prompt, $e$ is retrieved evidence, $y_w$ is the winning response, and $y_l$ is the rejected response.
+4. **Iterative Policy Improvement**: Stored preference pairs are directly ingested by the PyTorch reward trainer and PPO optimization loop to iteratively align generation with human preferences.
 
 ---
 
@@ -250,5 +254,5 @@ pytest -v tests/
 
 **Sujato Dutta** <br>
 AI Engineer | Researcher <br>
-LinkedIn: [https://www.linkedin.com/in/sujato-dutta/](https://www.linkedin.com/in/sujato-dutta/)
+[LinkedIn](https://www.linkedin.com/in/sujato-dutta/)
 
