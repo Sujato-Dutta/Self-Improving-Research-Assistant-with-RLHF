@@ -2,70 +2,89 @@
 
 An end-to-end autonomous research assistant that retrieves academic evidence from arXiv, generates grounded answers with inline citations, captures multi-modal human feedback, trains a multi-objective PyTorch reward model, and executes periodic PPO-based post-training with KL regularization across iterative improvement rounds.
 
+Watch **Demo Video 🎥** [https://youtu.be/QRBcttxp0Y8?si=4Z4ExdGyIGGl1Q7y](https://youtu.be/QRBcttxp0Y8?si=4Z4ExdGyIGGl1Q7y)
+
+<p align="center">
+  <img src="assets/ui_asset.png" alt="Self-Improving Research Assistant Interface" width="100%" />
+</p>
+
 ---
 
-## System Architecture
+## Architecture
 
-```text
-                                  +-----------------------+
-                                  |     User Question     |
-                                  +-----------+-----------+
-                                              |
-                                              v
-                              +---------------+---------------+
-                              |    Dense Semantic Retrieval   |
-                              |   (SentenceTransformers+FAISS)|
-                              +---------------+---------------+
-                                              |
-                                              v
-                              +---------------+---------------+
-                              |   Evidence Chunk Extraction   |
-                              |   & Grounded Context Builder  |
-                              +---------------+---------------+
-                                              |
-                                              v
-                              +---------------+---------------+
-                              |    Qwen Policy Model Engine   |
-                              |  (Single or A/B Candidates)   |
-                              +---------------+---------------+
-                                              |
-                                              v
-                              +---------------+---------------+
-                              |  7-Modal Human Feedback Capture|
-                              |  (Thumbs, Stars, Citations,   |
-                              |   Edits, Task Success, A/B)   |
-                              +---------------+---------------+
-                                              |
-                                              v
-                              +---------------+---------------+
-                              | Pairwise Preference Converter |
-                              | (query, chosen, rejected, ev) |
-                              +---------------+---------------+
-                                              |
-                                              v
-                              +---------------+---------------+
-                              |  PyTorch Multi-Factor RM      |
-                              |  (Bradley-Terry Optimization) |
-                              +---------------+---------------+
-                                              |
-                                              v
-                              +---------------+---------------+
-                              |   PPO RLHF Post-Training Loop |
-                              | (KL-Regularized Policy Update)|
-                              +---------------+---------------+
-                                              |
-                                              v
-                              +---------------+---------------+
-                              |  Regression Evaluation Gate   |
-                              |  (350 Held-Out Benchmarks)    |
-                              +---------------+---------------+
-                                     /                 \
-                               [Passed]              [Failed]
-                                 /                     \
-            +-------------------+---+              +----+------------------+
-            | Promote Checkpoint to |              | Quarantine Checkpoint |
-            | Active Serving Policy |              | & Generate Diagnostics|
-            +-----------------------+              +-----------------------+
+```mermaid
+graph TB
+    subgraph ClientLayer ["1. Client & Presentation Tier"]
+        User(["Researcher / User"])
+        WebUI["Modern Web Interface<br/>(FastAPI + Vanilla CSS Glassmorphism)"]
+        FeedbackModal["7-Modal Human Feedback Collection<br/>(Thumbs, Stars, A/B, Citations, Edits)"]
+        AnalyticsGateModal["Analytics & Gates Dashboard<br/>(Benchmark Visualizer & Gate Audits)"]
+    end
+
+    subgraph RetrievalEngine ["2. Dynamic Hybrid Retrieval & Grounding Engine"]
+        QueryProc["Query Preprocessor & Intent Classifier<br/>(Acronyms, Recency Detection, NLP Cleaning)"]
+        ArxivAPI["Live arXiv Atom Feed Client<br/>(Category Constrained: cs.LG, cs.AI, cs.CV, stat.ML)"]
+        Embedder["SentenceTransformer Embedder<br/>(all-MiniLM-L6-v2, 384-dim)"]
+        VectorDB[("FAISS Vector Store<br/>(Partition Filtered via allowed_arxiv_ids)")]
+        SemanticGate{"Dynamic Relevance Gate<br/>(Score >= 0.20 + Keyword Alignment)"}
+        TextSplitter["Recursive Academic Text Splitter<br/>(450 Token Chunks + 50 Overlap)"]
+    end
+
+    subgraph GenerationLayer ["3. Policy Model & Grounded Academic Synthesizer"]
+        PolicyGen["Qwen Policy Engine<br/>(Single Inference / Dual A/B Sampling)"]
+        Synthesizer["Evidence-Grounded Synthesis Engine<br/>(Objective Academic Tone, De-personalized)"]
+        CitationMapper["Inline Citation Engine<br/>(Numbered Badges [k] + Direct arXiv Links)"]
+        OllamaAdapter["Local Ollama Daemon Adapter<br/>(CPU / Edge Inference Fallback)"]
+    end
+
+    subgraph PersistenceLayer ["4. Relational Data & Artifact Storage"]
+        DB[("SQLite Database via SQLAlchemy<br/>(Queries, Evidence, Responses, Feedback)")]
+        DocCache[("Paper & Benchmark JSON Cache<br/>(Multi-Domain Landmarked Literature)")]
+    end
+
+    subgraph RLHFLoop ["5. Preference-Based RLHF Post-Training Loop"]
+        PrefConverter["Pairwise Preference Converter<br/>(Constructs Bradley-Terry Tuples x, e, y_w, y_l)"]
+        RewardModel["PyTorch Multi-Factor Reward Model<br/>(Neural Tower + 6 Auxiliary Objective Penalties)"]
+        PPOTrainer["PPO Policy Optimizer<br/>(GAE Advantage + KL Divergence Regularizer)"]
+        MLflowTracker["MLflow Experiment Telemetry<br/>(Runs, Loss Curves, Reward Metrics)"]
+    end
+
+    subgraph EvaluationLifecycle ["6. Continuous Evaluation & Gate Promotion"]
+        EvalGate{"350-Question Held-Out Benchmark Gate<br/>(Win Rate >= 65%, Reward >= 0.65, Citations >= 85%)"}
+        ActiveCheckpoint["Promoted Serving Policy Checkpoint<br/>(Auto-loaded into Active Runtime)"]
+        Quarantine["Quarantine & Rollback Diagnostics<br/>(Prevents Destructive Policy Updates)"]
+    end
+
+    %% Flow connections
+    User -->|"Submits Research Query"| WebUI
+    WebUI -->|"Dispatches Query Text"| QueryProc
+    QueryProc -->|"Recency / Topical Expansion"| ArxivAPI
+    QueryProc -->|"Computes Dense Query Vector"| Embedder
+    ArxivAPI -->|"Fetches Latest Full Abstracts"| TextSplitter
+    TextSplitter -->|"Splits Chunks & Computes Embeddings"| VectorDB
+    Embedder -->|"Dense Similarity Search"| VectorDB
+    VectorDB -->|"Top-k Evidence Passages"| SemanticGate
+
+    SemanticGate -->|"Relevant Evidence Confirmed"| PolicyGen
+    SemanticGate -->|"Irrelevant / Stale Passages"| ArxivAPI
+
+    PolicyGen --> Synthesizer
+    Synthesizer --> CitationMapper
+    CitationMapper -->|"Grounded Research Answer"| WebUI
+    PolicyGen -.->|"Local Export / Offline Serving"| OllamaAdapter
+
+    WebUI -->|"Submits User Ratings & Edits"| FeedbackModal
+    FeedbackModal -->|"Stores Interactions"| DB
+    DB -->|"Extracts Preference Pairs"| PrefConverter
+    PrefConverter -->|"Trains Bradley-Terry Objective"| RewardModel
+    RewardModel -->|"Evaluates Policy Trajectories"| PPOTrainer
+    PPOTrainer -->|"Tracks Post-Training Metrics"| MLflowTracker
+    PPOTrainer -->|"Evaluates Candidate Policy"| EvalGate
+
+    EvalGate -->|"Passes Criteria"| ActiveCheckpoint
+    EvalGate -->|"Fails Criteria"| Quarantine
+    ActiveCheckpoint -->|"Hot-Swaps Serving Policy"| PolicyGen
+    EvalGate -.->|"Pushes Benchmark Telemetry"| AnalyticsGateModal
 ```
 
 ---
@@ -181,8 +200,8 @@ squeue -u $USER
 
 ```powershell
 # 1. Clone repository
-git clone https://github.com/your-org/Self-Improving-Research-Assistant.git
-cd Self-Improving-Research-Assistant
+git clone https://github.com/Sujato-Dutta/Self-Improving-Research-Assistant-with-RLHF.git
+cd Self-Improving-Research-Assistant-with-RLHF
 
 # 2. Setup virtual environment & dependencies
 .\scripts\setup_env.bat
@@ -224,3 +243,12 @@ ollama run qwen-research-assistant "Explain FlashAttention tiling tradeoffs"
 ```powershell
 pytest -v tests/
 ```
+
+---
+
+## Author
+
+**Sujato Dutta** <br>
+AI Engineer | Researcher <br>
+LinkedIn: [https://www.linkedin.com/in/sujato-dutta/](https://www.linkedin.com/in/sujato-dutta/)
+
