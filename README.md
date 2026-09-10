@@ -2,7 +2,7 @@
 
 An end-to-end autonomous research assistant that retrieves academic evidence from arXiv, generates grounded answers with inline citations, captures multi-modal human feedback, trains a multi-objective PyTorch reward model, and executes periodic PPO-based post-training with KL regularization across iterative improvement rounds.
 
-Watch **Demo Video 🎥** [https://youtu.be/QRBcttxp0Y8?si=4Z4ExdGyIGGl1Q7y](https://youtu.be/QRBcttxp0Y8?si=4Z4ExdGyIGGl1Q7y)
+Watch [**Demo Video 🎥**](https://youtu.be/QRBcttxp0Y8?si=4Z4ExdGyIGGl1Q7y)
 
 <p align="center">
   <img src="assets/ui_asset.png" alt="Self-Improving Research Assistant Interface" width="100%" />
